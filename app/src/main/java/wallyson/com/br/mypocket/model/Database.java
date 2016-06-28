@@ -59,7 +59,6 @@ public class Database extends SQLiteOpenHelper {
                         "foreign key(accountNum) references " + TABLE_ACCOUNT + " (cardNum) on delete cascade);"
         );
 
-
     }
 
     @Override
