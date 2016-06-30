@@ -14,7 +14,7 @@ import wallyson.com.br.mypocket.model.User;
 public class UserDao {
     private Database database;
 
-    public void UserDao(Context context) {
+    public UserDao(Context context) {
         database = new Database(context);
     }
 

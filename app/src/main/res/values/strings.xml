@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">MyPocket</string>
+    <string name="initial">Welcome my Pocket! Perform a brief registration to start using it!</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="bankName">Bank Name</string>
+    <string name="balance">Balance</string>
+    <string name="clean">Clean</string>
+    <string name="submit">Submit</string>
+    <string name="registrationError">Error ! Please complete all fields !</string>
+    <string name="successfullyRegistration">Successfully registration data !</string>
+    <string name="DatabaseInsertError">Error insert Data !</string>
 </resources>

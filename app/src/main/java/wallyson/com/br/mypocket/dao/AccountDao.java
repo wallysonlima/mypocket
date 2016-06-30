@@ -12,7 +12,7 @@ import wallyson.com.br.mypocket.model.Database;
 public class AccountDao {
     private Database database;
 
-    public void AccountDao(Context context) {
+    public AccountDao(Context context) {
         database = new Database(context);
     }
 
