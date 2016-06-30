@@ -13,11 +13,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:layout_marginTop="112dp"
         android:text="@string/initial"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textSize="40px"
+        android:textStyle="bold"
+        android:textColor="#0e7fbb"
+        android:textAlignment="center"
+        android:layout_above="@+id/edtName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,10 +28,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/name"
         android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="38dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,9 +38,10 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/email"
         android:id="@+id/textView3"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/textView2"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_marginTop="23dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -57,11 +60,10 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/edtEmail"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_alignLeft="@+id/edtBankName"
-        android:layout_alignStart="@+id/edtBankName" />
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_toRightOf="@+id/textBankName"
+        android:layout_alignRight="@+id/edtBankName"
+        android:layout_alignEnd="@+id/edtBankName" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -78,10 +80,10 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/bankName"
         android:id="@+id/textBankName"
-        android:layout_marginTop="36dp"
-        android:layout_below="@+id/edtEmail"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_marginTop="25dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -89,8 +91,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/balance"
         android:id="@+id/textView4"
-        android:layout_marginTop="44dp"
-        android:layout_below="@+id/edtBankName"
+        android:layout_alignBottom="@+id/edtBalance"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -100,11 +101,10 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/edtBalance"
-        android:layout_alignBottom="@+id/textView4"
+        android:layout_below="@+id/edtBankName"
+        android:layout_toRightOf="@+id/imageView"
         android:layout_alignRight="@+id/edtBankName"
-        android:layout_alignEnd="@+id/edtBankName"
-        android:layout_alignLeft="@+id/edtBankName"
-        android:layout_alignStart="@+id/edtBankName" />
+        android:layout_alignEnd="@+id/edtBankName" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -125,5 +125,25 @@
         android:layout_alignTop="@+id/btClean"
         android:layout_alignRight="@+id/edtBalance"
         android:layout_alignEnd="@+id/edtBalance" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/edtName"
+        android:layout_alignStart="@+id/edtName" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView8"
+        android:background="@mipmap/logo"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_toStartOf="@+id/btSubmit"
+        android:layout_above="@+id/textView" />
 
 </RelativeLayout>
