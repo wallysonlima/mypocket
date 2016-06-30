@@ -16,11 +16,12 @@ public class AccountDao {
         database = new Database(context);
     }
 
-    public boolean insertAccount(String bankName, double balance) {
+    public boolean insertAccount(String bankName, double balance, int codUser) {
         SQLiteDatabase db = database.getWritableDatabase();
         ContentValues content = new ContentValues();
         content.put("bankName", bankName);
         content.put("balance", balance);
+        content.put("codeUser", codUser);
 
         long result = db.insert("account", null, content);
 

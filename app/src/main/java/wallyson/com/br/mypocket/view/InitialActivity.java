@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 import wallyson.com.br.mypocket.R;
 import wallyson.com.br.mypocket.presenter.InitialActivityPresenter;
-import wallyson.com.br.mypocket.presenter.InitialView;
+import wallyson.com.br.mypocket.presenter.InitialInterface;
 
-public class InitialActivity extends AppCompatActivity implements InitialView {
+public class InitialActivity extends AppCompatActivity implements InitialInterface {
     EditText name, email, bankName, balance;
     Button btClean, btSubmit;
     InitialActivityPresenter mPresenter;
@@ -27,12 +27,13 @@ public class InitialActivity extends AppCompatActivity implements InitialView {
         bankName = (EditText) findViewById(R.id.edtBankName);
         balance = (EditText) findViewById(R.id.edtBalance);
         btClean = (Button) findViewById(R.id.btClean);
+        btSubmit = (Button) findViewById(R.id.btSubmit);
         mPresenter = new InitialActivityPresenter(this, this.getApplicationContext());
 
         btClean.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                limpar();
+                clean();
             }
         });
 
@@ -45,7 +46,7 @@ public class InitialActivity extends AppCompatActivity implements InitialView {
     }
 
     // Método responsável por limpar os campos de texto
-    public void limpar() {
+    public void clean() {
         name.setText(null);
         email.setText(null);
         bankName.setText(null);

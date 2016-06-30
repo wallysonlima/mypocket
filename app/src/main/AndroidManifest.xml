@@ -9,7 +9,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.MainActivity" />
-        <activity android:name=".view.InitialActivity"></activity>
+        <activity android:name=".view.InitialActivity" />
+        <activity android:name=".view.AccountActivity"></activity>
     </application>
 
 </manifest>

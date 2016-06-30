@@ -10,4 +10,5 @@
     <string name="registrationError">Error ! Please complete all fields !</string>
     <string name="successfullyRegistration">Successfully registration data !</string>
     <string name="DatabaseInsertError">Error insert Data !</string>
+    <string name="accountRegistration">Register here your Account !</string>
 </resources>
