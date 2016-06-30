@@ -9,13 +9,11 @@ import java.util.ArrayList;
 public class Account {
     private String bankName;
     private double balance;
-    private int accountNum;
     private ArrayList<Card> cards;
 
-    public Account(String bankName, double balance, int accountNum) {
+    public Account(String bankName, double balance) {
         this.bankName = bankName;
         this.balance = balance;
-        this.accountNum = accountNum;
         cards = new ArrayList<>();
     }
 
@@ -25,14 +23,6 @@ public class Account {
 
     public void setBalance(double balance) {
         this.balance = balance;
-    }
-
-    public int getAccountNum() {
-        return accountNum;
-    }
-
-    public void setAccountNum(int accountNum) {
-        this.accountNum = accountNum;
     }
 
     public String getBankName() {

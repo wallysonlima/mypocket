@@ -7,24 +7,14 @@ package wallyson.com.br.mypocket.model;
 import java.util.Date;
 
 public class Card {
-    private String flag;
     private double credit;
     private Date maturity;
-    private int cardNum;
+    private String cardName;
 
-    public Card(String flag, double credit, Date maturity, int cardNum) {
-        this.flag = flag;
+    public Card(String cardName, double credit, Date maturity) {
+        this.cardName = cardName;
         this.credit = credit;
         this.maturity = maturity;
-        this.cardNum = cardNum;
-    }
-
-    public String getFlag() {
-        return flag;
-    }
-
-    public void setFlag(String flag) {
-        this.flag = flag;
     }
 
     public double getCredit() {
@@ -43,11 +33,4 @@ public class Card {
         this.maturity = maturity;
     }
 
-    public int getCardNum() {
-        return cardNum;
-    }
-
-    public void setCardNum(int cardNum) {
-        this.cardNum = cardNum;
-    }
 }

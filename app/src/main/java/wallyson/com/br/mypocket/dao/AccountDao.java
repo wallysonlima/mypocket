@@ -16,10 +16,9 @@ public class AccountDao {
         database = new Database(context);
     }
 
-    public boolean insertAccount(int accountNum, String bankName, double balance) {
+    public boolean insertAccount(String bankName, double balance) {
         SQLiteDatabase db = database.getWritableDatabase();
         ContentValues content = new ContentValues();
-        content.put("accountNum", accountNum);
         content.put("bankName", bankName);
         content.put("balance", balance);
 
@@ -31,9 +30,9 @@ public class AccountDao {
             return true;
     }
 
-    public Integer deleteAccount(int accountNum) {
+    public Integer deleteAccount(int bankName) {
         SQLiteDatabase db = database.getWritableDatabase();
-        return db.delete("account", "accountNum = ?", new String[] {Integer.toString(accountNum)} );
+        return db.delete("account", "bankName = ?", new String[] {Integer.toString(bankName)} );
     }
 
 

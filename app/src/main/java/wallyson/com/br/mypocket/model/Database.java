@@ -1,11 +1,8 @@
 package wallyson.com.br.mypocket.model;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-import android.widget.Toast;
 
 /**
  * Created by wally on 27/06/16.
@@ -43,20 +40,18 @@ public class Database extends SQLiteOpenHelper {
                 "foreign key(codUser) references " + TABLE_USER + " (spendingCod) on delete cascade);");
 
         db.execSQL("create table " + TABLE_ACCOUNT +
-                "(accountNum integer primary key, " +
-                "bankName text not null, " +
+                "(bankName text not null primary key, " +
                 "balance real not null, " +
                 "codUser integer not null, " +
-                "foreign key(codUser) references " + TABLE_USER + " (accountNum) on delete cascade);"
+                "foreign key(codUser) references " + TABLE_USER + " (bankName) on delete cascade);"
         );
 
         db.execSQL("create table " + TABLE_CARD +
-                        "(cardNum integer primary key, " +
-                        "flag text not null, " +
+                        "(cardName text not null primary key," +
                         "credit real not null, " +
                         "maturity text not null, " +
-                        "accountNum integer not null, " +
-                        "foreign key(accountNum) references " + TABLE_ACCOUNT + " (cardNum) on delete cascade);"
+                        "bankName text not null, " +
+                        "foreign key(bankName) references " + TABLE_ACCOUNT + " (cardNum) on delete cascade);"
         );
 
     }
