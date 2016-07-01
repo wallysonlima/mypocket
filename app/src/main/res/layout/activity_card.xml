@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="wallyson.com.br.mypocket.view.CardActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:background="@mipmap/card"
+        android:layout_above="@+id/textView14"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/btnSubmit"
+        android:layout_alignLeft="@+id/edtCardName"
+        android:layout_alignStart="@+id/edtCardName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView10"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/cardName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtCardName"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/textView10"
+        android:layout_toEndOf="@+id/textView10" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/edtMaturity"
+        android:layout_below="@+id/edtCardName"
+        android:layout_alignRight="@+id/edtCardName"
+        android:layout_alignEnd="@+id/edtCardName"
+        android:layout_alignLeft="@+id/edtCardName"
+        android:layout_alignStart="@+id/edtCardName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/maturity"
+        android:id="@+id/textView11"
+        android:layout_alignBottom="@+id/edtMaturity"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/edtCredit"
+        android:layout_below="@+id/textView11"
+        android:layout_alignRight="@+id/edtMaturity"
+        android:layout_alignEnd="@+id/edtMaturity"
+        android:layout_alignLeft="@+id/edtMaturity"
+        android:layout_alignStart="@+id/edtMaturity" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/credit"
+        android:id="@+id/textView12"
+        android:layout_alignBottom="@+id/edtCredit"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spnBankName"
+        android:layout_below="@+id/edtCredit"
+        android:layout_alignRight="@+id/edtCredit"
+        android:layout_alignEnd="@+id/edtCredit"
+        android:layout_alignLeft="@+id/edtCredit"
+        android:layout_alignStart="@+id/edtCredit" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/bankName"
+        android:id="@+id/textView13"
+        android:layout_alignBottom="@+id/spnBankName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:id="@+id/btnSubmit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/spnBankName"
+        android:layout_alignEnd="@+id/spnBankName" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/clean"
+        android:id="@+id/btnClean"
+        android:layout_alignTop="@+id/btnSubmit"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cardRegistration"
+        android:id="@+id/textView14"
+        android:layout_above="@+id/edtCardName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="49dp"
+        android:textColor="#0e7fbb"
+        android:textSize="40px"
+        android:textStyle="bold" />
+</RelativeLayout>

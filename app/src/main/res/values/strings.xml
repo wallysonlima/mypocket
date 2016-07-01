@@ -11,4 +11,8 @@
     <string name="successfullyRegistration">Successfully registration data !</string>
     <string name="DatabaseInsertError">Error insert Data !</string>
     <string name="accountRegistration">Register here your Account !</string>
+    <string name="cardName">Card Name</string>
+    <string name="credit">Credit</string>
+    <string name="maturity">Maturity</string>
+    <string name="cardRegistration">Register here your Card !</string>
 </resources>

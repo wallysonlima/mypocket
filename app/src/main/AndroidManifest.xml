@@ -10,7 +10,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".view.MainActivity" />
         <activity android:name=".view.InitialActivity" />
-        <activity android:name=".view.AccountActivity"></activity>
+        <activity android:name=".view.AccountActivity" />
+        <activity android:name=".view.CardActivity"></activity>
     </application>
 
 </manifest>

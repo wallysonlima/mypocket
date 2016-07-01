@@ -20,14 +20,13 @@ public class CardDao {
         database = new Database(context);
     }
 
-    public boolean insertCard(int cardNum, String flag, double credit, Date maturity) {
+    public boolean insertCard(String cardName, double credit, String maturity, String bankName) {
         SQLiteDatabase db = database.getWritableDatabase();
         ContentValues content = new ContentValues();
-        content.put("cardNum", cardNum);
-        content.put("flag", flag);
+        content.put("cardName", cardName);
         content.put("credit", credit);
-        Format fo = new SimpleDateFormat("dd/MM/yyyy");
-        content.put("maturity", fo.format(maturity));
+        content.put("maturity", maturity);
+        content.put("bankName", bankName);
 
         long result = db.insert("card", null, content);
 
@@ -37,9 +36,9 @@ public class CardDao {
             return true;
     }
 
-    public Integer deleteCard(int cardNum) {
+    public Integer deleteCard(int cardName) {
         SQLiteDatabase db = database.getWritableDatabase();
-        return db.delete("card", "cardNum = ?", new String[] {Integer.toString(cardNum)} );
+        return db.delete("card", "cardName = ?", new String[] {Integer.toString(cardName)} );
     }
 
 }
