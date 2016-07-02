@@ -8,13 +8,15 @@ import java.util.Date;
 
 public class Card {
     private double credit;
-    private Date maturity;
+    private String maturity;
     private String cardName;
+    private String bankName;
 
-    public Card(String cardName, double credit, Date maturity) {
+    public Card(String cardName, double credit, String maturity, String bankName) {
         this.cardName = cardName;
         this.credit = credit;
         this.maturity = maturity;
+        this.bankName = bankName;
     }
 
     public double getCredit() {
@@ -25,12 +27,27 @@ public class Card {
         this.credit = credit;
     }
 
-    public Date getMaturity() {
+    public String getMaturity() {
         return maturity;
     }
 
-    public void setMaturity(Date maturity) {
+    public void setMaturity(String maturity) {
         this.maturity = maturity;
     }
 
+    public String getCardName() {
+        return cardName;
+    }
+
+    public void setCardName(String cardName) {
+        this.cardName = cardName;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
 }

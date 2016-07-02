@@ -11,7 +11,8 @@
         <activity android:name=".view.MainActivity" />
         <activity android:name=".view.InitialActivity" />
         <activity android:name=".view.AccountActivity" />
-        <activity android:name=".view.CardActivity"></activity>
+        <activity android:name=".view.CardActivity" />
+        <activity android:name=".view.DeleteActivity"></activity>
     </application>
 
 </manifest>

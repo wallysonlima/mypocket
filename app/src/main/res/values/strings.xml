@@ -15,4 +15,8 @@
     <string name="credit">Credit</string>
     <string name="maturity">Maturity</string>
     <string name="cardRegistration">Register here your Card !</string>
+    <string name="deleteAccount">Delete Account</string>
+    <string name="deleteCard">Delete Card</string>
+    <string name="deleteInformation">Delete here your data !</string>
+    <string name="successfullyDelete">Delete was completed !</string>
 </resources>

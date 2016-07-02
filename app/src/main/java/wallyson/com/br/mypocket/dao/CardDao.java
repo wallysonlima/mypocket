@@ -2,12 +2,15 @@ package wallyson.com.br.mypocket.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
+import wallyson.com.br.mypocket.model.Card;
 import wallyson.com.br.mypocket.model.Database;
 
 /**
@@ -18,6 +21,20 @@ public class CardDao {
 
     public CardDao(Context context) {
         database = new Database(context);
+    }
+
+    public ArrayList<Card> selectCard() {
+        ArrayList<Card> card = new ArrayList<>();
+        SQLiteDatabase db = database.getWritableDatabase();
+        String sql = "select * from card;";
+        Cursor result = db.rawQuery(sql, null);
+
+        while ( result.moveToNext() ) {
+            Card ca = new Card( result.getString(0), result.getDouble(1), result.getString(2), result.getString(3) );
+            card.add(ca);
+        }
+
+        return card;
     }
 
     public boolean insertCard(String cardName, double credit, String maturity, String bankName) {
@@ -36,9 +53,8 @@ public class CardDao {
             return true;
     }
 
-    public Integer deleteCard(int cardName) {
+    public Integer deleteCard(String cardName) {
         SQLiteDatabase db = database.getWritableDatabase();
-        return db.delete("card", "cardName = ?", new String[] {Integer.toString(cardName)} );
+        return db.delete("card", "cardName = ?", new String[] {cardName} );
     }
-
 }

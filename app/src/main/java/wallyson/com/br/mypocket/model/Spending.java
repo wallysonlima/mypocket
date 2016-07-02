@@ -10,9 +10,9 @@ public class Spending {
     private int spendingCod;
     private String description, category;
     private double amount;
-    private Date emissionDate;
+    private String emissionDate;
 
-    public Spending(int spendingCod, String description, String category, double amount, Date emissionDate) {
+    public Spending(int spendingCod, String description, String category, double amount, String emissionDate) {
         this.spendingCod = spendingCod;
         this.description = description;
         this.category = category;
@@ -52,11 +52,11 @@ public class Spending {
         this.amount = amount;
     }
 
-    public Date getEmissionDate() {
+    public String getEmissionDate() {
         return emissionDate;
     }
 
-    public void setEmissionDate(Date emissionDate) {
+    public void setEmissionDate(String emissionDate) {
         this.emissionDate = emissionDate;
     }
 }

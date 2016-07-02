@@ -45,9 +45,9 @@ public class CardActivityPresenter {
     public String[] getAllAccountName() {
         ArrayList<Account> ac;
         AccountDao account;
-        String[] arrayAccount = new String[20];
         account = new AccountDao(c);
         ac = account.selectAccount();
+        String[] arrayAccount = new String[ac.size()];
 
         for ( Account a: ac ) {
             int i = 0;

@@ -49,10 +49,9 @@ public class AccountDao {
         return account;
     }
 
-    public Integer deleteAccount(int bankName) {
+    public Integer deleteAccount(String bankName) {
         SQLiteDatabase db = database.getWritableDatabase();
-        return db.delete("account", "bankName = ?", new String[] {Integer.toString(bankName)} );
+        return db.delete("account", "bankName = ?", new String[] {bankName} );
     }
-
 
 }
