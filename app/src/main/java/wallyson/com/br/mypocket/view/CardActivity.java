@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ButtonBarLayout;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -45,6 +46,15 @@ public class CardActivity extends AppCompatActivity implements CardInterface {
                 mPresenter.cardRegistration();
             }
         });
+        addElementSpinner();
+    }
+
+    public void addElementSpinner() {
+        String[] arrayAccountName = mPresenter.getAllAccountName();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayAccountName);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        bankName.setAdapter(adapter);
     }
 
     public void clean() {

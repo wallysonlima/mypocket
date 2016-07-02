@@ -2,8 +2,12 @@ package wallyson.com.br.mypocket.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
+import wallyson.com.br.mypocket.model.Account;
 import wallyson.com.br.mypocket.model.Database;
 
 /**
@@ -29,6 +33,20 @@ public class AccountDao {
             return false;
         else
             return true;
+    }
+
+    public ArrayList<Account> selectAccount() {
+        ArrayList<Account> account = new ArrayList<>();
+        SQLiteDatabase db = database.getWritableDatabase();
+        String sql = "select * from account;";
+        Cursor result = db.rawQuery(sql, null);
+
+        while ( result.moveToNext() ) {
+            Account ac = new Account( result.getString(0), result.getDouble(1), result.getInt(2) );
+            account.add(ac);
+        }
+
+        return account;
     }
 
     public Integer deleteAccount(int bankName) {

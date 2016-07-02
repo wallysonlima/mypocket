@@ -2,7 +2,11 @@ package wallyson.com.br.mypocket.presenter;
 
 import android.content.Context;
 
+import java.util.ArrayList;
+
+import wallyson.com.br.mypocket.dao.AccountDao;
 import wallyson.com.br.mypocket.dao.CardDao;
+import wallyson.com.br.mypocket.model.Account;
 
 /**
  * Created by wally on 01/07/16.
@@ -36,5 +40,21 @@ public class CardActivityPresenter {
             }
         }
 
+    }
+
+    public String[] getAllAccountName() {
+        ArrayList<Account> ac;
+        AccountDao account;
+        String[] arrayAccount = new String[20];
+        account = new AccountDao(c);
+        ac = account.selectAccount();
+
+        for ( Account a: ac ) {
+            int i = 0;
+            arrayAccount[i] = a.getBankName();
+            i++;
+        }
+
+        return arrayAccount;
     }
 }
