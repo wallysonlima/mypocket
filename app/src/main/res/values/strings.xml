@@ -15,8 +15,18 @@
     <string name="credit">Credit</string>
     <string name="maturity">Maturity</string>
     <string name="cardRegistration">Register here your Card !</string>
+    <string name="spendingRegistration">Register here your Spending !</string>
     <string name="deleteAccount">Delete Account</string>
     <string name="deleteCard">Delete Card</string>
     <string name="deleteInformation">Delete here your data !</string>
     <string name="successfullyDelete">Delete was completed !</string>
+    <string name="description">Description</string>
+    <string name="amount">Amount</string>
+    <string name="emissionDate">Emission Date</string>
+    <string name="category">Category</string>
+    <string name="account">Account</string>
+    <string name="creditCard">Credit Card</string>
+    <string name="choiceDebiting">Choice Debiting</string>
+    <string name="debit">Debit</string>
+    <string name="card">Card</string>
 </resources>

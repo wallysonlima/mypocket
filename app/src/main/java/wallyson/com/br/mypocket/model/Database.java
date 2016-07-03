@@ -36,6 +36,8 @@ public class Database extends SQLiteOpenHelper {
                 "amount real not null, " +
                 "emissionDate text not null, " +
                 "category text not null, " +
+                "bankName text not null, " +
+                "cardName text not null, " +
                 "codUser integer not null, " +
                 "foreign key(codUser) references " + TABLE_USER + " (spendingCod) on delete cascade);");
 

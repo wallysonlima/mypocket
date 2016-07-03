@@ -10,14 +10,33 @@ public class Spending {
     private int spendingCod;
     private String description, category;
     private double amount;
-    private String emissionDate;
+    private String emissionDate, bankName, cardName;
 
-    public Spending(int spendingCod, String description, String category, double amount, String emissionDate) {
+    public Spending(int spendingCod, String description, String category, double amount, String emissionDate,
+                    String bankName, String cardName) {
         this.spendingCod = spendingCod;
         this.description = description;
         this.category = category;
         this.amount = amount;
         this.emissionDate = emissionDate;
+        this.bankName = bankName;
+        this.cardName = cardName;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public String getCardName() {
+        return cardName;
+    }
+
+    public void setCardName(String cardName) {
+        this.cardName = cardName;
     }
 
     public int getSpendingCod() {
