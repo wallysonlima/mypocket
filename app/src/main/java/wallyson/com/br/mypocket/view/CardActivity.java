@@ -15,10 +15,10 @@ import wallyson.com.br.mypocket.presenter.CardActivityPresenter;
 import wallyson.com.br.mypocket.presenter.CardInterface;
 
 public class CardActivity extends AppCompatActivity implements CardInterface {
-    EditText cardName, credit, maturity;
-    Spinner bankName;
-    Button btnClean, btnSubmit;
-    CardActivityPresenter mPresenter;
+    private EditText cardName, credit, maturity;
+    private Spinner bankName;
+    private Button btnClean, btnSubmit;
+    private CardActivityPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

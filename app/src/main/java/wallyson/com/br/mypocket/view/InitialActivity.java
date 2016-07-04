@@ -13,9 +13,9 @@ import wallyson.com.br.mypocket.presenter.InitialActivityPresenter;
 import wallyson.com.br.mypocket.presenter.InitialInterface;
 
 public class InitialActivity extends AppCompatActivity implements InitialInterface {
-    EditText name, email, bankName, balance;
-    Button btClean, btSubmit;
-    InitialActivityPresenter mPresenter;
+    private EditText name, email, bankName, balance;
+    private Button btClean, btSubmit;
+    private InitialActivityPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

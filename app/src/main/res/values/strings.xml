@@ -29,4 +29,22 @@
     <string name="choiceDebiting">Choice Debiting</string>
     <string name="debit">Debit</string>
     <string name="card">Card</string>
+
+    <string name="autoTransport">Auto and Transport</string>
+    <string name="bills">Bills</string>
+    <string name="businessServices">Business and Services</string>
+    <string name="education">Education</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="foodDining">Food and Dining</string>
+    <string name="giftsDonations">Gifts and Donations</string>
+    <string name="healthFitness">Health and Fitness</string>
+    <string name="income">Income</string>
+    <string name="investments">Investments</string>
+    <string name="kids">Kids</string>
+    <string name="other">Other</string>
+    <string name="personalCare">Personal Care</string>
+    <string name="shopping">Shopping</string>
+    <string name="taxes">Taxes</string>
+    <string name="travel">Travel</string>
+
 </resources>

@@ -57,7 +57,7 @@ public class DeleteActivityPresenter {
         return arrayCard;
     }
 
-    public String[] getAllSpendingName() {
+    /*public String[] getAllSpendingName() {
         ArrayList<Spending> sp;
         SpendingDao spending;
         spending = new SpendingDao(c);
@@ -72,7 +72,7 @@ public class DeleteActivityPresenter {
         }
 
         return arraySpending;
-    }
+    }*/
 
     public void deleteAccount() {
         AccountDao account = new AccountDao(c);

@@ -13,9 +13,9 @@ import wallyson.com.br.mypocket.presenter.AccountActivityPresenter;
 import wallyson.com.br.mypocket.presenter.AccountInterface;
 
 public class AccountActivity extends AppCompatActivity implements AccountInterface {
-    EditText bankName, balance;
-    Button btnClean, btnSubmit;
-    AccountActivityPresenter mPresenter;
+    private EditText bankName, balance;
+    private Button btnClean, btnSubmit;
+    private AccountActivityPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

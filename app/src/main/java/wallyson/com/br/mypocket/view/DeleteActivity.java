@@ -13,9 +13,9 @@ import wallyson.com.br.mypocket.presenter.DeleteActivityPresenter;
 import wallyson.com.br.mypocket.presenter.DeleteInterface;
 
 public class DeleteActivity extends AppCompatActivity implements DeleteInterface {
-    Spinner spnAccount, spnCard;
-    Button btnDeleteAccount, btnDeleteCard, btnDeleteSpending;
-    DeleteActivityPresenter mPresenter;
+    private Spinner spnAccount, spnCard;
+    private Button btnDeleteAccount, btnDeleteCard;
+    private DeleteActivityPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,6 @@ public class DeleteActivity extends AppCompatActivity implements DeleteInterface
         spnCard = (Spinner) findViewById(R.id.spnDeleteCard);
         btnDeleteAccount = (Button) findViewById(R.id.btnDeleteAccount);
         btnDeleteCard = (Button) findViewById(R.id.btnDeleteCard);
-        btnDeleteSpending = (Button) findViewById(R.id.btnDeleteSpending);
         addAccountSpinner();
         addCardSpinner();
 
