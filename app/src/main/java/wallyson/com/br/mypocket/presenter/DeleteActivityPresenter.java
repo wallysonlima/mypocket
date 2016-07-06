@@ -24,22 +24,6 @@ public class DeleteActivityPresenter {
         c = context;
     }
 
-    public String[] getAllAccountName() {
-        ArrayList<Account> ac;
-        AccountDao account;
-        account = new AccountDao(c);
-        ac = account.selectAccount();
-        String[] arrayAccount = new String[ac.size()];
-
-        for ( Account a: ac ) {
-            int i = 0;
-            arrayAccount[i] = a.getBankName();
-            i++;
-        }
-
-        return arrayAccount;
-    }
-
     public String[] getAllCardName() {
         ArrayList<Card> ca;
         CardDao card;
@@ -57,7 +41,23 @@ public class DeleteActivityPresenter {
         return arrayCard;
     }
 
-    /*public String[] getAllSpendingName() {
+    public String[] getAllAccountName() {
+        ArrayList<Account> ac;
+        AccountDao account;
+        account = new AccountDao(c);
+        ac = account.selectAccount();
+        String[] arrayAccount = new String[ac.size()];
+
+        for ( Account a: ac ) {
+            int i = 0;
+            arrayAccount[i] = a.getBankName();
+            i++;
+        }
+
+        return arrayAccount;
+    }
+
+    public String[] getAllSpendingName() {
         ArrayList<Spending> sp;
         SpendingDao spending;
         spending = new SpendingDao(c);
@@ -67,22 +67,11 @@ public class DeleteActivityPresenter {
 
         for ( Spending s: sp ) {
             int i = 0;
-            arraySpending[i] = s.getDescription();
+            arraySpending[i] = s.getDescription() + "-" + String.valueOf(s.getSpendingCod());
             i++;
         }
 
         return arraySpending;
-    }*/
-
-    public void deleteAccount() {
-        AccountDao account = new AccountDao(c);
-        String bankName = mView.getAccountSpinner();
-        int result = account.deleteAccount( bankName );
-
-        if ( result > 0 )
-            mView.successfullyDeleted();
-        else
-            mView.databaseInsertError();
     }
 
     public void deleteCard() {
@@ -95,5 +84,29 @@ public class DeleteActivityPresenter {
         else
             mView.databaseInsertError();
     }
+
+    public void deleteAccount() {
+        AccountDao account = new AccountDao(c);
+        String bankName = mView.getAccountSpinner();
+        int result = account.deleteAccount(bankName);
+
+        if ( result > 0 )
+            mView.successfullyDeleted();
+        else
+            mView.databaseInsertError();
+    }
+
+    public void deleteSpending() {
+        SpendingDao spending = new SpendingDao(c);
+        String[] parts = mView.getSpendingSpinner().split("-");
+        String spendingCod = parts[1];
+        int result = spending.deleteSpending( Integer.parseInt(spendingCod) );
+
+        if ( result > 0 )
+            mView.successfullyDeleted();
+        else
+            mView.databaseInsertError();
+    }
+
 
 }

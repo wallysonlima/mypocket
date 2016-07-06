@@ -15,10 +15,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/deleteCard"
         android:id="@+id/textView16"
-        android:layout_above="@+id/textView17"
+        android:layout_alignTop="@+id/spnDeleteCard"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="54dp" />
+        android:layout_alignParentStart="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -26,7 +25,8 @@
         android:layout_height="wrap_content"
         android:text="@string/deleteCard"
         android:id="@+id/btnDeleteCard"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/spnDeleteSpending" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -34,9 +34,9 @@
         android:layout_height="wrap_content"
         android:text="@string/deleteAccount"
         android:id="@+id/btnDeleteAccount"
-        android:layout_alignTop="@+id/btnDeleteCard"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnDeleteCard"
+        android:layout_alignTop="@+id/btnDeleteSpending" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/deleteAccount"
         android:id="@+id/textView17"
-        android:layout_alignBottom="@+id/spnDeleteAccount"
+        android:layout_alignTop="@+id/spnDeleteAccount"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -52,21 +52,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spnDeleteCard"
-        android:layout_alignBottom="@+id/textView16"
-        android:layout_alignRight="@+id/btnDeleteAccount"
-        android:layout_alignEnd="@+id/btnDeleteAccount"
-        android:layout_toRightOf="@+id/textView17"
-        android:layout_toEndOf="@+id/textView17" />
+        android:layout_above="@+id/spnDeleteAccount"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/spnDeleteAccount"
+        android:layout_alignStart="@+id/spnDeleteAccount" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spnDeleteAccount"
-        android:layout_above="@+id/btnDeleteCard"
-        android:layout_toEndOf="@+id/btnDeleteCard"
-        android:layout_marginBottom="59dp"
-        android:layout_alignLeft="@+id/spnDeleteCard"
-        android:layout_alignStart="@+id/spnDeleteCard" />
+        android:layout_above="@+id/spnDeleteSpending"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/spnDeleteSpending"
+        android:layout_alignStart="@+id/spnDeleteSpending" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spnDeleteSpending"
+        android:layout_above="@+id/btnDeleteAccount"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/btnDeleteCard"
+        android:layout_toEndOf="@+id/btnDeleteCard" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_alignTop="@+id/spnDeleteSpending"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/txtSpending"
+        android:text="@string/spending" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -75,34 +95,38 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/spnDeleteCard"
+        android:layout_above="@+id/textView16"
         android:weightSum="1">
 
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="184dp"
             android:layout_height="wrap_content"
             android:id="@+id/imageView4"
+            android:layout_gravity="center_horizontal"
             android:background="@mipmap/delete"
-            android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/textView15"
-            android:layout_alignStart="@+id/textView15"
-            android:layout_above="@+id/textView15"
-            android:layout_alignRight="@+id/textView15"
-            android:layout_alignEnd="@+id/textView15"
-            android:layout_weight="1.31" />
+            android:layout_weight="0.81" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView18"
-            android:layout_above="@+id/spnDeleteCard"
-            android:layout_alignLeft="@+id/spnDeleteCard"
-            android:layout_alignStart="@+id/spnDeleteCard"
-            android:layout_marginBottom="56dp"
-            android:textSize="40px"
-            android:textColor="#0e7fbb"
             android:text="@string/deleteInformation"
-            android:layout_gravity="center_horizontal" />
+            android:id="@+id/textView18"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#0e7fbb"
+            android:textSize="40px"
+            android:textStyle="bold" />
     </LinearLayout>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deleteSpending"
+        android:id="@+id/btnDeleteSpending"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/btnDeleteAccount"
+        android:layout_toEndOf="@+id/btnDeleteAccount" />
 
 </RelativeLayout>

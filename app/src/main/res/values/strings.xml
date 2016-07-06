@@ -18,6 +18,7 @@
     <string name="spendingRegistration">Register here your Spending !</string>
     <string name="deleteAccount">Delete Account</string>
     <string name="deleteCard">Delete Card</string>
+    <string name="deleteSpending">Delete Spending</string>
     <string name="deleteInformation">Delete here your data !</string>
     <string name="successfullyDelete">Delete was completed !</string>
     <string name="description">Description</string>
@@ -29,6 +30,7 @@
     <string name="choiceDebiting">Choice Debiting</string>
     <string name="debit">Debit</string>
     <string name="card">Card</string>
+    <string name="spending">Spending</string>
 
     <string name="autoTransport">Auto and Transport</string>
     <string name="bills">Bills</string>

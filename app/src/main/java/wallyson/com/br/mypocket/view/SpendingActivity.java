@@ -56,8 +56,6 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
                 mPresenter.Debiting();
             }
         });
-
-
     }
 
     public void clean() {

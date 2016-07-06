@@ -9,4 +9,5 @@ public interface DeleteInterface {
     void successfullyDeleted();
     void databaseInsertError();
     String getCardSpinner();
+    String getSpendingSpinner();
 }
