@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import wallyson.com.br.mypocket.R;
 import wallyson.com.br.mypocket.presenter.SpendingActivityPresenter;
@@ -45,6 +46,14 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
             @Override
             public void onClick(View v) {
                 clean();
+            }
+        });
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.SpendingRegistration();
+                mPresenter.Debiting();
             }
         });
 
@@ -102,4 +111,42 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
         spCard.setAdapter(adapter);
     }
 
+    public String getDescription() {
+        return description.getText().toString();
+    }
+
+    public Double getAmount() {
+        return Double.parseDouble( amount.getText().toString() );
+    }
+
+    public String getEmissionDate() {
+        return emissionDate.getText().toString();
+    }
+
+    public String getCategory() {
+        return spCategory.getSelectedItem().toString();
+    }
+
+    public String getAccount() {
+        return spAccount.getSelectedItem().toString();
+    }
+
+    public String getCard() {
+        return spCard.getSelectedItem().toString();
+    }
+
+    public String getChoose() {
+        if( rbCard.isChecked() == true )
+            return rbCard.getText().toString();
+        else
+            return rbDebit.getText().toString();
+    }
+
+    public void successfullyInserted() {
+        Toast.makeText(SpendingActivity.this, "@String/successfullyRegistration", Toast.LENGTH_SHORT).show();
+    }
+
+    public void databaseInsertError() {
+        Toast.makeText(SpendingActivity.this, "@String/DatabaseInsertError", Toast.LENGTH_SHORT).show();
+    }
 }

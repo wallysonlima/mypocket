@@ -49,6 +49,29 @@ public class AccountDao {
         return account;
     }
 
+    public Account selectOnceAccount(String bankName) {
+        SQLiteDatabase db = database.getWritableDatabase();
+        String sql = "select * from account where bankName = " + bankName + ";";
+        Cursor result = db.rawQuery(sql, null);
+        return (new Account( result.getString(0), result.getDouble(1), result.getInt(2) ));
+    }
+
+    public boolean updateBalanceAccount(Account account) {
+        SQLiteDatabase db = database.getWritableDatabase();
+        ContentValues content = new ContentValues();
+
+        content.put("bankName", account.getBankName() );
+        content.put("balance", account.getBalance() );
+        content.put("codUser", account.getCodUser() );
+        int result = db.update("account", content, "bankName = ?", new String[] {account.getBankName()} );
+
+        if ( result > 0 ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public Integer deleteAccount(String bankName) {
         SQLiteDatabase db = database.getWritableDatabase();
         return db.delete("account", "bankName = ?", new String[] {bankName} );

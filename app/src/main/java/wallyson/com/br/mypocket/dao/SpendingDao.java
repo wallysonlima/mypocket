@@ -33,22 +33,25 @@ public class SpendingDao {
 
         while ( result.moveToNext() ) {
             Spending sp = new Spending( result.getInt(0), result.getString(1), result.getString(2), result.getDouble(3),
-                    result.getString(4) );
+                    result.getString(4), result.getString(5), result.getString(6) );
             spending.add(sp);
         }
 
         return spending;
     }
 
-    public boolean insertSpending(String description, Double amount, Date emissionDate, String category) {
+    public boolean insertSpending(String description, Double amount, String emissionDate,
+                                  String category, String bankName, String cardName, int codUser) {
         SQLiteDatabase db = database.getWritableDatabase();
         ContentValues content = new ContentValues();
 
         content.put("description", description);
         content.put("amount", amount);
-        Format fo = new SimpleDateFormat("dd/MM/yyyy");
-        content.put("emissionDate", fo.format(emissionDate));
+        content.put("emissionDate", emissionDate);
         content.put("category", category);
+        content.put("bankName", bankName);
+        content.put("cardName", cardName);
+        content.put("codUser", codUser);
 
         long result = db.insert("spending", null, content);
 

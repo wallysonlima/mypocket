@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import wallyson.com.br.mypocket.model.Account;
 import wallyson.com.br.mypocket.model.Card;
 import wallyson.com.br.mypocket.model.Database;
 
@@ -35,6 +36,31 @@ public class CardDao {
         }
 
         return card;
+    }
+
+    public Card selectOnceCard(String cardName) {
+        SQLiteDatabase db = database.getWritableDatabase();
+        String sql = "select * from card where cardName = " + cardName + ";";
+        Cursor result = db.rawQuery(sql, null);
+        return (new Card( result.getString(0), result.getDouble(1), result.getString(2), result.getString(3) ) );
+    }
+
+    public boolean updateCreditCard(Card card) {
+        SQLiteDatabase db = database.getWritableDatabase();
+        ContentValues content = new ContentValues();
+
+        content.put("cardName", card.getCardName() );
+        content.put("credit", card.getCredit() );
+        content.put("maturity", card.getMaturity() );
+        content.put("bankName", card.getBankName() );
+
+        int result = db.update("card", content, "cardName = ?", new String[]{card.getCardName()});
+
+        if ( result > 0 ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean insertCard(String cardName, double credit, String maturity, String bankName) {
