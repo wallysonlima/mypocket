@@ -13,7 +13,8 @@
         <activity android:name=".view.AccountActivity" />
         <activity android:name=".view.CardActivity" />
         <activity android:name=".view.DeleteActivity" />
-        <activity android:name=".view.SpendingActivity"></activity>
+        <activity android:name=".view.SpendingActivity" />
+        <activity android:name=".view.BalanceActivity"></activity>
     </application>
 
 </manifest>

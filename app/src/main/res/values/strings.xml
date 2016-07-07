@@ -31,6 +31,7 @@
     <string name="debit">Debit</string>
     <string name="card">Card</string>
     <string name="spending">Spending</string>
+    <string name="balanceCredit">View here your Balance and Credit</string>
 
     <string name="autoTransport">Auto and Transport</string>
     <string name="bills">Bills</string>
