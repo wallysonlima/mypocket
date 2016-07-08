@@ -27,11 +27,11 @@ public class CardDao {
     public ArrayList<Card> selectCard() {
         ArrayList<Card> card = new ArrayList<>();
         SQLiteDatabase db = database.getWritableDatabase();
-        String sql = "select * from card;";
+        String sql = "select * from " + Database.TABLE_CARD + ";";
         Cursor result = db.rawQuery(sql, null);
 
         while ( result.moveToNext() ) {
-            Card ca = new Card( result.getString(0), result.getDouble(1), result.getString(2), result.getString(3) );
+            Card ca = new Card( result.getString(0), result.getDouble(1), result.getString(2) );
             card.add(ca);
         }
 
@@ -40,9 +40,9 @@ public class CardDao {
 
     public Card selectOnceCard(String cardName) {
         SQLiteDatabase db = database.getWritableDatabase();
-        String sql = "select * from card where cardName = " + cardName + ";";
+        String sql = "select * from " + Database.TABLE_CARD + " where cardName = " + cardName + ";";
         Cursor result = db.rawQuery(sql, null);
-        return (new Card( result.getString(0), result.getDouble(1), result.getString(2), result.getString(3) ) );
+        return (new Card( result.getString(0), result.getDouble(1), result.getString(2) ) );
     }
 
     public boolean updateCreditCard(Card card) {
@@ -51,10 +51,9 @@ public class CardDao {
 
         content.put("cardName", card.getCardName() );
         content.put("credit", card.getCredit() );
-        content.put("maturity", card.getMaturity() );
         content.put("bankName", card.getBankName() );
 
-        int result = db.update("card", content, "cardName = ?", new String[]{card.getCardName()});
+        int result = db.update(Database.TABLE_CARD, content, "cardName = ?", new String[]{card.getCardName()});
 
         if ( result > 0 ) {
             return true;
@@ -63,15 +62,14 @@ public class CardDao {
         }
     }
 
-    public boolean insertCard(String cardName, double credit, String maturity, String bankName) {
+    public boolean insertCard(String cardName, double credit, String bankName) {
         SQLiteDatabase db = database.getWritableDatabase();
         ContentValues content = new ContentValues();
         content.put("cardName", cardName);
         content.put("credit", credit);
-        content.put("maturity", maturity);
         content.put("bankName", bankName);
 
-        long result = db.insert("card", null, content);
+        long result = db.insert(Database.TABLE_CARD, null, content);
 
         if ( result == -1 )
             return false;
@@ -81,6 +79,6 @@ public class CardDao {
 
     public Integer deleteCard(String cardName) {
         SQLiteDatabase db = database.getWritableDatabase();
-        return db.delete("card", "cardName = ?", new String[] {cardName} );
+        return db.delete(Database.TABLE_CARD, "cardName = ?", new String[] {cardName} );
     }
 }

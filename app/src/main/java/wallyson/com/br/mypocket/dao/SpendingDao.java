@@ -28,7 +28,7 @@ public class SpendingDao {
     public ArrayList<Spending> selectSpending() {
         ArrayList<Spending> spending = new ArrayList<>();
         SQLiteDatabase db = database.getWritableDatabase();
-        String sql = "select * from spending;";
+        String sql = "select * from " + Database.TABLE_SPENDING + ";";
         Cursor result = db.rawQuery(sql, null);
 
         while ( result.moveToNext() ) {
@@ -53,7 +53,7 @@ public class SpendingDao {
         content.put("cardName", cardName);
         content.put("codUser", codUser);
 
-        long result = db.insert("spending", null, content);
+        long result = db.insert(Database.TABLE_SPENDING, null, content);
 
         if ( result == -1 )
             return false;
@@ -63,7 +63,7 @@ public class SpendingDao {
 
     public Integer deleteSpending(int spendingCod) {
         SQLiteDatabase db = database.getWritableDatabase();
-        return db.delete("spending", "spendingCod = ?", new String[] {Integer.toString(spendingCod)} );
+        return db.delete(Database.TABLE_SPENDING, "spendingCod = ?", new String[] {Integer.toString(spendingCod)} );
     }
 
 }

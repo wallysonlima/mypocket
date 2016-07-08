@@ -15,7 +15,7 @@ import wallyson.com.br.mypocket.presenter.CardActivityPresenter;
 import wallyson.com.br.mypocket.presenter.CardInterface;
 
 public class CardActivity extends AppCompatActivity implements CardInterface {
-    private EditText cardName, credit, maturity;
+    private EditText cardName, credit;
     private Spinner bankName;
     private Button btnClean, btnSubmit;
     private CardActivityPresenter mPresenter;
@@ -27,7 +27,6 @@ public class CardActivity extends AppCompatActivity implements CardInterface {
 
         cardName = (EditText) findViewById(R.id.edtCardName);
         credit = (EditText) findViewById(R.id.edtCredit);
-        maturity = (EditText) findViewById(R.id.edtMaturity);
         bankName = (Spinner) findViewById(R.id.spnBankName);
         btnClean = (Button) findViewById(R.id.btnClean);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
@@ -60,7 +59,6 @@ public class CardActivity extends AppCompatActivity implements CardInterface {
     public void clean() {
         cardName.setText(null);
         credit.setText(null);
-        maturity.setText(null);
         bankName.setSelection(0);
     }
 
@@ -70,10 +68,6 @@ public class CardActivity extends AppCompatActivity implements CardInterface {
 
     public Double getCredit() {
         return Double.parseDouble(credit.getText().toString());
-    }
-
-    public String getMaturity() {
-        return maturity.getText().toString();
     }
 
     public String getBankName() {

@@ -18,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (!prefs.getBoolean("firstTime", false)) {
             // <---- run your one time code here
-            Intent intent = new Intent(this, InitialActivity.class);
-            startActivity(intent);
+            //Intent intent = new Intent(this, InitialActivity.class);
+            //startActivity(intent);
 
             // mark first time has runned.
             SharedPreferences.Editor editor = prefs.edit();

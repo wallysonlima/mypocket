@@ -13,6 +13,8 @@ public class Database extends SQLiteOpenHelper {
     public static final String TABLE_ACCOUNT = "account";
     public static final String TABLE_CARD = "card";
     public static final String TABLE_SPENDING = "spending";
+    public static final String TABLE_CONFIGURATION_ACCOUNT = "configurationAccount";
+    public static final String TABLE_CONFIGURATION_CARD = "configurationCard";
 
     public Database(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -51,11 +53,19 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("create table " + TABLE_CARD +
                         "(cardName text not null primary key," +
                         "credit real not null, " +
-                        "maturity text not null, " +
                         "bankName text not null, " +
                         "foreign key(bankName) references " + TABLE_ACCOUNT + " (cardNum) on delete cascade);"
         );
 
+        db.execSQL("create table " + TABLE_CONFIGURATION_ACCOUNT +
+                    "(bankName text not null primary key, " +
+                    "balance real not null, " +
+                    "receiptDate text not null");
+
+        db.execSQL("create table " + TABLE_CONFIGURATION_CARD +
+                    "cardName text not null primary key, " +
+                    "credit real not null, " +
+                    "receiptDate text not null);");
     }
 
     @Override

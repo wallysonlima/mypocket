@@ -27,7 +27,7 @@ public class AccountDao {
         content.put("balance", balance);
         content.put("codeUser", codUser);
 
-        long result = db.insert("account", null, content);
+        long result = db.insert(Database.TABLE_ACCOUNT, null, content);
 
         if ( result == -1 )
             return false;
@@ -38,7 +38,7 @@ public class AccountDao {
     public ArrayList<Account> selectAccount() {
         ArrayList<Account> account = new ArrayList<>();
         SQLiteDatabase db = database.getWritableDatabase();
-        String sql = "select * from account;";
+        String sql = "select * from " + Database.TABLE_ACCOUNT;
         Cursor result = db.rawQuery(sql, null);
 
         while ( result.moveToNext() ) {
@@ -51,7 +51,7 @@ public class AccountDao {
 
     public Account selectOnceAccount(String bankName) {
         SQLiteDatabase db = database.getWritableDatabase();
-        String sql = "select * from account where bankName = " + bankName + ";";
+        String sql = "select * from " + Database.TABLE_ACCOUNT + "where bankName = " + bankName + ";";
         Cursor result = db.rawQuery(sql, null);
         return (new Account( result.getString(0), result.getDouble(1), result.getInt(2) ));
     }
@@ -63,7 +63,7 @@ public class AccountDao {
         content.put("bankName", account.getBankName() );
         content.put("balance", account.getBalance() );
         content.put("codUser", account.getCodUser() );
-        int result = db.update("account", content, "bankName = ?", new String[] {account.getBankName()} );
+        int result = db.update(Database.TABLE_ACCOUNT, content, "bankName = ?", new String[] {account.getBankName()} );
 
         if ( result > 0 ) {
             return true;
@@ -74,7 +74,7 @@ public class AccountDao {
 
     public Integer deleteAccount(String bankName) {
         SQLiteDatabase db = database.getWritableDatabase();
-        return db.delete("account", "bankName = ?", new String[] {bankName} );
+        return db.delete(Database.TABLE_ACCOUNT, "bankName = ?", new String[] {bankName} );
     }
 
 }

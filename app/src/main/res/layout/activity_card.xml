@@ -43,36 +43,14 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/edtMaturity"
-        android:layout_below="@+id/edtCardName"
-        android:layout_alignRight="@+id/edtCardName"
-        android:layout_alignEnd="@+id/edtCardName"
-        android:layout_alignLeft="@+id/edtCardName"
-        android:layout_alignStart="@+id/edtCardName" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/maturity"
-        android:id="@+id/textView11"
-        android:layout_alignBottom="@+id/edtMaturity"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/edtCredit"
-        android:layout_below="@+id/textView11"
-        android:layout_alignRight="@+id/edtMaturity"
-        android:layout_alignEnd="@+id/edtMaturity"
-        android:layout_alignLeft="@+id/edtMaturity"
-        android:layout_alignStart="@+id/edtMaturity" />
+        android:layout_below="@+id/edtCardName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/edtCardName"
+        android:layout_alignStart="@+id/edtCardName" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -20,7 +20,7 @@ public class UserDao {
 
     public User selectUser() {
         SQLiteDatabase db = database.getWritableDatabase();
-        String sql = "select * from user;";
+        String sql = "select * from " + Database.TABLE_USER + ";";
         Cursor result =  db.rawQuery(sql, null);
 
         if ( result.getCount() != 0 ) {
@@ -36,7 +36,7 @@ public class UserDao {
         content.put("name", name);
         content.put("email", email);
 
-        long result = db.insert("user", null, content);
+        long result = db.insert(Database.TABLE_USER, null, content);
 
         if ( result == -1 )
             return false;
@@ -49,7 +49,7 @@ public class UserDao {
         ContentValues content = new ContentValues();
         content.put("name", name);
         content.put("email", email);
-        int result = db.update("user", content, "codUser = ?", new String[]{Integer.toString(codUser)});
+        int result = db.update(Database.TABLE_USER, content, "codUser = ?", new String[]{Integer.toString(codUser)});
 
         if ( result > 0 )
             return true;
@@ -59,6 +59,6 @@ public class UserDao {
 
     public Integer deleteUser(int codUser) {
         SQLiteDatabase db = database.getWritableDatabase();
-        return db.delete("user", "codUser = ?", new String[] {Integer.toString(codUser)} );
+        return db.delete(Database.TABLE_USER, "codUser = ?", new String[] {Integer.toString(codUser)} );
     }
 }

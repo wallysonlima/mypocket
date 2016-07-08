@@ -23,15 +23,14 @@ public class CardActivityPresenter {
     public void cardRegistration() {
         String cardName = mView.getCardName();
         Double credit = mView.getCredit();
-        String maturity = mView.getMaturity();
         String bankName = mView.getBankName();
         boolean result;
 
-        if ( bankName.equals(null) && credit == 0.0 && cardName.equals(null) && maturity.equals(null) ) {
+        if ( bankName.equals(null) && credit == 0.0 && cardName.equals(null) ) {
             mView.registrationError();
         } else {
             CardDao card = new CardDao(c);
-            result = card.insertCard(cardName, credit, maturity, bankName);
+            result = card.insertCard(cardName, credit, bankName);
 
             if ( result ) {
                 mView.successfullyInserted();
