@@ -13,7 +13,7 @@ import wallyson.com.br.mypocket.presenter.AccountActivityPresenter;
 import wallyson.com.br.mypocket.presenter.AccountInterface;
 
 public class AccountActivity extends AppCompatActivity implements AccountInterface {
-    private EditText bankName, balance;
+    private EditText bankName, balance, receiptDate;
     private Button btnClean, btnSubmit;
     private AccountActivityPresenter mPresenter;
 
@@ -23,6 +23,7 @@ public class AccountActivity extends AppCompatActivity implements AccountInterfa
         setContentView(R.layout.activity_account);
 
         bankName = (EditText) findViewById(R.id.edtBankName);
+        receiptDate = (EditText) findViewById(R.id.edtReceiptDate);
         balance = (EditText) findViewById(R.id.edtBalance);
         btnClean = (Button) findViewById(R.id.btnClean);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
@@ -46,6 +47,7 @@ public class AccountActivity extends AppCompatActivity implements AccountInterfa
     // Método responsável por limpar os campos de texto
     public void clean() {
         bankName.setText(null);
+        receiptDate.setText(null);
         balance.setText(null);
     }
 
@@ -55,6 +57,10 @@ public class AccountActivity extends AppCompatActivity implements AccountInterfa
 
     public Double getBalance() {
         return Double.parseDouble(balance.getText().toString());
+    }
+
+    public String getReceiptDate() {
+        return receiptDate.getText().toString();
     }
 
     public void registrationError() {

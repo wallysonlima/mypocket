@@ -66,11 +66,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spnBankName"
-        android:layout_below="@+id/edtCredit"
-        android:layout_alignRight="@+id/edtCredit"
-        android:layout_alignEnd="@+id/edtCredit"
-        android:layout_alignLeft="@+id/edtCredit"
-        android:layout_alignStart="@+id/edtCredit" />
+        android:layout_above="@+id/btnSubmit"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/textView13"
+        android:layout_toEndOf="@+id/textView13" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -78,9 +78,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/bankName"
         android:id="@+id/textView13"
-        android:layout_alignBottom="@+id/spnBankName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignTop="@+id/spnBankName"
+        android:layout_alignRight="@+id/btnClean"
+        android:layout_alignEnd="@+id/btnClean" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -113,4 +113,26 @@
         android:textColor="#0e7fbb"
         android:textSize="40px"
         android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edtReceiptDate"
+        android:layout_above="@+id/spnBankName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/textView11"
+        android:layout_toEndOf="@+id/textView11" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/dayRenovationCredit"
+        android:id="@+id/textView11"
+        android:layout_alignTop="@+id/edtReceiptDate"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

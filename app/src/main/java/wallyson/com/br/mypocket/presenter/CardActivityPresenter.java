@@ -6,14 +6,16 @@ import java.util.ArrayList;
 
 import wallyson.com.br.mypocket.dao.AccountDao;
 import wallyson.com.br.mypocket.dao.CardDao;
+import wallyson.com.br.mypocket.dao.ConfigurationCardDao;
 import wallyson.com.br.mypocket.model.Account;
 
 /**
  * Created by wally on 01/07/16.
  */
 public class CardActivityPresenter {
-    CardInterface mView;
-    Context c;
+    private CardInterface mView;
+    private Context c;
+    private boolean result;
 
     public CardActivityPresenter(CardInterface view, Context context) {
         mView = view;
@@ -24,13 +26,15 @@ public class CardActivityPresenter {
         String cardName = mView.getCardName();
         Double credit = mView.getCredit();
         String bankName = mView.getBankName();
-        boolean result;
+
 
         if ( bankName.equals(null) && credit == 0.0 && cardName.equals(null) ) {
             mView.registrationError();
         } else {
             CardDao card = new CardDao(c);
             result = card.insertCard(cardName, credit, bankName);
+
+            configurationCardRegistration();
 
             if ( result ) {
                 mView.successfullyInserted();
@@ -39,6 +43,23 @@ public class CardActivityPresenter {
             }
         }
 
+    }
+
+    public void configurationCardRegistration() {
+        String cardName = mView.getCardName();
+        Double credit = mView.getCredit();
+        String receiptDate = mView.getReceiptDate();
+
+        if (receiptDate.equals(null)) {
+            mView.registrationError();
+        } else {
+            ConfigurationCardDao config = new ConfigurationCardDao(c);
+            result = config.insertConfigurationCard(cardName, credit, receiptDate);
+
+            if (!result) {
+                mView.databaseInsertError();
+            }
+        }
     }
 
     public String[] getAllAccountName() {

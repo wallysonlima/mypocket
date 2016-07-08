@@ -3,6 +3,7 @@ package wallyson.com.br.mypocket.presenter;
 import android.content.Context;
 
 import wallyson.com.br.mypocket.dao.AccountDao;
+import wallyson.com.br.mypocket.dao.ConfigurationAccountDao;
 import wallyson.com.br.mypocket.dao.UserDao;
 import wallyson.com.br.mypocket.model.User;
 
@@ -34,9 +35,28 @@ public class AccountActivityPresenter {
             user = userDao.selectUser();
             result = account.insertAccount(bankName, balance, user.getCodUser() );
 
+            configurationAccountRegistration();
+
             if ( result ) {
                 mView.successfullyInserted();
             } else {
+                mView.databaseInsertError();
+            }
+        }
+    }
+
+    public void configurationAccountRegistration() {
+        String bankName = mView.getBankName();
+        Double balance = mView.getBalance();
+        String receiptDate = mView.getReceiptDate();
+
+        if (receiptDate.equals(null)) {
+            mView.registrationError();
+        } else {
+            ConfigurationAccountDao config = new ConfigurationAccountDao(c);
+            result = config.insertConfigurationAccount(bankName, balance, receiptDate);
+
+            if (!result) {
                 mView.databaseInsertError();
             }
         }

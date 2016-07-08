@@ -32,6 +32,8 @@
     <string name="card">Card</string>
     <string name="spending">Spending</string>
     <string name="balanceCredit">View here your Balance and Credit</string>
+    <string name="dayRenovationBalance">Day Renewal of the Balance</string>
+    <string name="dayRenovationCredit">Day Renewal of the Credit</string>
 
     <string name="autoTransport">Auto and Transport</string>
     <string name="bills">Bills</string>

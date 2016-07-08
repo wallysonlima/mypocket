@@ -5,6 +5,7 @@ package wallyson.com.br.mypocket.presenter;
  */
 public interface AccountInterface {
     String getBankName();
+    String getReceiptDate();
     Double getBalance();
     void registrationError();
     void successfullyInserted();
