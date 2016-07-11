@@ -34,6 +34,9 @@
     <string name="balanceCredit">View here your Balance and Credit</string>
     <string name="dayRenovationBalance">Day Renewal of the Balance</string>
     <string name="dayRenovationCredit">Day Renewal of the Credit</string>
+    <string name="invalidNumber">Invalid Number Try Again</string>
+    <string name="spendingByCategory">Spending by Category</string>
+    <string name="sendEmail">Send for Email</string>
 
     <string name="autoTransport">Auto and Transport</string>
     <string name="bills">Bills</string>
@@ -51,5 +54,6 @@
     <string name="shopping">Shopping</string>
     <string name="taxes">Taxes</string>
     <string name="travel">Travel</string>
+
 
 </resources>

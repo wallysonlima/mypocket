@@ -32,7 +32,7 @@ public class SpendingDao {
         Cursor result = db.rawQuery(sql, null);
 
         while ( result.moveToNext() ) {
-            Spending sp = new Spending( result.getInt(0), result.getString(1), result.getString(2), result.getDouble(3),
+            Spending sp = new Spending( result.getInt(0), result.getString(1), result.getString(2), result.getFloat(3),
                     result.getString(4), result.getString(5), result.getString(6) );
             spending.add(sp);
         }
@@ -40,7 +40,7 @@ public class SpendingDao {
         return spending;
     }
 
-    public boolean insertSpending(String description, Double amount, String emissionDate,
+    public boolean insertSpending(String description, Float amount, String emissionDate,
                                   String category, String bankName, String cardName, int codUser) {
         SQLiteDatabase db = database.getWritableDatabase();
         ContentValues content = new ContentValues();

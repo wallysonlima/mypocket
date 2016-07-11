@@ -5,7 +5,7 @@ package wallyson.com.br.mypocket.presenter;
  */
 public interface SpendingInterface {
     String getDescription();
-    Double getAmount();
+    Float getAmount();
     String getEmissionDate();
     String getCategory();
     String getAccount();

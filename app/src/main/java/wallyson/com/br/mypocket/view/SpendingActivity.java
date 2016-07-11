@@ -20,6 +20,24 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
     private RadioButton rbDebit, rbCard;
     private Button btnClean, btnSubmit;
     private SpendingActivityPresenter mPresenter;
+    private final String[] arrayCategory = {
+            getResources().getString(R.string.autoTransport),
+            getResources().getString(R.string.bills),
+            getResources().getString(R.string.businessServices),
+            getResources().getString(R.string.education),
+            getResources().getString(R.string.entertainment),
+            getResources().getString(R.string.foodDining),
+            getResources().getString(R.string.giftsDonations),
+            getResources().getString(R.string.healthFitness),
+            getResources().getString(R.string.income),
+            getResources().getString(R.string.investments),
+            getResources().getString(R.string.kids),
+            getResources().getString(R.string.other),
+            getResources().getString(R.string.personalCare),
+            getResources().getString(R.string.shopping),
+            getResources().getString(R.string.taxes),
+            getResources().getString(R.string.travel),
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,25 +87,6 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
     }
 
     public void addCategorySpinner() {
-        String[] arrayCategory = {
-                getResources().getString(R.string.autoTransport),
-                getResources().getString(R.string.bills),
-                getResources().getString(R.string.businessServices),
-                getResources().getString(R.string.education),
-                getResources().getString(R.string.entertainment),
-                getResources().getString(R.string.foodDining),
-                getResources().getString(R.string.giftsDonations),
-                getResources().getString(R.string.healthFitness),
-                getResources().getString(R.string.income),
-                getResources().getString(R.string.investments),
-                getResources().getString(R.string.kids),
-                getResources().getString(R.string.other),
-                getResources().getString(R.string.personalCare),
-                getResources().getString(R.string.shopping),
-                getResources().getString(R.string.taxes),
-                getResources().getString(R.string.travel),
-        };
-
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayCategory);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spAccount.setAdapter(adapter);
@@ -113,8 +112,8 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
         return description.getText().toString();
     }
 
-    public Double getAmount() {
-        return Double.parseDouble( amount.getText().toString() );
+    public Float getAmount() {
+        return Float.parseFloat( amount.getText().toString() );
     }
 
     public String getEmissionDate() {
@@ -141,10 +140,10 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
     }
 
     public void successfullyInserted() {
-        Toast.makeText(SpendingActivity.this, "@String/successfullyRegistration", Toast.LENGTH_SHORT).show();
+        Toast.makeText(SpendingActivity.this, getResources().getString(R.string.successfullyRegistration), Toast.LENGTH_SHORT).show();
     }
 
     public void databaseInsertError() {
-        Toast.makeText(SpendingActivity.this, "@String/DatabaseInsertError", Toast.LENGTH_SHORT).show();
+        Toast.makeText(SpendingActivity.this, getResources().getString(R.string.DatabaseInsertError), Toast.LENGTH_SHORT).show();
     }
 }

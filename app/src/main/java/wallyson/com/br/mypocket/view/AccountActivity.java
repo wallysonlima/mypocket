@@ -64,14 +64,18 @@ public class AccountActivity extends AppCompatActivity implements AccountInterfa
     }
 
     public void registrationError() {
-        Toast.makeText(AccountActivity.this, "@String/registrationError", Toast.LENGTH_SHORT).show();
+        Toast.makeText(AccountActivity.this, getResources().getString(R.string.registrationError), Toast.LENGTH_SHORT).show();
     }
 
     public void successfullyInserted() {
-        Toast.makeText(AccountActivity.this, "@String/successfullyRegistration", Toast.LENGTH_SHORT).show();
+        Toast.makeText(AccountActivity.this, getResources().getString(R.string.successfullyRegistration), Toast.LENGTH_SHORT).show();
+    }
+
+    public void invalidNumber() {
+        Toast.makeText(AccountActivity.this, getResources().getString(R.string.invalidNumber), Toast.LENGTH_SHORT).show();
     }
 
     public void databaseInsertError() {
-        Toast.makeText(AccountActivity.this, "@String/DatabaseInsertError", Toast.LENGTH_SHORT).show();
+        Toast.makeText(AccountActivity.this, getResources().getString(R.string.DatabaseInsertError), Toast.LENGTH_SHORT).show();
     }
 }

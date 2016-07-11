@@ -79,16 +79,16 @@ public class CardActivity extends AppCompatActivity implements CardInterface {
     public String getBankName() {
         return bankName.getSelectedItem().toString();
     }
-
+    
     public void registrationError() {
-        Toast.makeText(CardActivity.this, "@String/registrationError", Toast.LENGTH_SHORT).show();
+        Toast.makeText(CardActivity.this, getResources().getString(R.string.registrationError), Toast.LENGTH_SHORT).show();
     }
 
     public void successfullyInserted() {
-        Toast.makeText(CardActivity.this, "@String/successfullyRegistration", Toast.LENGTH_SHORT).show();
+        Toast.makeText(CardActivity.this, getResources().getString(R.string.successfullyRegistration), Toast.LENGTH_SHORT).show();
     }
 
     public void databaseInsertError() {
-        Toast.makeText(CardActivity.this, "@String/DatabaseInsertError", Toast.LENGTH_SHORT).show();
+        Toast.makeText(CardActivity.this, getResources().getString(R.string.DatabaseInsertError), Toast.LENGTH_SHORT).show();
     }
 }

@@ -65,7 +65,7 @@ public class SpendingActivityPresenter {
         User user = userDao.selectUser();
 
         String description = mView.getDescription();
-        Double amount = mView.getAmount();
+        Float amount = mView.getAmount();
         String category = mView.getCategory();
         String emissionDate = mView.getEmissionDate();
         String account = mView.getAccount();
@@ -83,7 +83,7 @@ public class SpendingActivityPresenter {
         Account account;
         Card card;
 
-        Double amount = mView.getAmount();
+        Float amount = mView.getAmount();
         String bankName = mView.getAccount();
         String cardName = mView.getCard();
         String choose = mView.getChoose();

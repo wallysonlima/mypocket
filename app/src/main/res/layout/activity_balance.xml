@@ -64,7 +64,7 @@
         android:layout_alignLeft="@+id/spnAccount"
         android:layout_alignStart="@+id/spnAccount"
         android:editable="false"
-        android:enabled="false" />
+        android:enabled="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -86,7 +86,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignLeft="@+id/spnCard"
-        android:layout_alignStart="@+id/spnCard" />
+        android:layout_alignStart="@+id/spnCard"
+        android:enabled="true" />
 
     <TextView
         android:layout_width="wrap_content"

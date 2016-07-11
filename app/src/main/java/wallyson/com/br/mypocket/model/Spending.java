@@ -9,10 +9,10 @@ import java.util.Date;
 public class Spending {
     private int spendingCod;
     private String description, category;
-    private double amount;
+    private float amount;
     private String emissionDate, bankName, cardName;
 
-    public Spending(int spendingCod, String description, String category, double amount, String emissionDate,
+    public Spending(int spendingCod, String description, String category, float amount, String emissionDate,
                     String bankName, String cardName) {
         this.spendingCod = spendingCod;
         this.description = description;
@@ -63,11 +63,11 @@ public class Spending {
         this.category = category;
     }
 
-    public double getAmount() {
+    public float getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(float amount) {
         this.amount = amount;
     }
 
