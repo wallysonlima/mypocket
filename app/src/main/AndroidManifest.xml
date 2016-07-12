@@ -14,12 +14,15 @@
         <activity android:name=".view.DeleteActivity" />
         <activity android:name=".view.SpendingActivity" />
         <activity android:name=".view.BalanceActivity" />
-        <activity android:name=".view.CategoryActivity"></activity>
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+        <activity android:name=".view.CategoryActivity" />
+
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         <uses-permission android:name="android.permission.INTERNET" />
         <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
         <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+        <activity android:name=".view.AllSpendingActivity"></activity>
     </application>
 
 </manifest>

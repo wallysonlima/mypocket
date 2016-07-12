@@ -29,7 +29,7 @@ public class CategoryActivityPresenter {
         for ( Spending sp: spending ) {
             for ( int i = 0; i < category.length; i++ ) {
                 if ( sp.getCategory().equalsIgnoreCase( category[i] ) ) {
-                    spendingForCategory.add(i, sp.getAmount() );
+                    spendingForCategory.add(i, spendingForCategory.get(i) + sp.getAmount() );
                 }
             }
         }

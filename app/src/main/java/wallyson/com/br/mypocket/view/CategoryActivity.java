@@ -36,10 +36,9 @@ public class CategoryActivity extends AppCompatActivity implements CategoryInter
     Button btnSendEmail;
     Date date;
     GregorianCalendar dateCal;
-
     String month;
 
-    public final String[] arrayCategory = {
+    private final String[] arrayCategory = {
             getResources().getString(R.string.autoTransport),
             getResources().getString(R.string.bills),
             getResources().getString(R.string.businessServices),

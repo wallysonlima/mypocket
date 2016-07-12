@@ -44,7 +44,7 @@ public class AccountActivity extends AppCompatActivity implements AccountInterfa
         });
     }
 
-    // Método responsável por limpar os campos de texto
+    // Method for clean all editText
     public void clean() {
         bankName.setText(null);
         receiptDate.setText(null);
