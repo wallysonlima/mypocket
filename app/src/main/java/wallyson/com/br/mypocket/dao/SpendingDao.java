@@ -40,6 +40,21 @@ public class SpendingDao {
         return spending;
     }
 
+    public ArrayList<Spending> selectSpendingMonth(String month) {
+        ArrayList<Spending> spending = new ArrayList<>();
+        SQLiteDatabase db = database.getWritableDatabase();
+        String sql = "select * from " + Database.TABLE_SPENDING + "where emissionDate LIKE '??/'" + month + "/??;";
+        Cursor result = db.rawQuery(sql, null);
+
+        while ( result.moveToNext() ) {
+            Spending sp = new Spending( result.getInt(0), result.getString(1), result.getString(2), result.getFloat(3),
+                    result.getString(4), result.getString(5), result.getString(6) );
+            spending.add(sp);
+        }
+
+        return spending;
+    }
+
     public boolean insertSpending(String description, Float amount, String emissionDate,
                                   String category, String bankName, String cardName, int codUser) {
         SQLiteDatabase db = database.getWritableDatabase();
