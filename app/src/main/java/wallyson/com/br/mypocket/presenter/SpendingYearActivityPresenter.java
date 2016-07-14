@@ -10,12 +10,12 @@ import wallyson.com.br.mypocket.model.Spending;
 /**
  * Created by wally on 12/07/16.
  */
-public class AllSpendingActivityPresenter {
-    AllSpendingInterface mView;
+public class SpendingYearActivityPresenter {
+    SpendingYearInterface mView;
     Context c;
     SpendingDao spendingDao;
 
-    public AllSpendingActivityPresenter(AllSpendingInterface view, Context context) {
+    public SpendingYearActivityPresenter(SpendingYearInterface view, Context context) {
         mView = view;
         c = context;
         spendingDao = new SpendingDao(c);
@@ -29,7 +29,8 @@ public class AllSpendingActivityPresenter {
         for ( Spending sp: spending ) {
             for ( int i = 0; i < monthYear.length; i++ ) {
                 String month = sp.getEmissionDate().substring(3, 5);
-                if ( month.equals(i + 1) ) {
+                int m = Integer.parseInt( month );
+                if ( m == (i + 1) ) {
                     spendingForMonth.add(i, spendingForMonth.get(i) + sp.getAmount() );
                 }
             }

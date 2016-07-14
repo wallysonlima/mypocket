@@ -39,6 +39,9 @@
     <string name="sendEmail">Send for Email</string>
     <string name="month">Month</string>
     <string name="spendingByMonth">Spending by Month</string>
+    <string name="allSpending">All Spending Registered</string>
+    <string name="totalSpending">Total Spending</string>
+    <string name="date">Date</string>
 
     <string name="autoTransport">Auto and Transport</string>
     <string name="bills">Bills</string>

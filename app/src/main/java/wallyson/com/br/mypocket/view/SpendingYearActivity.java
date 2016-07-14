@@ -21,16 +21,16 @@ import java.util.GregorianCalendar;
 import wallyson.com.br.mypocket.R;
 import wallyson.com.br.mypocket.dao.UserDao;
 import wallyson.com.br.mypocket.model.User;
-import wallyson.com.br.mypocket.presenter.AllSpendingActivityPresenter;
-import wallyson.com.br.mypocket.presenter.AllSpendingInterface;
+import wallyson.com.br.mypocket.presenter.SpendingYearActivityPresenter;
+import wallyson.com.br.mypocket.presenter.SpendingYearInterface;
 
-public class AllSpendingActivity extends AppCompatActivity implements AllSpendingInterface {
+public class SpendingYearActivity extends AppCompatActivity implements SpendingYearInterface {
     BarChart barChart = (BarChart) findViewById(R.id.chart);
     Button btnSendEmail;
     Date date;
     GregorianCalendar dateCal;
     String month, year;
-    AllSpendingActivityPresenter mPresenter;
+    SpendingYearActivityPresenter mPresenter;
 
     private String[] monthYear = {
             getResources().getString(R.string.january),
@@ -52,7 +52,7 @@ public class AllSpendingActivity extends AppCompatActivity implements AllSpendin
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_spending);
 
-        mPresenter = new AllSpendingActivityPresenter(this, this.getApplicationContext());
+        mPresenter = new SpendingYearActivityPresenter(this, this.getApplicationContext());
         date = new Date(System.currentTimeMillis());
         dateCal = new GregorianCalendar();
         dateCal.setTime(date);
