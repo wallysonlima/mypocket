@@ -6,8 +6,6 @@ package wallyson.com.br.mypocket.presenter;
 public interface InitialInterface {
     String getName();
     String getEmail();
-    String getBankName();
-    Double getBalance();
     void registrationError();
     void successfullyInserted();
     void DatabaseInsertError();

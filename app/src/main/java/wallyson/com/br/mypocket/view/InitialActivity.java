@@ -13,7 +13,7 @@ import wallyson.com.br.mypocket.presenter.InitialActivityPresenter;
 import wallyson.com.br.mypocket.presenter.InitialInterface;
 
 public class InitialActivity extends AppCompatActivity implements InitialInterface {
-    EditText name, email, bankName, balance;
+    EditText name, email;
     Button btClean, btSubmit;
     InitialActivityPresenter mPresenter;
 
@@ -24,8 +24,6 @@ public class InitialActivity extends AppCompatActivity implements InitialInterfa
 
         name = (EditText) findViewById(R.id.edtName);
         email = (EditText) findViewById(R.id.edtEmail);
-        bankName = (EditText) findViewById(R.id.edtBankName);
-        balance = (EditText) findViewById(R.id.edtBalance);
         btClean = (Button) findViewById(R.id.btClean);
         mPresenter = new InitialActivityPresenter(this, this.getApplicationContext());
 
@@ -48,8 +46,6 @@ public class InitialActivity extends AppCompatActivity implements InitialInterfa
     public void cleanEditText() {
         name.setText(null);
         email.setText(null);
-        bankName.setText(null);
-        balance.setText(null);
     }
 
     public String getName() {
@@ -58,14 +54,6 @@ public class InitialActivity extends AppCompatActivity implements InitialInterfa
 
     public String getEmail() {
         return email.getText().toString();
-    }
-
-    public String getBankName() {
-        return bankName.getText().toString();
-    }
-
-    public Double getBalance() {
-        return Double.parseDouble(balance.getText().toString());
     }
 
     public void registrationError() {

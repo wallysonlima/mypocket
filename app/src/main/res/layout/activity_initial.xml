@@ -9,16 +9,53 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="wallyson.com.br.mypocket.view.InitialActivity">
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:text="@string/initial"
-        android:textSize="40px"
-        android:textStyle="bold"
-        android:textColor="#0e7fbb"
-        android:textAlignment="center"
-        android:layout_above="@+id/edtName"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtName"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="169dp"
+        android:layout_toRightOf="@+id/btnClean"
+        android:layout_alignRight="@+id/btnSubmit"
+        android:layout_alignEnd="@+id/btnSubmit" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/edtEmail"
+        android:layout_alignTop="@+id/edtName"
+        android:layout_alignRight="@+id/edtName"
+        android:layout_alignEnd="@+id/edtName"
+        android:layout_marginTop="59dp"
+        android:layout_alignLeft="@+id/edtName"
+        android:layout_alignStart="@+id/edtName" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:id="@+id/btnSubmit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/clean"
+        android:id="@+id/btnClean"
+        android:layout_alignBottom="@+id/btnSubmit"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -27,84 +64,48 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/name"
-        android:id="@+id/textView2"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/textView"
+        android:layout_alignBottom="@+id/edtName"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/email"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/textView2"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2"
-        android:layout_marginTop="23dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtName"
-        android:layout_marginTop="50px"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textView2"
-        android:layout_alignLeft="@+id/edtEmail"
-        android:layout_alignStart="@+id/edtEmail" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/edtEmail"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_toEndOf="@+id/btClean"
-        android:layout_toRightOf="@+id/btClean" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/clean"
-        android:id="@+id/btClean"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/textView2"
+        android:layout_alignBottom="@+id/edtEmail"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/submit"
-        android:id="@+id/btSubmit"
-        android:layout_alignTop="@+id/btClean"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/edtName"
-        android:layout_alignStart="@+id/edtName" />
-
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView8"
-        android:background="@mipmap/logo"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"
-        android:layout_toStartOf="@+id/btSubmit"
-        android:layout_above="@+id/textView" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="1"
+        android:layout_above="@+id/edtEmail">
+
+        <ImageView
+            android:layout_width="196dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView7"
+            android:layout_gravity="center_horizontal"
+            android:background="@mipmap/logo"
+            android:layout_weight="0.58" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:textColor="#0e7fbb"
+            android:text="@string/initial"
+            android:textStyle="bold"
+            android:textSize="50px"
+            android:textAlignment="center" />
+    </LinearLayout>
 
 </RelativeLayout>

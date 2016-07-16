@@ -44,6 +44,7 @@ public class SpendingAllActivity extends AppCompatActivity implements SpendingAl
     String nameFile;
     UserDao userDao;
     User user;
+    float total;
 
     private String[] monthYear = {
             getResources().getString(R.string.january),
@@ -74,6 +75,7 @@ public class SpendingAllActivity extends AppCompatActivity implements SpendingAl
         addMonthSpinner();
         userDao = new UserDao(this);
         user = userDao.selectUser();
+        total = 0.0f;
 
         spnMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -150,8 +152,6 @@ public class SpendingAllActivity extends AppCompatActivity implements SpendingAl
     }
 
     public void setTotalAmount() {
-        float total = 0.0f;
-
         for ( Spending sp: spending ){
             total += sp.getAmount();
         }
@@ -173,6 +173,8 @@ public class SpendingAllActivity extends AppCompatActivity implements SpendingAl
                                 getResources().getString(R.string.emissionDate) + " : " + sp.getEmissionDate() + " " +
                                 getResources().getString(R.string.category) + " : " + sp.getCategory() + "\n";
             }
+
+            allSpending += "\n\nTotal : " + String.valueOf(total);
 
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.openFileOutput(nameFile, Context.MODE_PRIVATE));
             outputStreamWriter.write(allSpending);
