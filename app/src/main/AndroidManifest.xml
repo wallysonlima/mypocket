@@ -23,7 +23,8 @@
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
         <activity android:name=".view.SpendingYearActivity" />
-        <activity android:name=".view.SpendingAllActivity"></activity>
+        <activity android:name=".view.SpendingAllActivity" />
+        <activity android:name=".view.InitialActivity"></activity>
     </application>
 
 </manifest>
