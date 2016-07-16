@@ -98,7 +98,7 @@ public class SpendingYearActivity extends AppCompatActivity implements SpendingY
         emailIntent.setType("application/image");
         emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{user.getEmail()});
         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "myPocket " + user.getName() +
-                "Spending for Category on Month: " + month );
+                "Spending for Category on Month and Year: " + month );
         emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "myPocket");
         emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///mnt/sdcard/" + nameImage));
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));

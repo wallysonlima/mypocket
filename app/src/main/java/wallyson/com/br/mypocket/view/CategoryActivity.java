@@ -2,29 +2,19 @@ package wallyson.com.br.mypocket.view;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.DropBoxManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Map;
-
 import wallyson.com.br.mypocket.R;
 import wallyson.com.br.mypocket.dao.UserDao;
 import wallyson.com.br.mypocket.model.User;
@@ -36,7 +26,7 @@ public class CategoryActivity extends AppCompatActivity implements CategoryInter
     Button btnSendEmail;
     Date date;
     GregorianCalendar dateCal;
-    String month;
+    String monthYear;
 
     private final String[] arrayCategory = {
             getResources().getString(R.string.autoTransport),
@@ -74,14 +64,14 @@ public class CategoryActivity extends AppCompatActivity implements CategoryInter
         date = new Date(System.currentTimeMillis());
         dateCal = new GregorianCalendar();
         dateCal.setTime(date);
-        month = String.valueOf( dateCal.get(Calendar.MONTH) );
+        monthYear = String.valueOf( dateCal.get(Calendar.MONTH) ) + "/" + String.valueOf( dateCal.get(Calendar.YEAR) );
 
         createCategoryPieChart();
     }
 
     // Create PieChart and put all Spending by Category
     public void createCategoryPieChart() {
-        ArrayList<Float> spendingForCategory = mPresenter.spendingForCategory(month);
+        ArrayList<Float> spendingForCategory = mPresenter.spendingForCategory(monthYear);
         ArrayList<Entry> entries = new ArrayList<>();
         PieDataSet dataSet;
         int i = 0;
@@ -102,14 +92,14 @@ public class CategoryActivity extends AppCompatActivity implements CategoryInter
     public void sendByEmail() {
         UserDao userDao = new UserDao(this);
         User user = userDao.selectUser();
-        String nameImage = "Spendings" + month + ".jpg";
+        String nameImage = "Spendings" + monthYear + ".jpg";
         pieChart.saveToGallery(nameImage, 100);
 
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("application/image");
         emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{user.getEmail()});
         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "myPocket " + user.getName() +
-                "Spending for Category on Month: " + month );
+                "Spending for Category on Month: " + monthYear);
         emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "myPocket");
         emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///mnt/sdcard/" + nameImage));
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));

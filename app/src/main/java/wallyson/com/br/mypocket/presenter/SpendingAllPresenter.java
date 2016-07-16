@@ -21,16 +21,9 @@ public class SpendingAllPresenter {
         spendingDao = new SpendingDao(c);
     }
 
-    public ArrayList<Spending> getSpendingForMonth() {
-        int m = mView.getPositionSpinner();
-        String month = null;
+    public ArrayList<Spending> getSpendingForMonthYear() {
+        String monthYear = mView.getMonthYear();
 
-        if ( m <= 9 ) {
-            month = "0" + String.valueOf(m);
-        } else {
-            month = String.valueOf(m);
-        }
-
-        return spendingDao.selectSpendingMonth(month);
+        return spendingDao.selectSpendingMonthYear(monthYear);
     }
 }

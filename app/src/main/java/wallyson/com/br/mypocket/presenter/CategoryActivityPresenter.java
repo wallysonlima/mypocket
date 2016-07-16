@@ -21,9 +21,9 @@ public class CategoryActivityPresenter {
         spendingDao = new SpendingDao(c);
     }
 
-    public ArrayList<Float> spendingForCategory(String month) {
+    public ArrayList<Float> spendingForCategory(String monthYear) {
         String [] category = mView.getCategory();
-        ArrayList<Spending> spending = spendingDao.selectSpendingMonth(month);
+        ArrayList<Spending> spending = spendingDao.selectSpendingMonthYear(monthYear);
         ArrayList<Float> spendingForCategory = new ArrayList<>();
 
         for ( Spending sp: spending ) {

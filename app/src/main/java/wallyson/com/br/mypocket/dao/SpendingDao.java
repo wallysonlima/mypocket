@@ -40,10 +40,10 @@ public class SpendingDao {
         return spending;
     }
 
-    public ArrayList<Spending> selectSpendingMonth(String month) {
+    public ArrayList<Spending> selectSpendingMonthYear(String monthYear) {
         ArrayList<Spending> spending = new ArrayList<>();
         SQLiteDatabase db = database.getWritableDatabase();
-        String sql = "select * from " + Database.TABLE_SPENDING + "where emissionDate LIKE '??/'" + month + "/??;";
+        String sql = "select * from " + Database.TABLE_SPENDING + "where emissionDate LIKE '??/'" + monthYear;
         Cursor result = db.rawQuery(sql, null);
 
         while ( result.moveToNext() ) {
