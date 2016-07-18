@@ -53,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/amount"
+        android:text="@string/balance"
         android:id="@+id/textView30"
         android:layout_below="@+id/textView8"
         android:layout_alignParentLeft="true"

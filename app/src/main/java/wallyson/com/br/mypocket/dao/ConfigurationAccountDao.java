@@ -2,6 +2,7 @@ package wallyson.com.br.mypocket.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import wallyson.com.br.mypocket.model.ConfigurationAccount;
@@ -15,6 +16,13 @@ public class ConfigurationAccountDao {
 
     public ConfigurationAccountDao(Context c) {
         database = new Database(c);
+    }
+
+    public ConfigurationAccount selectOnceConfigurationAccount(String bankName) {
+        SQLiteDatabase db = database.getWritableDatabase();
+        String sql = "select * from " + Database.TABLE_CONFIGURATION_ACCOUNT + " where bankName = " + bankName + ";";
+        Cursor result = db.rawQuery(sql, null);
+        return (new ConfigurationAccount( result.getString(0), result.getString(1), result.getDouble(2) ) );
     }
 
     public boolean insertConfigurationAccount(String bankName, double balance, String receiptDate) {
@@ -32,7 +40,7 @@ public class ConfigurationAccountDao {
             return true;
     }
 
-    public boolean updateBalanceAccount(ConfigurationAccount configAccount) {
+    public boolean updateConfigurationAccount(ConfigurationAccount configAccount) {
         SQLiteDatabase db = database.getWritableDatabase();
         ContentValues content = new ContentValues();
 

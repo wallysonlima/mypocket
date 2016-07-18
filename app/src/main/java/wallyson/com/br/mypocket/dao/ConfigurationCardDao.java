@@ -2,6 +2,7 @@ package wallyson.com.br.mypocket.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import wallyson.com.br.mypocket.model.ConfigurationCard;
@@ -15,6 +16,13 @@ public class ConfigurationCardDao {
 
     public ConfigurationCardDao(Context c) {
         database = new Database(c);
+    }
+
+    public ConfigurationCard selectOnceConfigurationCard(String cardName) {
+        SQLiteDatabase db = database.getWritableDatabase();
+        String sql = "select * from " + Database.TABLE_CONFIGURATION_CARD + " where cardName = " + cardName + ";";
+        Cursor result = db.rawQuery(sql, null);
+        return (new ConfigurationCard( result.getString(0), result.getString(1), result.getDouble(2) ) );
     }
 
     public boolean insertConfigurationCard(String cardName, double credit, String receiptDate) {
@@ -32,7 +40,7 @@ public class ConfigurationCardDao {
             return true;
     }
 
-    public boolean updateBalanceAccount(ConfigurationCard configCard) {
+    public boolean updateConfigurationCard(ConfigurationCard configCard) {
         SQLiteDatabase db = database.getWritableDatabase();
         ContentValues content = new ContentValues();
 
@@ -48,7 +56,7 @@ public class ConfigurationCardDao {
         }
     }
 
-    public Integer deleteAccount(String cardName) {
+    public Integer deleteConfigurationCard(String cardName) {
         SQLiteDatabase db = database.getWritableDatabase();
         return db.delete(Database.TABLE_CONFIGURATION_CARD, "cardName = ?", new String[] {cardName} );
     }

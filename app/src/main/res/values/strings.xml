@@ -46,6 +46,8 @@
     <string name="configurationAccount">Alter Configuration Account</string>
     <string name="configurationCreditCard">Alter Configuration Credit Card</string>
     <string name="configurationInformation">Change Settings here</string>
+    <string name="configurationUpdateSuccessfully">
+The settings were successfully updated !</string>
 
     <string name="autoTransport">Auto and Transport</string>
     <string name="bills">Bills</string>
