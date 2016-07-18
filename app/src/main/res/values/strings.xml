@@ -43,6 +43,9 @@
     <string name="totalSpending">Total Spending</string>
     <string name="date">Date</string>
     <string name="allSpendingMonth">All Spending Registered and Total Amount on </string>
+    <string name="configurationAccount">Alter Configuration Account</string>
+    <string name="configurationCreditCard">Alter Configuration Credit Card</string>
+    <string name="configurationInformation">Change Settings here</string>
 
     <string name="autoTransport">Auto and Transport</string>
     <string name="bills">Bills</string>

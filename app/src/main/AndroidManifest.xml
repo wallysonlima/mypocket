@@ -24,7 +24,8 @@
 
         <activity android:name=".view.SpendingYearActivity" />
         <activity android:name=".view.SpendingAllActivity" />
-        <activity android:name=".view.InitialActivity"></activity>
+        <activity android:name=".view.InitialActivity" />
+        <activity android:name=".view.ConfigurationActivity"></activity>
     </application>
 
 </manifest>
