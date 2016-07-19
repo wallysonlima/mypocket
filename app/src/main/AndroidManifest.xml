@@ -14,7 +14,7 @@
         <activity android:name=".view.DeleteActivity" />
         <activity android:name=".view.SpendingActivity" />
         <activity android:name=".view.BalanceActivity" />
-        <activity android:name=".view.CategoryActivity" />
+        <activity android:name=".view.SpendingCategoryActivity" />
 
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         <uses-permission android:name="android.permission.INTERNET" />
@@ -23,7 +23,7 @@
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
         <activity android:name=".view.SpendingYearActivity" />
-        <activity android:name=".view.SpendingAllActivity" />
+        <activity android:name=".view.SpendingMonthActivity" />
         <activity android:name=".view.InitialActivity" />
         <activity android:name=".view.ConfigurationActivity"></activity>
     </application>

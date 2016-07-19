@@ -103,7 +103,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageView4"
             android:layout_gravity="center_horizontal"
-            android:background="@mipmap/delete"
+            android:background="@mipmap/delete2"
             android:layout_weight="0.81" />
 
         <TextView

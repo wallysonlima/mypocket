@@ -22,15 +22,16 @@ public class SpendingYearActivityPresenter {
     }
 
     public ArrayList<Float> AllSpendingForMonth() {
-        String [] monthYear = mView.getMonthYear();
+        String [] month = mView.getMonthYear();
         ArrayList<Spending> spending = spendingDao.selectSpending();
         ArrayList<Float> spendingForMonth = new ArrayList<>();
 
         for ( Spending sp: spending ) {
-            for ( int i = 0; i < monthYear.length; i++ ) {
-                String month = sp.getEmissionDate().substring(3, 5);
-                int m = Integer.parseInt( month );
-                if ( m == (i + 1) ) {
+            for ( int i = 0; i < month.length; i++ ) {
+                String monthYear = sp.getEmissionDate().substring(3, 10);
+                int m = Integer.parseInt(monthYear.substring(0, 2));
+                int y = Integer.parseInt( monthYear.substring(3, 7) );
+                if ( m == (i + 1) && y == Integer.parseInt( sp.getEmissionDate().substring(6, 10) ) ) {
                     spendingForMonth.add(i, spendingForMonth.get(i) + sp.getAmount() );
                 }
             }

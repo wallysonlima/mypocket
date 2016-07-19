@@ -34,7 +34,7 @@ import wallyson.com.br.mypocket.model.User;
 import wallyson.com.br.mypocket.presenter.SpendingAllInterface;
 import wallyson.com.br.mypocket.presenter.SpendingAllPresenter;
 
-public class SpendingAllActivity extends AppCompatActivity implements SpendingAllInterface {
+public class SpendingMonthActivity extends AppCompatActivity implements SpendingAllInterface {
     Spinner spnMonth;
     EditText edtTotal;
     Button btnSendEmail;
@@ -64,7 +64,7 @@ public class SpendingAllActivity extends AppCompatActivity implements SpendingAl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spending_all);
+        setContentView(R.layout.activity_spending_month);
 
         spnMonth = (Spinner) findViewById(R.id.spnMonth);
         edtTotal = (EditText) findViewById(R.id.edtTotal);

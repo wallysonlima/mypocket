@@ -21,7 +21,7 @@ import wallyson.com.br.mypocket.model.User;
 import wallyson.com.br.mypocket.presenter.CategoryActivityPresenter;
 import wallyson.com.br.mypocket.presenter.CategoryInterface;
 
-public class CategoryActivity extends AppCompatActivity implements CategoryInterface {
+public class SpendingCategoryActivity extends AppCompatActivity implements CategoryInterface {
     PieChart pieChart = (PieChart) findViewById(R.id.chart);
     Button btnSendEmail;
     Date date;
@@ -51,7 +51,7 @@ public class CategoryActivity extends AppCompatActivity implements CategoryInter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.activity_spending_category);
 
         mPresenter = new CategoryActivityPresenter(this, this.getApplicationContext() );
         btnSendEmail = (Button) findViewById(R.id.btnSendEmail);

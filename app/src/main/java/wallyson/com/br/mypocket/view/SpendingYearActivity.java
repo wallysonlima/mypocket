@@ -50,14 +50,14 @@ public class SpendingYearActivity extends AppCompatActivity implements SpendingY
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_spending);
+        setContentView(R.layout.activity_spending_year);
 
         mPresenter = new SpendingYearActivityPresenter(this, this.getApplicationContext());
         date = new Date(System.currentTimeMillis());
         dateCal = new GregorianCalendar();
         dateCal.setTime(date);
         month = String.valueOf( dateCal.get(Calendar.MONTH) );
-        year = String.valueOf( dateCal.get(Calendar.MONTH) );
+        year = String.valueOf( dateCal.get(Calendar.YEAR) );
 
         btnSendEmail.setOnClickListener(new View.OnClickListener() {
             @Override
