@@ -48,6 +48,7 @@
     <string name="configurationInformation">Change Settings here</string>
     <string name="configurationUpdateSuccessfully">
 The settings were successfully updated !</string>
+    <string name="errorEmptyAccountCard">Error ! Do you need register Account and Card for open this Activity !</string>
 
     <string name="autoTransport">Auto and Transport</string>
     <string name="bills">Bills</string>
