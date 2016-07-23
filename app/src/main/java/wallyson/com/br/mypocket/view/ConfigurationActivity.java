@@ -11,8 +11,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import wallyson.com.br.mypocket.R;
-import wallyson.com.br.mypocket.dao.ConfigurationAccountDao;
-import wallyson.com.br.mypocket.dao.ConfigurationCardDao;
 import wallyson.com.br.mypocket.model.ConfigurationAccount;
 import wallyson.com.br.mypocket.model.ConfigurationCard;
 import wallyson.com.br.mypocket.presenter.ConfigurationActivityPresenter;
@@ -143,10 +141,10 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
     }
 
     public void updatedSuccessfully() {
-        Toast.makeText(ConfigurationActivity.this, getResources().getString(R.string.configurationUpdateSuccessfully), Toast.LENGTH_SHORT).show();
+        Toast.makeText(ConfigurationActivity.this, getResources().getString(R.string.configuration_update_successfully), Toast.LENGTH_SHORT).show();
     }
 
     public void databaseInsertError() {
-        Toast.makeText(ConfigurationActivity.this, getResources().getString(R.string.DatabaseInsertError), Toast.LENGTH_SHORT).show();
+        Toast.makeText(ConfigurationActivity.this, getResources().getString(R.string.database_insert_error), Toast.LENGTH_SHORT).show();
     }
 }

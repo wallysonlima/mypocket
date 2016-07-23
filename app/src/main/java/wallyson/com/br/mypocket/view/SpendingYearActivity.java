@@ -84,7 +84,7 @@ public class SpendingYearActivity extends AppCompatActivity implements SpendingY
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         BarData data = new BarData(monthYear, dataSet);
         barChart.setData(data);
-        barChart.setDescription(getResources().getString(R.string.spendingByMonth));
+        barChart.setDescription(getResources().getString(R.string.spending_by_month));
     }
 
     // Send image from PieChart for Email

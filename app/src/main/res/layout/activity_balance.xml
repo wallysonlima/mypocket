@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/creditCard"
+        android:text="@string/credit_card"
         android:id="@+id/textView26"
         android:layout_below="@+id/spnAccount"
         android:layout_alignParentLeft="true"
@@ -118,7 +118,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/balanceCredit"
+            android:text="@string/balance_credit"
             android:id="@+id/textView29"
             android:layout_gravity="center_horizontal"
             android:textColor="#0e7fbb"

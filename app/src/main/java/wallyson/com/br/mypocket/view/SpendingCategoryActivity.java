@@ -29,19 +29,19 @@ public class SpendingCategoryActivity extends AppCompatActivity implements Categ
     String monthYear;
 
     private final String[] arrayCategory = {
-            getResources().getString(R.string.autoTransport),
+            getResources().getString(R.string.auto_transport),
             getResources().getString(R.string.bills),
-            getResources().getString(R.string.businessServices),
+            getResources().getString(R.string.business_services),
             getResources().getString(R.string.education),
             getResources().getString(R.string.entertainment),
-            getResources().getString(R.string.foodDining),
-            getResources().getString(R.string.giftsDonations),
-            getResources().getString(R.string.healthFitness),
+            getResources().getString(R.string.food_dining),
+            getResources().getString(R.string.gifts_donations),
+            getResources().getString(R.string.health_fitness),
             getResources().getString(R.string.income),
             getResources().getString(R.string.investments),
             getResources().getString(R.string.kids),
             getResources().getString(R.string.other),
-            getResources().getString(R.string.personalCare),
+            getResources().getString(R.string.personal_care),
             getResources().getString(R.string.shopping),
             getResources().getString(R.string.taxes),
             getResources().getString(R.string.travel),
@@ -85,7 +85,7 @@ public class SpendingCategoryActivity extends AppCompatActivity implements Categ
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         PieData data = new PieData(arrayCategory, dataSet);
         pieChart.setData(data);
-        pieChart.setDescription(getResources().getString(R.string.spendingByCategory));
+        pieChart.setDescription(getResources().getString(R.string.spending_by_category));
     }
 
     // Send image from PieChart for Email

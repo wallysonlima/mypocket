@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
                     Intent intent = new Intent(MainActivity.this, SpendingActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.errorEmptyAccountCard), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.error_empty_account_card), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
                     Intent intent = new Intent(MainActivity.this, BalanceActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.errorEmptyAccountCard), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.error_empty_account_card), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
                     Intent intent = new Intent(MainActivity.this, SpendingCategoryActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.errorEmptyAccountCard), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.error_empty_account_card), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
                     Intent intent = new Intent(MainActivity.this, SpendingMonthActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.errorEmptyAccountCard), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.error_empty_account_card), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
                     Intent intent = new Intent(MainActivity.this, SpendingYearActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.errorEmptyAccountCard), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.error_empty_account_card), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
                     Intent intent = new Intent(MainActivity.this, AccountActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.errorEmptyAccountCard), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.error_empty_account_card), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
                     Intent intent = new Intent(MainActivity.this, CardActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.errorEmptyAccountCard), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.error_empty_account_card), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
                     Intent intent = new Intent(MainActivity.this, DeleteActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.errorEmptyAccountCard), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.error_empty_account_card), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
                     Intent intent = new Intent(MainActivity.this, ConfigurationActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.errorEmptyAccountCard), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.error_empty_account_card), Toast.LENGTH_SHORT).show();
                 }
             }
         });

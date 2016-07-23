@@ -28,7 +28,7 @@
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="@string/cardName" />
+        android:text="@string/card_name" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/bankName"
+        android:text="@string/bank_name"
         android:id="@+id/textView13"
         android:layout_alignTop="@+id/spnBankName"
         android:layout_alignRight="@+id/btnClean"
@@ -105,7 +105,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/cardRegistration"
+        android:text="@string/card_registration"
         android:id="@+id/textView14"
         android:layout_above="@+id/edtCardName"
         android:layout_centerHorizontal="true"
@@ -130,7 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/dayRenovationCredit"
+        android:text="@string/day_renovation_credit"
         android:id="@+id/textView11"
         android:layout_alignTop="@+id/edtReceiptDate"
         android:layout_alignParentLeft="true"

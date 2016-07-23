@@ -2,7 +2,6 @@ package wallyson.com.br.mypocket.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ButtonBarLayout;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -81,14 +80,14 @@ public class CardActivity extends AppCompatActivity implements CardInterface {
     }
     
     public void registrationError() {
-        Toast.makeText(CardActivity.this, getResources().getString(R.string.registrationError), Toast.LENGTH_SHORT).show();
+        Toast.makeText(CardActivity.this, getResources().getString(R.string.registration_error), Toast.LENGTH_SHORT).show();
     }
 
     public void successfullyInserted() {
-        Toast.makeText(CardActivity.this, getResources().getString(R.string.successfullyRegistration), Toast.LENGTH_SHORT).show();
+        Toast.makeText(CardActivity.this, getResources().getString(R.string.successfully_registration), Toast.LENGTH_SHORT).show();
     }
 
     public void databaseInsertError() {
-        Toast.makeText(CardActivity.this, getResources().getString(R.string.DatabaseInsertError), Toast.LENGTH_SHORT).show();
+        Toast.makeText(CardActivity.this, getResources().getString(R.string.database_insert_error), Toast.LENGTH_SHORT).show();
     }
 }

@@ -165,12 +165,12 @@ public class SpendingMonthActivity extends AppCompatActivity implements Spending
 
         try {
             String allSpending = user.getName() + " " +
-                    getResources().getString(R.string.allSpendingMonth) + getMonthYear() + "\n\n\n";
+                    getResources().getString(R.string.all_spending_month) + getMonthYear() + "\n\n\n";
 
             for( Spending sp: spending ) {
                 allSpending +=
                         getResources().getString(R.string.spending) + " : " + String.valueOf( sp.getAmount() ) + " " +
-                                getResources().getString(R.string.emissionDate) + " : " + sp.getEmissionDate() + " " +
+                                getResources().getString(R.string.emission_date) + " : " + sp.getEmissionDate() + " " +
                                 getResources().getString(R.string.category) + " : " + sp.getCategory() + "\n";
             }
 
@@ -191,7 +191,7 @@ public class SpendingMonthActivity extends AppCompatActivity implements Spending
         saveSpendingFile();
 
         Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-        emailIntent.setType("message/rfc822").putExtra(Intent.EXTRA_EMAIL, new String[]{user.getEmail()}).putExtra(android.content.Intent.EXTRA_SUBJECT, nameFile).putExtra(android.content.Intent.EXTRA_TEXT, getResources().getString(R.string.allSpendingMonth));
+        emailIntent.setType("message/rfc822").putExtra(Intent.EXTRA_EMAIL, new String[]{user.getEmail()}).putExtra(android.content.Intent.EXTRA_SUBJECT, nameFile).putExtra(android.content.Intent.EXTRA_TEXT, getResources().getString(R.string.all_spending_month));
         String targetFilePath = Environment.getExternalStorageDirectory().getPath() + File.separator + "tmp" + File.separator + nameFile;
         Uri attachmentUri = Uri.parse(targetFilePath);
         emailIntent.putExtra(android.content.Intent.EXTRA_STREAM, Uri.parse("file://" + attachmentUri));

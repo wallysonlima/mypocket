@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/dayRenovationBalance"
+        android:text="@string/day_renovation_balance"
         android:id="@+id/textView8"
         android:layout_below="@+id/textView4"
         android:layout_alignParentLeft="true"
@@ -97,7 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/dayRenovationCredit"
+        android:text="@string/day_renovation_credit"
         android:id="@+id/textView34"
         android:layout_alignBottom="@+id/edtRenewalCredit"
         android:layout_alignParentLeft="true"
@@ -144,13 +144,13 @@
         android:layout_below="@+id/textView30"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="@string/configurationAccount" />
+        android:text="@string/configuration_account" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/configurationCreditCard"
+        android:text="@string/configuration_credit_card"
         android:id="@+id/btnAlterCredit"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -159,7 +159,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/configurationInformation"
+        android:text="@string/configuration_information"
         android:id="@+id/textView36"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"

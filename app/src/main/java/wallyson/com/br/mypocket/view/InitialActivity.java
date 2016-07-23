@@ -57,14 +57,14 @@ public class InitialActivity extends AppCompatActivity implements InitialInterfa
     }
 
     public void registrationError() {
-        Toast.makeText(InitialActivity.this, getResources().getString(R.string.registrationError), Toast.LENGTH_SHORT).show();
+        Toast.makeText(InitialActivity.this, getResources().getString(R.string.registration_error), Toast.LENGTH_SHORT).show();
     }
 
     public void successfullyInserted() {
-        Toast.makeText(InitialActivity.this, getResources().getString(R.string.successfullyRegistration), Toast.LENGTH_SHORT).show();
+        Toast.makeText(InitialActivity.this, getResources().getString(R.string.successfully_registration), Toast.LENGTH_SHORT).show();
     }
 
     public void DatabaseInsertError() {
-        Toast.makeText(InitialActivity.this, getResources().getString(R.string.DatabaseInsertError), Toast.LENGTH_SHORT).show();
+        Toast.makeText(InitialActivity.this, getResources().getString(R.string.database_insert_error), Toast.LENGTH_SHORT).show();
     }
 }
