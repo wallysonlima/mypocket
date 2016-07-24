@@ -26,7 +26,7 @@ public class CardDao {
 
     public ArrayList<Card> selectCard() {
         ArrayList<Card> card = new ArrayList<>();
-        SQLiteDatabase db = database.getWritableDatabase();
+        SQLiteDatabase db = database.getReadableDatabase();
         String sql = "select * from " + Database.TABLE_CARD + ";";
         Cursor result = db.rawQuery(sql, null);
 
@@ -35,14 +35,21 @@ public class CardDao {
             card.add(ca);
         }
 
+        result.close();
+        db.close();
         return card;
     }
 
     public Card selectOnceCard(String cardName) {
-        SQLiteDatabase db = database.getWritableDatabase();
+        SQLiteDatabase db = database.getReadableDatabase();
         String sql = "select * from " + Database.TABLE_CARD + " where cardName = " + cardName + ";";
         Cursor result = db.rawQuery(sql, null);
-        return (new Card( result.getString(0), result.getDouble(1), result.getString(2) ) );
+        result.moveToFirst();
+        Card card = new Card( result.getString(0), result.getDouble(1), result.getString(2) );
+        result.close();
+        db.close();
+
+        return card;
     }
 
     public boolean updateCreditCard(Card card) {
@@ -54,6 +61,8 @@ public class CardDao {
         content.put("bankName", card.getBankName() );
 
         int result = db.update(Database.TABLE_CARD, content, "cardName = ?", new String[]{card.getCardName()});
+
+        db.close();
 
         if ( result > 0 ) {
             return true;
@@ -71,6 +80,8 @@ public class CardDao {
 
         long result = db.insert(Database.TABLE_CARD, null, content);
 
+        db.close();
+
         if ( result == -1 )
             return false;
         else
@@ -78,7 +89,10 @@ public class CardDao {
     }
 
     public Integer deleteCard(String cardName) {
-        SQLiteDatabase db = database.getWritableDatabase();
-        return db.delete(Database.TABLE_CARD, "cardName = ?", new String[] {cardName} );
+        SQLiteDatabase db = database.getReadableDatabase();
+        int result = db.delete(Database.TABLE_CARD, "cardName = ?", new String[] {cardName} );
+        db.close();
+
+        return result;
     }
 }

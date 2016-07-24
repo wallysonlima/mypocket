@@ -9,36 +9,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="wallyson.com.br.mypocket.view.CardActivity">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
-        android:background="@mipmap/card"
-        android:layout_above="@+id/textView14"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/btnSubmit"
-        android:layout_alignLeft="@+id/edtCardName"
-        android:layout_alignStart="@+id/edtCardName" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/textView10"
-        android:layout_centerVertical="true"
+        android:text="@string/card_name"
+        android:layout_above="@+id/edtCredit"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="@string/card_name" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/edtCardName"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/textView10"
         android:layout_toRightOf="@+id/textView10"
-        android:layout_toEndOf="@+id/textView10" />
+        android:layout_alignRight="@+id/edtCredit"
+        android:layout_alignEnd="@+id/edtCredit" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -46,11 +34,11 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/edtCredit"
-        android:layout_below="@+id/edtCardName"
+        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/edtCardName"
-        android:layout_alignStart="@+id/edtCardName" />
+        android:layout_alignLeft="@+id/spnBankName"
+        android:layout_alignStart="@+id/spnBankName" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,7 +46,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/credit"
         android:id="@+id/textView12"
-        android:layout_alignBottom="@+id/edtCredit"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -69,6 +57,7 @@
         android:layout_above="@+id/btnSubmit"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginBottom="26dp"
         android:layout_toRightOf="@+id/textView13"
         android:layout_toEndOf="@+id/textView13" />
 
@@ -102,27 +91,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/card_registration"
-        android:id="@+id/textView14"
-        android:layout_above="@+id/edtCardName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="49dp"
-        android:textColor="#0e7fbb"
-        android:textSize="40px"
-        android:textStyle="bold" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
         android:id="@+id/edtReceiptDate"
-        android:layout_above="@+id/spnBankName"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/edtCredit"
         android:layout_toRightOf="@+id/textView11"
         android:layout_toEndOf="@+id/textView11" />
 
@@ -132,7 +107,36 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/day_renovation_credit"
         android:id="@+id/textView11"
-        android:layout_alignTop="@+id/edtReceiptDate"
+        android:layout_alignBottom="@+id/edtReceiptDate"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/edtCardName">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_gravity="center_horizontal"
+            android:background="@mipmap/card"
+            android:minHeight="180px"
+            android:minWidth="180px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_registration"
+            android:id="@+id/textView37"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#0e7fbb"
+            android:textAlignment="center"
+            android:textSize="40px" />
+    </LinearLayout>
 </RelativeLayout>

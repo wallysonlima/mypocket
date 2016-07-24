@@ -24,7 +24,8 @@ public class InitialActivity extends AppCompatActivity implements InitialInterfa
 
         name = (EditText) findViewById(R.id.edtName);
         email = (EditText) findViewById(R.id.edtEmail);
-        btClean = (Button) findViewById(R.id.btClean);
+        btSubmit = (Button) findViewById(R.id.btnSubmit);
+        btClean = (Button) findViewById(R.id.btnClean);
         mPresenter = new InitialActivityPresenter(this, this.getApplicationContext());
 
         btClean.setOnClickListener( new View.OnClickListener() {
@@ -37,13 +38,16 @@ public class InitialActivity extends AppCompatActivity implements InitialInterfa
         btSubmit.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.initialRegistration();
+                if ( mPresenter.initialRegistration() ) {
+                    finish();
+                }
             }
         });
     }
 
     // Clean EditText
     public void cleanEditText() {
+        name.requestFocus();
         name.setText(null);
         email.setText(null);
     }

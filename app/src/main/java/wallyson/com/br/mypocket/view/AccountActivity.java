@@ -38,13 +38,15 @@ public class AccountActivity extends AppCompatActivity implements AccountInterfa
         btnSubmit.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.accountRegistration();
+                if( mPresenter.accountRegistration() )
+                    finish();
             }
         });
     }
 
     // Method for clean all editText
     public void clean() {
+        bankName.requestFocus();
         bankName.setText(null);
         receiptDate.setText(null);
         balance.setText(null);
@@ -54,8 +56,8 @@ public class AccountActivity extends AppCompatActivity implements AccountInterfa
         return bankName.getText().toString();
     }
 
-    public Double getBalance() {
-        return Double.parseDouble(balance.getText().toString());
+    public String getBalance() {
+        return balance.getText().toString();
     }
 
     public String getReceiptDate() {

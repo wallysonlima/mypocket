@@ -60,10 +60,10 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("create table " + TABLE_CONFIGURATION_ACCOUNT +
                     "(bankName text not null primary key, " +
                     "balance real not null, " +
-                    "receiptDate text not null");
+                    "receiptDate text not null);");
 
         db.execSQL("create table " + TABLE_CONFIGURATION_CARD +
-                    "cardName text not null primary key, " +
+                    "(cardName text not null primary key, " +
                     "credit real not null, " +
                     "receiptDate text not null);");
     }

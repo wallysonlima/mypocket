@@ -24,51 +24,36 @@ public class DeleteActivityPresenter {
         c = context;
     }
 
-    public String[] getAllCardName() {
-        ArrayList<Card> ca;
-        CardDao card;
-        card = new CardDao(c);
-        ca = card.selectCard();
-
-        String[] arrayCard = new String[ca.size()];
+    public ArrayList<String> getAllCardName() {
+        CardDao card = new CardDao(c);
+        ArrayList<Card> ca = card.selectCard();
+        ArrayList<String> arrayCard = new ArrayList<>();
 
         for ( Card a: ca ) {
-            int i = 0;
-            arrayCard[i] = a.getCardName();
-            i++;
+            arrayCard.add( a.getCardName() );
         }
-
         return arrayCard;
     }
 
-    public String[] getAllAccountName() {
-        ArrayList<Account> ac;
-        AccountDao account;
-        account = new AccountDao(c);
-        ac = account.selectAccount();
-        String[] arrayAccount = new String[ac.size()];
+    public ArrayList<String> getAllAccountName() {
+        AccountDao account = new AccountDao(c);
+        ArrayList<Account> ac =account.selectAccount();
+        ArrayList<String> arrayAccount = new ArrayList<>();
 
         for ( Account a: ac ) {
-            int i = 0;
-            arrayAccount[i] = a.getBankName();
-            i++;
+            arrayAccount.add( a.getBankName() );
         }
 
         return arrayAccount;
     }
 
-    public String[] getAllSpendingName() {
-        ArrayList<Spending> sp;
-        SpendingDao spending;
-        spending = new SpendingDao(c);
-        sp = spending.selectSpending();
-
-        String[] arraySpending = new String[sp.size()];
+    public ArrayList<String> getAllSpendingName() {
+        SpendingDao spending = new SpendingDao(c);
+        ArrayList<Spending> sp = spending.selectSpending();
+        ArrayList<String> arraySpending = new ArrayList<>();
 
         for ( Spending s: sp ) {
-            int i = 0;
-            arraySpending[i] = s.getDescription() + "-" + String.valueOf(s.getSpendingCod());
-            i++;
+            arraySpending.add( s.getDescription() + "-" + String.valueOf(s.getSpendingCod()) );
         }
 
         return arraySpending;

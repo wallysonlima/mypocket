@@ -19,20 +19,24 @@ public class ConfigurationCardDao {
     }
 
     public ConfigurationCard selectOnceConfigurationCard(String cardName) {
-        SQLiteDatabase db = database.getWritableDatabase();
+        SQLiteDatabase db = database.getReadableDatabase();
         String sql = "select * from " + Database.TABLE_CONFIGURATION_CARD + " where cardName = " + cardName + ";";
         Cursor result = db.rawQuery(sql, null);
+        db.close();
+
         return (new ConfigurationCard( result.getString(0), result.getString(1), result.getDouble(2) ) );
     }
 
     public boolean insertConfigurationCard(String cardName, double credit, String receiptDate) {
         SQLiteDatabase db = database.getWritableDatabase();
         ContentValues content = new ContentValues();
-        content.put("bankName", cardName);
+        content.put("cardName", cardName);
         content.put("credit", credit);
         content.put("receiptDate", receiptDate);
 
         long result = db.insert(Database.TABLE_CONFIGURATION_CARD, null, content);
+
+        db.close();
 
         if ( result == -1 )
             return false;
@@ -49,6 +53,8 @@ public class ConfigurationCardDao {
         content.put("receiptDate", configCard.getReceiptDate() );
         int result = db.update(Database.TABLE_CONFIGURATION_CARD, content, "cardName = ?", new String[] {configCard.getCardName()} );
 
+        db.close();
+
         if ( result > 0 ) {
             return true;
         } else {
@@ -56,8 +62,9 @@ public class ConfigurationCardDao {
         }
     }
 
+    /*
     public Integer deleteConfigurationCard(String cardName) {
-        SQLiteDatabase db = database.getWritableDatabase();
+        SQLiteDatabase db = database.getReadableDatabase();
         return db.delete(Database.TABLE_CONFIGURATION_CARD, "cardName = ?", new String[] {cardName} );
-    }
+    }*/
 }

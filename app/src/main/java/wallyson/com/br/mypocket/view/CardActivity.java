@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import wallyson.com.br.mypocket.R;
 import wallyson.com.br.mypocket.presenter.CardActivityPresenter;
 import wallyson.com.br.mypocket.presenter.CardInterface;
@@ -49,7 +51,7 @@ public class CardActivity extends AppCompatActivity implements CardInterface {
     }
 
     public void addElementSpinner() {
-        String[] arrayAccountName = mPresenter.getAllAccountName();
+        ArrayList<String> arrayAccountName = mPresenter.getAllAccountName();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayAccountName);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -57,6 +59,7 @@ public class CardActivity extends AppCompatActivity implements CardInterface {
     }
 
     public void clean() {
+        cardName.requestFocus();
         cardName.setText(null);
         credit.setText(null);
         receiptDate.setText(null);
@@ -67,8 +70,8 @@ public class CardActivity extends AppCompatActivity implements CardInterface {
         return cardName.getText().toString();
     }
 
-    public Double getCredit() {
-        return Double.parseDouble(credit.getText().toString());
+    public String getCredit() {
+        return credit.getText().toString();
     }
 
     public String getReceiptDate() {

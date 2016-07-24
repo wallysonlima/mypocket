@@ -105,8 +105,8 @@
         android:layout_above="@+id/edtBankName">
 
         <ImageView
-            android:layout_width="273dp"
-            android:layout_height="142dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:id="@+id/imageView6"
             android:layout_gravity="center_horizontal"
             android:background="@mipmap/account_bank" />

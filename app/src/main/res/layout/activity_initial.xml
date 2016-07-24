@@ -95,7 +95,11 @@
             android:id="@+id/imageView7"
             android:layout_gravity="center_horizontal"
             android:background="@mipmap/logo"
-            android:layout_weight="0.58" />
+            android:layout_weight="0.58"
+            android:minHeight="180px"
+            android:minWidth="180px"
+            android:maxHeight="180px"
+            android:maxWidth="180px" />
 
         <TextView
             android:layout_width="wrap_content"

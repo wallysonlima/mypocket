@@ -17,21 +17,24 @@ public class InitialActivityPresenter {
         c = context;
     }
 
-    public void initialRegistration() {
+    public boolean initialRegistration() {
         String name = mView.getName();
         String email = mView.getEmail();
         boolean result;
 
-        if ( name.equals(null) && email.equals(null) ) {
+        if ( name.equals("") || email.equals("") ) {
             mView.registrationError();
+            return false;
         } else {
             user = new UserDao(c);
             result = user.insertUser(name, email);
 
             if ( result == true ) {
                 mView.successfullyInserted();
+                return true;
             } else {
                 mView.DatabaseInsertError();
+                return false;
             }
         }
     }

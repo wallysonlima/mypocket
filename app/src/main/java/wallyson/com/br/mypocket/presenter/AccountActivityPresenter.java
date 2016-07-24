@@ -16,49 +16,49 @@ public class AccountActivityPresenter {
     UserDao userDao;
     AccountDao account;
     User user;
-    boolean result;
+    boolean result1, result2;
 
     public AccountActivityPresenter(AccountInterface view, Context context) {
         mView = view;
         c = context;
     }
 
-    public void accountRegistration() {
+    public boolean accountRegistration() {
         String bankName = mView.getBankName();
-        Double balance = mView.getBalance();
+        String balance = mView.getBalance();
 
-        if ( bankName.equals(null) && balance == 0.0 ) {
+        if ( bankName.equals("") || balance.equals("") ) {
             mView.registrationError();
+            return false;
         } else {
             account = new AccountDao(c);
             userDao = new UserDao(c);
             user = userDao.selectUser();
-            result = account.insertAccount(bankName, balance, user.getCodUser() );
+            result1 = account.insertAccount(bankName, Double.parseDouble(balance), user.getCodUser() );
 
-            configurationAccountRegistration();
+            if( result1 )
+                configurationAccountRegistration();
 
-            if ( result ) {
+            if ( result1 && result2 ) {
                 mView.successfullyInserted();
+                return true;
             } else {
                 mView.databaseInsertError();
+                return false;
             }
         }
     }
 
     public void configurationAccountRegistration() {
         String bankName = mView.getBankName();
-        Double balance = mView.getBalance();
+        String balance = mView.getBalance();
         String receiptDate = mView.getReceiptDate();
 
-        if (receiptDate.equals(null)) {
+        if (receiptDate.equals("")) {
             mView.registrationError();
         } else {
             ConfigurationAccountDao config = new ConfigurationAccountDao(c);
-            result = config.insertConfigurationAccount(bankName, balance, receiptDate);
-
-            if (!result) {
-                mView.databaseInsertError();
-            }
+            result2 = config.insertConfigurationAccount(bankName, Double.parseDouble(balance), receiptDate);
         }
     }
 }

@@ -25,9 +25,10 @@ public class AccountDao {
         ContentValues content = new ContentValues();
         content.put("bankName", bankName);
         content.put("balance", balance);
-        content.put("codeUser", codUser);
+        content.put("codUser", codUser);
 
         long result = db.insert(Database.TABLE_ACCOUNT, null, content);
+        db.close();
 
         if ( result == -1 )
             return false;
@@ -37,23 +38,30 @@ public class AccountDao {
 
     public ArrayList<Account> selectAccount() {
         ArrayList<Account> account = new ArrayList<>();
-        SQLiteDatabase db = database.getWritableDatabase();
-        String sql = "select * from " + Database.TABLE_ACCOUNT;
+        SQLiteDatabase db = database.getReadableDatabase();
+        String sql = "select * from " + Database.TABLE_ACCOUNT + ";";
         Cursor result = db.rawQuery(sql, null);
 
         while ( result.moveToNext() ) {
             Account ac = new Account( result.getString(0), result.getDouble(1), result.getInt(2) );
             account.add(ac);
         }
+        result.close();
+        db.close();
 
         return account;
     }
 
     public Account selectOnceAccount(String bankName) {
-        SQLiteDatabase db = database.getWritableDatabase();
+        SQLiteDatabase db = database.getReadableDatabase();
         String sql = "select * from " + Database.TABLE_ACCOUNT + "where bankName = " + bankName + ";";
         Cursor result = db.rawQuery(sql, null);
-        return (new Account( result.getString(0), result.getDouble(1), result.getInt(2) ));
+        result.moveToFirst();
+        Account account = new Account( result.getString(0), result.getDouble(1), result.getInt(2) );
+        result.close();
+        db.close();
+
+        return account;
     }
 
     public boolean updateBalanceAccount(Account account) {
@@ -65,6 +73,8 @@ public class AccountDao {
         content.put("codUser", account.getCodUser() );
         int result = db.update(Database.TABLE_ACCOUNT, content, "bankName = ?", new String[] {account.getBankName()} );
 
+        db.close();
+
         if ( result > 0 ) {
             return true;
         } else {
@@ -73,8 +83,11 @@ public class AccountDao {
     }
 
     public Integer deleteAccount(String bankName) {
-        SQLiteDatabase db = database.getWritableDatabase();
-        return db.delete(Database.TABLE_ACCOUNT, "bankName = ?", new String[] {bankName} );
+        SQLiteDatabase db = database.getReadableDatabase();
+        int result = db.delete(Database.TABLE_ACCOUNT, "bankName = ?", new String[] {bankName} );
+        db.close();
+
+        return result;
     }
 
 }

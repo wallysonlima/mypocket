@@ -27,7 +27,7 @@ public class SpendingDao {
 
     public ArrayList<Spending> selectSpending() {
         ArrayList<Spending> spending = new ArrayList<>();
-        SQLiteDatabase db = database.getWritableDatabase();
+        SQLiteDatabase db = database.getReadableDatabase();
         String sql = "select * from " + Database.TABLE_SPENDING + ";";
         Cursor result = db.rawQuery(sql, null);
 
@@ -37,12 +37,14 @@ public class SpendingDao {
             spending.add(sp);
         }
 
+        db.close();
+
         return spending;
     }
 
     public ArrayList<Spending> selectSpendingMonthYear(String monthYear) {
         ArrayList<Spending> spending = new ArrayList<>();
-        SQLiteDatabase db = database.getWritableDatabase();
+        SQLiteDatabase db = database.getReadableDatabase();
         String sql = "select * from " + Database.TABLE_SPENDING + "where emissionDate LIKE '??/'" + monthYear;
         Cursor result = db.rawQuery(sql, null);
 
@@ -52,6 +54,7 @@ public class SpendingDao {
             spending.add(sp);
         }
 
+        db.close();
         return spending;
     }
 
@@ -70,6 +73,8 @@ public class SpendingDao {
 
         long result = db.insert(Database.TABLE_SPENDING, null, content);
 
+        db.close();
+
         if ( result == -1 )
             return false;
         else
@@ -77,8 +82,11 @@ public class SpendingDao {
     }
 
     public Integer deleteSpending(int spendingCod) {
-        SQLiteDatabase db = database.getWritableDatabase();
-        return db.delete(Database.TABLE_SPENDING, "spendingCod = ?", new String[] {Integer.toString(spendingCod)} );
+        SQLiteDatabase db = database.getReadableDatabase();
+        int result = db.delete(Database.TABLE_SPENDING, "spendingCod = ?", new String[] {Integer.toString(spendingCod)} );
+        db.close();
+
+        return result;
     }
 
 }

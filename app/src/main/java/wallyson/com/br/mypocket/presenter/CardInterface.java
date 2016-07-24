@@ -9,6 +9,6 @@ public interface CardInterface {
     void successfullyInserted();
     void databaseInsertError();
     String getCardName();
-    Double getCredit();
+    String getCredit();
     String getReceiptDate();
 }

@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import wallyson.com.br.mypocket.R;
 import wallyson.com.br.mypocket.presenter.DeleteActivityPresenter;
 import wallyson.com.br.mypocket.presenter.DeleteInterface;
@@ -56,7 +58,7 @@ public class DeleteActivity extends AppCompatActivity implements DeleteInterface
     }
 
     public void addAccountSpinner() {
-        String[] arrayAccountName = mPresenter.getAllAccountName();
+        ArrayList<String> arrayAccountName = mPresenter.getAllAccountName();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayAccountName);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -64,7 +66,7 @@ public class DeleteActivity extends AppCompatActivity implements DeleteInterface
     }
 
     public void addCardSpinner() {
-        String[] arrayCardName = mPresenter.getAllCardName();
+        ArrayList<String> arrayCardName = mPresenter.getAllCardName();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayCardName);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -72,7 +74,7 @@ public class DeleteActivity extends AppCompatActivity implements DeleteInterface
     }
 
     public void addSpendingSpinner() {
-        String[] arraySpendingName = mPresenter.getAllSpendingName();
+        ArrayList<String> arraySpendingName = mPresenter.getAllSpendingName();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arraySpendingName);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

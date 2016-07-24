@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mPresenter = new MainActivityPresenter(this, this.getApplicationContext() );
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (!prefs.getBoolean("firstTime", false)) {
             // <---- run your one time code here
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
             startActivity(intent);
 
             // mark first time has runned.
-            if ( mPresenter.existUser() == true ) {
+           if ( mPresenter.existUser() ) {
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putBoolean("firstTime", true);
                 editor.commit();
@@ -47,8 +49,6 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
         btnCard = (ImageButton) findViewById(R.id.btnCard);
         btnDelete = (ImageButton) findViewById(R.id.btnDelete);
         btnConfiguration = (ImageButton) findViewById(R.id.btnConfiguration);
-
-        mPresenter = new MainActivityPresenter(this, this.getApplicationContext() );
 
         btnSpending.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,24 +113,16 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
         btnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if( mPresenter.existAccount() == true && mPresenter.existCard() == true ) {
                     Intent intent = new Intent(MainActivity.this, AccountActivity.class);
                     startActivity(intent);
-                } else {
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.error_empty_account_card), Toast.LENGTH_SHORT).show();
-                }
             }
         });
 
         btnCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if( mPresenter.existAccount() == true && mPresenter.existCard() == true ) {
                     Intent intent = new Intent(MainActivity.this, CardActivity.class);
                     startActivity(intent);
-                } else {
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.error_empty_account_card), Toast.LENGTH_SHORT).show();
-                }
             }
         });
 

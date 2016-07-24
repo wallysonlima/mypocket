@@ -19,10 +19,15 @@ public class ConfigurationAccountDao {
     }
 
     public ConfigurationAccount selectOnceConfigurationAccount(String bankName) {
-        SQLiteDatabase db = database.getWritableDatabase();
+        SQLiteDatabase db = database.getReadableDatabase();
         String sql = "select * from " + Database.TABLE_CONFIGURATION_ACCOUNT + " where bankName = " + bankName + ";";
         Cursor result = db.rawQuery(sql, null);
-        return (new ConfigurationAccount( result.getString(0), result.getString(1), result.getDouble(2) ) );
+        result.moveToFirst();
+        ConfigurationAccount config = new ConfigurationAccount( result.getString(0), result.getString(1), result.getDouble(2) );
+        result.close();
+        db.close();
+
+        return config;
     }
 
     public boolean insertConfigurationAccount(String bankName, double balance, String receiptDate) {
@@ -33,6 +38,8 @@ public class ConfigurationAccountDao {
         content.put("receiptDate", receiptDate);
 
         long result = db.insert(Database.TABLE_CONFIGURATION_ACCOUNT, null, content);
+
+        db.close();
 
         if ( result == -1 )
             return false;
@@ -49,6 +56,8 @@ public class ConfigurationAccountDao {
         content.put("receiptDate", configAccount.getReceiptDate() );
         int result = db.update(Database.TABLE_CONFIGURATION_ACCOUNT, content, "bankName = ?", new String[] {configAccount.getBankName()} );
 
+        db.close();
+
         if ( result > 0 ) {
             return true;
         } else {
@@ -57,7 +66,10 @@ public class ConfigurationAccountDao {
     }
 
     public Integer deleteAccount(String bankName) {
-        SQLiteDatabase db = database.getWritableDatabase();
-        return db.delete(Database.TABLE_CONFIGURATION_ACCOUNT, "bankName = ?", new String[] {bankName} );
+        SQLiteDatabase db = database.getReadableDatabase();
+        int result = db.delete(Database.TABLE_CONFIGURATION_ACCOUNT, "bankName = ?", new String[] {bankName} );
+        db.close();
+
+        return result;
     }
 }

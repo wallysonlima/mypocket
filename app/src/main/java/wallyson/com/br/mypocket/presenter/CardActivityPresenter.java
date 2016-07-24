@@ -15,7 +15,7 @@ import wallyson.com.br.mypocket.model.Account;
 public class CardActivityPresenter {
     private CardInterface mView;
     private Context c;
-    private boolean result;
+    private boolean result1, result2;
 
     public CardActivityPresenter(CardInterface view, Context context) {
         mView = view;
@@ -24,19 +24,19 @@ public class CardActivityPresenter {
 
     public void cardRegistration() {
         String cardName = mView.getCardName();
-        Double credit = mView.getCredit();
+        String credit = mView.getCredit();
         String bankName = mView.getBankName();
 
-
-        if ( bankName.equals(null) && credit == 0.0 && cardName.equals(null) ) {
+        if ( bankName.equals("") || credit.equals("") || cardName.equals("") ) {
             mView.registrationError();
         } else {
             CardDao card = new CardDao(c);
-            result = card.insertCard(cardName, credit, bankName);
+            result1 = card.insertCard(cardName, Double.parseDouble(credit), bankName);
 
-            configurationCardRegistration();
+            if ( result1 )
+                configurationCardRegistration();
 
-            if ( result ) {
+            if ( result1 && result2 ) {
                 mView.successfullyInserted();
             } else {
                 mView.databaseInsertError();
@@ -47,34 +47,25 @@ public class CardActivityPresenter {
 
     public void configurationCardRegistration() {
         String cardName = mView.getCardName();
-        Double credit = mView.getCredit();
+        String credit = mView.getCredit();
         String receiptDate = mView.getReceiptDate();
 
-        if (receiptDate.equals(null)) {
+        if (receiptDate.equals("")) {
             mView.registrationError();
         } else {
             ConfigurationCardDao config = new ConfigurationCardDao(c);
-            result = config.insertConfigurationCard(cardName, credit, receiptDate);
-
-            if (!result) {
-                mView.databaseInsertError();
-            }
+            result2 = config.insertConfigurationCard(cardName, Double.parseDouble(credit), receiptDate);
         }
     }
 
-    public String[] getAllAccountName() {
-        ArrayList<Account> ac;
-        AccountDao account;
-        account = new AccountDao(c);
-        ac = account.selectAccount();
-        String[] arrayAccount = new String[ac.size()];
+    public ArrayList<String> getAllAccountName() {
+        AccountDao account = new AccountDao(c);
+        ArrayList<String> nameAccount = new ArrayList<>();
 
-        for ( Account a: ac ) {
-            int i = 0;
-            arrayAccount[i] = a.getBankName();
-            i++;
+        for( Account ac: account.selectAccount() ) {
+            nameAccount.add( ac.getBankName() );
         }
 
-        return arrayAccount;
+        return nameAccount;
     }
 }
