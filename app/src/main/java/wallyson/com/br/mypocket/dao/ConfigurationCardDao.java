@@ -20,11 +20,18 @@ public class ConfigurationCardDao {
 
     public ConfigurationCard selectOnceConfigurationCard(String cardName) {
         SQLiteDatabase db = database.getReadableDatabase();
-        String sql = "select * from " + Database.TABLE_CONFIGURATION_CARD + " where cardName = " + cardName + ";";
+        String sql = "select * from " + Database.TABLE_CONFIGURATION_CARD + " where cardName = '" + cardName + "';";
         Cursor result = db.rawQuery(sql, null);
+        ConfigurationCard configCard = null;
+
+        if ( result.moveToFirst() ) {
+            configCard = new ConfigurationCard( result.getString(0), result.getString(2), result.getDouble(1) );
+        }
+
+        result.close();
         db.close();
 
-        return (new ConfigurationCard( result.getString(0), result.getString(1), result.getDouble(2) ) );
+        return configCard;
     }
 
     public boolean insertConfigurationCard(String cardName, double credit, String receiptDate) {

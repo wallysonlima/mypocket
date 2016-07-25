@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import wallyson.com.br.mypocket.R;
 import wallyson.com.br.mypocket.model.ConfigurationAccount;
 import wallyson.com.br.mypocket.model.ConfigurationCard;
@@ -31,7 +33,7 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
 
         spnAccount = (Spinner) findViewById(R.id.spnAccount);
         spnCard = (Spinner) findViewById(R.id.spnCard);
-        edtBalance = (EditText) findViewById(R.id.edtAmount);
+        edtBalance = (EditText) findViewById(R.id.edtBalance);
         edtRenewalAccount = (EditText) findViewById(R.id.edtRenewalAccount);
         edtCredit = (EditText) findViewById(R.id.edtCredit);
         edtRenewalCredit = (EditText) findViewById(R.id.edtRenewalCredit);
@@ -99,9 +101,8 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
         });
     }
 
-
     public void addAccountSpinner() {
-        String[] arrayAccountName = mPresenter.getAllAccountName();
+        ArrayList<String> arrayAccountName = mPresenter.getAllAccountName();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayAccountName);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -109,7 +110,7 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
     }
 
      public void addCardSpinner() {
-        String[] arrayAccountName = mPresenter.getAllAccountName();
+        ArrayList<String> arrayAccountName = mPresenter.getAllCardName();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayAccountName);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -146,5 +147,9 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
 
     public void databaseInsertError() {
         Toast.makeText(ConfigurationActivity.this, getResources().getString(R.string.database_insert_error), Toast.LENGTH_SHORT).show();
+    }
+
+    public void registrationError() {
+        Toast.makeText(ConfigurationActivity.this, getResources().getString(R.string.registration_error), Toast.LENGTH_SHORT).show();
     }
 }

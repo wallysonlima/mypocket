@@ -45,7 +45,7 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
         setContentView(R.layout.activity_spending);
 
         description = (EditText) findViewById(R.id.edtDescription);
-        amount = (EditText) findViewById(R.id.edtAmount);
+        amount = (EditText) findViewById(R.id.edtBalance);
         emissionDate = (EditText) findViewById(R.id.edtEmissionDate);
         spCategory = (Spinner) findViewById(R.id.spnCategory);
         spAccount = (Spinner) findViewById(R.id.spnAccount);

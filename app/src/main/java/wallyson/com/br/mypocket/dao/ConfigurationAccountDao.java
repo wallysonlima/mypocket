@@ -20,10 +20,14 @@ public class ConfigurationAccountDao {
 
     public ConfigurationAccount selectOnceConfigurationAccount(String bankName) {
         SQLiteDatabase db = database.getReadableDatabase();
-        String sql = "select * from " + Database.TABLE_CONFIGURATION_ACCOUNT + " where bankName = " + bankName + ";";
+        String sql = "select * from " + Database.TABLE_CONFIGURATION_ACCOUNT + " where bankName = '" + bankName + "';";
         Cursor result = db.rawQuery(sql, null);
-        result.moveToFirst();
-        ConfigurationAccount config = new ConfigurationAccount( result.getString(0), result.getString(1), result.getDouble(2) );
+        ConfigurationAccount config = null;
+
+        if ( result.moveToFirst() ) {
+            config = new ConfigurationAccount( result.getString(0), result.getString(2), result.getDouble(1) );
+        }
+
         result.close();
         db.close();
 

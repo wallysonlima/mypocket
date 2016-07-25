@@ -18,8 +18,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="30dp"
         android:layout_toEndOf="@+id/textView19"
-        android:layout_alignLeft="@+id/edtAmount"
-        android:layout_alignStart="@+id/edtAmount" />
+        android:layout_alignLeft="@+id/edtBalance"
+        android:layout_alignStart="@+id/edtBalance" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/edtAmount"
+        android:id="@+id/edtBalance"
         android:layout_below="@+id/edtDescription"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -49,7 +49,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/amount"
         android:id="@+id/textView20"
-        android:layout_alignBottom="@+id/edtAmount"
+        android:layout_alignBottom="@+id/edtBalance"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -59,7 +59,7 @@
         android:inputType="date"
         android:ems="10"
         android:id="@+id/edtEmissionDate"
-        android:layout_below="@+id/edtAmount"
+        android:layout_below="@+id/edtBalance"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/textView21"

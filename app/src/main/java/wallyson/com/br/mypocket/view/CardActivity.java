@@ -44,7 +44,8 @@ public class CardActivity extends AppCompatActivity implements CardInterface {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.cardRegistration();
+                if ( mPresenter.cardRegistration() )
+                    finish();
             }
         });
         addElementSpinner();

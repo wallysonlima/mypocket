@@ -25,47 +25,39 @@ public class ConfigurationActivityPresenter {
         c = context;
     }
 
-    public ConfigurationCard getConfCard(String cardName) {
-        ConfigurationCardDao confCard = new ConfigurationCardDao(c);
-        return confCard.selectOnceConfigurationCard(cardName);
-    }
-
-    public String[] getAllCardName() {
-        ArrayList<Card> ca;
-        CardDao card;
-        card = new CardDao(c);
-        ca = card.selectCard();
-
-        String[] arrayCard = new String[ca.size()];
-
-        for ( Card a: ca ) {
-            int i = 0;
-            arrayCard[i] = a.getCardName();
-            i++;
-        }
-
-        return arrayCard;
-    }
-
     public ConfigurationAccount getConfAccount(String bankName) {
         ConfigurationAccountDao confAccount = new ConfigurationAccountDao(c);
         return confAccount.selectOnceConfigurationAccount(bankName);
     }
 
-    public String[] getAllAccountName() {
-        ArrayList<Account> ac;
-        AccountDao account;
-        account = new AccountDao(c);
-        ac = account.selectAccount();
-        String[] arrayAccount = new String[ac.size()];
+    public ConfigurationCard getConfCard(String cardName) {
+        ConfigurationCardDao confCard = new ConfigurationCardDao(c);
+        return confCard.selectOnceConfigurationCard(cardName);
+    }
+
+    public ArrayList<String> getAllAccountName() {
+        AccountDao account = new AccountDao(c);;
+        ArrayList<Account> ac = account.selectAccount();
+
+        ArrayList<String> arrayAccount = new ArrayList<>();
 
         for ( Account a: ac ) {
-            int i = 0;
-            arrayAccount[i] = a.getBankName();
-            i++;
+            arrayAccount.add( a.getBankName() );
         }
 
         return arrayAccount;
+    }
+
+    public ArrayList<String> getAllCardName() {
+        CardDao card = new CardDao(c);
+        ArrayList<Card> ca =card.selectCard();
+        ArrayList<String> arrayCard = new ArrayList<>();
+
+        for ( Card a: ca ) {
+            arrayCard.add( a.getCardName() );
+        }
+
+        return arrayCard;
     }
 
     public void registrationConfigurationAccount() {
@@ -74,12 +66,16 @@ public class ConfigurationActivityPresenter {
         String renewalBalance = mView.getRenewalAccount();
         String balance = mView.getBalance();
 
-        boolean result = confAccount.updateConfigurationAccount( new ConfigurationAccount(account, renewalBalance, Double.parseDouble(balance)));
+        if ( !account.equals("") && !renewalBalance.equals("") && !balance.equals("") ) {
+            boolean result = confAccount.updateConfigurationAccount(new ConfigurationAccount(account, renewalBalance, Double.parseDouble(balance)));
 
-        if ( result ) {
-            mView.updatedSuccessfully();
-        } else {
-            mView.databaseInsertError();
+            if (result) {
+                mView.updatedSuccessfully();
+            } else {
+                mView.databaseInsertError();
+            }
+        }else {
+            mView.registrationError();
         }
     }
 
@@ -89,12 +85,16 @@ public class ConfigurationActivityPresenter {
         String renewalCredit = mView.getRenewalCredit();
         String credit = mView.getCredit();
 
-        boolean result = confCard.updateConfigurationCard( new ConfigurationCard(card, renewalCredit, Double.parseDouble(credit) ) );
+        if( !card.equals("") && !renewalCredit.equals("") && !credit.equals("") ) {
+            boolean result = confCard.updateConfigurationCard(new ConfigurationCard(card, renewalCredit, Double.parseDouble(credit)));
 
-        if ( result ) {
-            mView.updatedSuccessfully();
-        } else {
-            mView.databaseInsertError();
+            if (result) {
+                mView.updatedSuccessfully();
+            } else {
+                mView.databaseInsertError();
+            }
+        } else{
+            mView.registrationError();
         }
     }
 }

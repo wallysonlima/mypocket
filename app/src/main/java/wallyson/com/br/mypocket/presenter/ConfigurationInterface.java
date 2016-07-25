@@ -12,5 +12,6 @@ public interface ConfigurationInterface {
     String getRenewalCredit();
     void updatedSuccessfully();
     void databaseInsertError();
+    void registrationError();
 
 }

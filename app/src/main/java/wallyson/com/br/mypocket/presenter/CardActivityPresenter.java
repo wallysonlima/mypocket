@@ -22,13 +22,14 @@ public class CardActivityPresenter {
         c = context;
     }
 
-    public void cardRegistration() {
+    public boolean cardRegistration() {
         String cardName = mView.getCardName();
         String credit = mView.getCredit();
         String bankName = mView.getBankName();
 
         if ( bankName.equals("") || credit.equals("") || cardName.equals("") ) {
             mView.registrationError();
+            return false;
         } else {
             CardDao card = new CardDao(c);
             result1 = card.insertCard(cardName, Double.parseDouble(credit), bankName);
@@ -38,8 +39,10 @@ public class CardActivityPresenter {
 
             if ( result1 && result2 ) {
                 mView.successfullyInserted();
+                return true;
             } else {
                 mView.databaseInsertError();
+                return false;
             }
         }
 
