@@ -10,6 +10,13 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.logging.Formatter;
+
 import wallyson.com.br.mypocket.R;
 import wallyson.com.br.mypocket.presenter.SpendingActivityPresenter;
 import wallyson.com.br.mypocket.presenter.SpendingInterface;
@@ -20,24 +27,7 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
     private RadioButton rbDebit, rbCard;
     private Button btnClean, btnSubmit;
     private SpendingActivityPresenter mPresenter;
-    private final String[] arrayCategory = {
-            getResources().getString(R.string.auto_transport),
-            getResources().getString(R.string.bills),
-            getResources().getString(R.string.business_services),
-            getResources().getString(R.string.education),
-            getResources().getString(R.string.entertainment),
-            getResources().getString(R.string.food_dining),
-            getResources().getString(R.string.gifts_donations),
-            getResources().getString(R.string.health_fitness),
-            getResources().getString(R.string.income),
-            getResources().getString(R.string.investments),
-            getResources().getString(R.string.kids),
-            getResources().getString(R.string.other),
-            getResources().getString(R.string.personal_care),
-            getResources().getString(R.string.shopping),
-            getResources().getString(R.string.taxes),
-            getResources().getString(R.string.travel),
-    };
+    private Date date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +50,11 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
         addAccountSpinner();
         addCardSpinner();
 
+        date = new Date(System.currentTimeMillis());
+        SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
+        emissionDate.setText(formater.format(date));
+        emissionDate.setEnabled(false);
+
         btnClean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,30 +65,49 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.SpendingRegistration();
-                mPresenter.Debiting();
+                if ( mPresenter.spendingRegistration() )
+                    finish();
             }
         });
     }
 
     public void clean() {
+        description.requestFocus();
         description.setText(null);
         amount.setText(null);
         emissionDate.setText(null);
         spCategory.setSelection(0);
         spAccount.setSelection(0);
         spCard.setSelection(0);
-        rbDebit.setSelected(true);
+        rbDebit.setChecked(true);
     }
 
     public void addCategorySpinner() {
+        final String[] arrayCategory = {
+                this.getResources().getString(R.string.auto_transport),
+                this.getResources().getString(R.string.bills),
+                this.getResources().getString(R.string.business_services),
+                this.getResources().getString(R.string.education),
+                this.getResources().getString(R.string.entertainment),
+                this.getResources().getString(R.string.food_dining),
+                this.getResources().getString(R.string.gifts_donations),
+                this.getResources().getString(R.string.health_fitness),
+                this.getResources().getString(R.string.income),
+                this.getResources().getString(R.string.investments),
+                this.getResources().getString(R.string.kids),
+                this.getResources().getString(R.string.other),
+                this.getResources().getString(R.string.personal_care),
+                this.getResources().getString(R.string.shopping),
+                this.getResources().getString(R.string.taxes),
+                this.getResources().getString(R.string.travel)
+        };
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayCategory);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spAccount.setAdapter(adapter);
+        spCategory.setAdapter(adapter);
     }
 
     public void addAccountSpinner() {
-        String[] arrayAccountName = mPresenter.getAllAccountName();
+        ArrayList<String> arrayAccountName = mPresenter.getAllAccountName();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayAccountName);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -101,7 +115,7 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
     }
 
     public void addCardSpinner() {
-        String[] arrayCardName = mPresenter.getAllCardName();
+        ArrayList<String>arrayCardName = mPresenter.getAllCardName();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayCardName);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -112,8 +126,8 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
         return description.getText().toString();
     }
 
-    public Float getAmount() {
-        return Float.parseFloat( amount.getText().toString() );
+    public String getAmount() {
+        return amount.getText().toString();
     }
 
     public String getEmissionDate() {
@@ -145,5 +159,9 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
 
     public void databaseInsertError() {
         Toast.makeText(SpendingActivity.this, getResources().getString(R.string.database_insert_error), Toast.LENGTH_SHORT).show();
+    }
+
+    public void registrationError() {
+        Toast.makeText(SpendingActivity.this, getResources().getString(R.string.registration_error), Toast.LENGTH_SHORT).show();
     }
 }

@@ -54,7 +54,7 @@ public class AccountDao {
 
     public Account selectOnceAccount(String bankName) {
         SQLiteDatabase db = database.getReadableDatabase();
-        String sql = "select * from " + Database.TABLE_ACCOUNT + "where bankName = " + bankName + ";";
+        String sql = "select * from " + Database.TABLE_ACCOUNT + " where bankName = '" + bankName + "';";
         Cursor result = db.rawQuery(sql, null);
         result.moveToFirst();
         Account account = new Account( result.getString(0), result.getDouble(1), result.getInt(2) );

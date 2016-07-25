@@ -42,7 +42,7 @@ public class CardDao {
 
     public Card selectOnceCard(String cardName) {
         SQLiteDatabase db = database.getReadableDatabase();
-        String sql = "select * from " + Database.TABLE_CARD + " where cardName = " + cardName + ";";
+        String sql = "select * from " + Database.TABLE_CARD + " where cardName = '" + cardName + "';";
         Cursor result = db.rawQuery(sql, null);
         result.moveToFirst();
         Card card = new Card( result.getString(0), result.getDouble(1), result.getString(2) );
