@@ -83,7 +83,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignLeft="@+id/edtEmissionDate"
-        android:layout_alignStart="@+id/edtEmissionDate" />
+        android:layout_alignStart="@+id/edtEmissionDate"
+        android:layout_marginTop="10dp"
+        android:background="#525252" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -103,7 +105,9 @@
         android:layout_alignRight="@+id/spnCategory"
         android:layout_alignEnd="@+id/spnCategory"
         android:layout_alignLeft="@+id/spnCategory"
-        android:layout_alignStart="@+id/spnCategory" />
+        android:layout_alignStart="@+id/spnCategory"
+        android:layout_marginTop="10dp"
+        android:background="#525252" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -123,7 +127,9 @@
         android:layout_alignRight="@+id/spnAccount"
         android:layout_alignEnd="@+id/spnAccount"
         android:layout_alignLeft="@+id/spnAccount"
-        android:layout_alignStart="@+id/spnAccount" />
+        android:layout_alignStart="@+id/spnAccount"
+        android:layout_marginTop="10dp"
+        android:background="#525252" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -168,8 +174,8 @@
         android:layout_alignParentEnd="true" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:id="@+id/imageView3"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"

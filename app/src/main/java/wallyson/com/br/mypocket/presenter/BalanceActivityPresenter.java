@@ -35,29 +35,23 @@ public class BalanceActivityPresenter {
         return String.valueOf( ca.getCredit() );
     }
 
-    public String[] getAllCardName() {
-        ArrayList<Card> ca;
-        ca = card.selectCard();
-        String[] arrayCard = new String[ca.size()];
+    public ArrayList<String> getAllCardName() {
+        ArrayList<Card> ca = card.selectCard();
+        ArrayList<String> arrayCard = new ArrayList<>();
 
         for ( Card a: ca ) {
-            int i = 0;
-            arrayCard[i] = a.getCardName();
-            i++;
+            arrayCard.add(a.getCardName());
         }
 
         return arrayCard;
     }
 
-    public String[] getAllAccountName() {
-        ArrayList<Account> ac;
-        ac = account.selectAccount();
-        String[] arrayAccount = new String[ac.size()];
+    public ArrayList<String> getAllAccountName() {
+        ArrayList<Account> ac = account.selectAccount();
+        ArrayList<String> arrayAccount = new ArrayList<>();
 
         for ( Account a: ac ) {
-            int i = 0;
-            arrayAccount[i] = a.getBankName();
-            i++;
+            arrayAccount.add( a.getBankName() );
         }
 
         return arrayAccount;

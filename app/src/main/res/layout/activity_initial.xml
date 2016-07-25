@@ -90,8 +90,8 @@
         android:layout_above="@+id/edtEmail">
 
         <ImageView
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:layout_width="120dp"
+            android:layout_height="100dp"
             android:id="@+id/imageView7"
             android:layout_gravity="center_horizontal"
             android:background="@mipmap/logo"

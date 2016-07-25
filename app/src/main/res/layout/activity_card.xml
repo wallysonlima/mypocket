@@ -59,7 +59,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="26dp"
         android:layout_toRightOf="@+id/textView13"
-        android:layout_toEndOf="@+id/textView13" />
+        android:layout_toEndOf="@+id/textView13"
+        android:background="#525252" />
 
     <TextView
         android:layout_width="wrap_content"

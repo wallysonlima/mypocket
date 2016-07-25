@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+
 import wallyson.com.br.mypocket.R;
 import wallyson.com.br.mypocket.presenter.BalanceActivityPresenter;
 import wallyson.com.br.mypocket.presenter.BalanceInterface;
@@ -59,7 +61,7 @@ public class BalanceActivity extends AppCompatActivity implements BalanceInterfa
 
 
     public void addAccountSpinner() {
-        String[] arrayAccountName = mPresenter.getAllAccountName();
+        ArrayList<String> arrayAccountName = mPresenter.getAllAccountName();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayAccountName);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -67,7 +69,7 @@ public class BalanceActivity extends AppCompatActivity implements BalanceInterfa
     }
 
     public void addCardSpinner() {
-        String[] arrayCardName = mPresenter.getAllCardName();
+        ArrayList<String> arrayCardName = mPresenter.getAllCardName();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayCardName);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

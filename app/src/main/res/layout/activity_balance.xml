@@ -19,7 +19,8 @@
         android:layout_marginTop="188dp"
         android:layout_toEndOf="@+id/textView15"
         android:layout_alignLeft="@+id/spnCard"
-        android:layout_alignStart="@+id/spnCard" />
+        android:layout_alignStart="@+id/spnCard"
+        android:background="#525252" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,8 +39,8 @@
         android:layout_alignTop="@+id/textView26"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/textView26"
-        android:layout_toEndOf="@+id/textView26" />
+        android:layout_toEndOf="@+id/textView26"
+        android:background="#525252" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -72,9 +73,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/balance"
         android:id="@+id/textView27"
-        android:layout_alignTop="@+id/edtBalance"
-        android:layout_alignRight="@+id/textView15"
-        android:layout_alignEnd="@+id/textView15" />
+        android:layout_alignBottom="@+id/edtBalance"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -95,7 +96,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/credit"
         android:id="@+id/textView28"
-        android:layout_below="@+id/spnCard"
+        android:layout_alignBottom="@+id/edtCredit"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -123,6 +124,7 @@
             android:layout_gravity="center_horizontal"
             android:textColor="#0e7fbb"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textAlignment="center" />
     </LinearLayout>
 </RelativeLayout>

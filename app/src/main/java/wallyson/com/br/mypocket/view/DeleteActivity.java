@@ -24,6 +24,8 @@ public class DeleteActivity extends AppCompatActivity implements DeleteInterface
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete);
 
+        mPresenter = new DeleteActivityPresenter(this, this.getApplicationContext());
+
         spnCard = (Spinner) findViewById(R.id.spnDeleteCard);
         spnAccount = (Spinner) findViewById(R.id.spnDeleteAccount);
         spnSpending = (Spinner) findViewById(R.id.spnDeleteSpending);
