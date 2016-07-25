@@ -90,8 +90,8 @@
         android:layout_above="@+id/edtEmail">
 
         <ImageView
-            android:layout_width="196dp"
-            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:id="@+id/imageView7"
             android:layout_gravity="center_horizontal"
             android:background="@mipmap/logo"
@@ -108,7 +108,7 @@
             android:textColor="#0e7fbb"
             android:text="@string/initial"
             android:textStyle="bold"
-            android:textSize="50px"
+            android:textSize="25sp"
             android:textAlignment="center" />
     </LinearLayout>
 

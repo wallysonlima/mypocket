@@ -164,13 +164,13 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
-        android:textSize="50px"
         android:textStyle="bold"
-        android:textColor="#0e7fbb" />
+        android:textColor="#0e7fbb"
+        android:textSize="25sp" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:id="@+id/imageView8"
         android:background="@mipmap/configuration"
         android:layout_alignParentTop="true"

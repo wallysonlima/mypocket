@@ -121,8 +121,8 @@
         android:layout_above="@+id/edtCardName">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:id="@+id/imageView2"
             android:layout_gravity="center_horizontal"
             android:background="@mipmap/card"
@@ -137,6 +137,6 @@
             android:layout_gravity="center_horizontal"
             android:textColor="#0e7fbb"
             android:textAlignment="center"
-            android:textSize="40px" />
+            android:textSize="20sp" />
     </LinearLayout>
 </RelativeLayout>

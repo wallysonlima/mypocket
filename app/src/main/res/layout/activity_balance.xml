@@ -122,7 +122,7 @@
             android:id="@+id/textView29"
             android:layout_gravity="center_horizontal"
             android:textColor="#0e7fbb"
-            android:textSize="40px"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
 </RelativeLayout>

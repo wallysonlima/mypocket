@@ -99,8 +99,8 @@
         android:weightSum="1">
 
         <ImageView
-            android:layout_width="184dp"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
             android:id="@+id/imageView4"
             android:layout_gravity="center_horizontal"
             android:background="@mipmap/delete2"
@@ -113,7 +113,7 @@
             android:id="@+id/textView18"
             android:layout_gravity="center_horizontal"
             android:textColor="#0e7fbb"
-            android:textSize="40px"
+            android:textSize="30sp"
             android:textStyle="bold" />
     </LinearLayout>
 

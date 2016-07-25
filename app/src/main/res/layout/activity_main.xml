@@ -11,99 +11,82 @@
     android:id="@+id/a">
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/btnSpending"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@mipmap/spending"
-        android:minWidth="180px"
-        android:minHeight="180px" />
+        android:background="@mipmap/spending" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:id="@+id/btnBalance"
         android:layout_alignBottom="@+id/btnSpending"
         android:layout_centerHorizontal="true"
         android:background="@mipmap/balance"
-        android:minWidth="200px"
-        android:minHeight="200px" />
+        android:layout_alignParentStart="false" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/btnSpendingCategory"
         android:layout_alignBottom="@+id/btnBalance"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:background="@mipmap/category"
-        android:minWidth="180px"
-        android:minHeight="180px" />
+        android:background="@mipmap/category" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/btnSpendingMonth"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@mipmap/spending_month"
-        android:minWidth="180px"
-        android:minHeight="180px" />
+        android:background="@mipmap/spending_month" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/btnSpendingYear"
         android:layout_alignTop="@+id/btnSpendingMonth"
         android:layout_centerHorizontal="true"
-        android:background="@mipmap/period"
-        android:minWidth="180px"
-        android:minHeight="180px" />
+        android:background="@mipmap/period" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/btnAccount"
         android:layout_alignTop="@+id/btnSpendingYear"
         android:layout_alignLeft="@+id/btnSpendingCategory"
         android:layout_alignStart="@+id/btnSpendingCategory"
-        android:background="@mipmap/account_bank"
-        android:minWidth="180px"
-        android:minHeight="180px" />
+        android:background="@mipmap/account_bank" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/btnCard"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@mipmap/card"
-        android:minWidth="180px"
-        android:minHeight="180px" />
+        android:background="@mipmap/card" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/btnDelete"
         android:layout_alignTop="@+id/btnCard"
         android:layout_alignLeft="@+id/btnSpendingYear"
         android:layout_alignStart="@+id/btnSpendingYear"
-        android:background="@mipmap/delete2"
-        android:minWidth="200px"
-        android:minHeight="200px" />
+        android:background="@mipmap/delete2" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/btnConfiguration"
         android:layout_alignTop="@+id/btnDelete"
         android:layout_alignLeft="@+id/btnAccount"
         android:layout_alignStart="@+id/btnAccount"
-        android:background="@mipmap/configuration"
-        android:minWidth="180px"
-        android:minHeight="180px"/>
+        android:background="@mipmap/configuration" />
 </RelativeLayout>

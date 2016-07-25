@@ -51,8 +51,8 @@ public class SpendingActivity extends AppCompatActivity implements SpendingInter
         addCardSpinner();
 
         date = new Date(System.currentTimeMillis());
-        SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
-        emissionDate.setText(formater.format(date));
+        SimpleDateFormat fo = new SimpleDateFormat("dd/MM/yyyy");
+        emissionDate.setText(fo.format(date));
         emissionDate.setEnabled(false);
 
         btnClean.setOnClickListener(new View.OnClickListener() {
