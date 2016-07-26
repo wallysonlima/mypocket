@@ -32,7 +32,7 @@ public class SpendingDao {
         Cursor result = db.rawQuery(sql, null);
 
         while ( result.moveToNext() ) {
-            Spending sp = new Spending( result.getInt(0), result.getString(1), result.getString(2), result.getFloat(3),
+            Spending sp = new Spending( result.getInt(0), result.getString(1),  result.getFloat(2), result.getString(3),
                     result.getString(4), result.getString(5), result.getString(6) );
             spending.add(sp);
         }
@@ -46,11 +46,11 @@ public class SpendingDao {
     public ArrayList<Spending> selectSpendingMonthYear(String monthYear) {
         ArrayList<Spending> spending = new ArrayList<>();
         SQLiteDatabase db = database.getReadableDatabase();
-        String sql = "select * from " + Database.TABLE_SPENDING + " where emissionDate = '??/" + monthYear + "';";
+        String sql = "select * from " + Database.TABLE_SPENDING + " where emissionDate LIKE '%" + monthYear + "';";
         Cursor result = db.rawQuery(sql, null);
 
         while ( result.moveToNext() ) {
-            Spending sp = new Spending( result.getInt(0), result.getString(1), result.getString(2), result.getFloat(3),
+            Spending sp = new Spending( result.getInt(0), result.getString(1),  result.getFloat(2), result.getString(3),
                     result.getString(4), result.getString(5), result.getString(6) );
             spending.add(sp);
         }

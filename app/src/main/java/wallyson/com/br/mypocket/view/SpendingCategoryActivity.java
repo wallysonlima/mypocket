@@ -75,21 +75,23 @@ public class SpendingCategoryActivity extends AppCompatActivity implements Spend
 
     // Create PieChart and put all Spending by Category
     public void createCategoryPieChart() {
-        ArrayList<Float> spendingForCategory = mPresenter.spendingForCategory(monthYear);
+        Float[] spendingForCategory = mPresenter.spendingForCategory(monthYear);
+        ArrayList<String> categoryWithSpending = new ArrayList<>();
         ArrayList<Entry> entries = new ArrayList<>();
         PieDataSet dataSet;
-        int i = 0;
 
-        for ( Float sp: spendingForCategory ) {
-            entries.add( new Entry(sp, i) );
-            i++;
+        for ( int i = 0; i < spendingForCategory.length; i++ ) {
+            if( spendingForCategory[i] > 0 ) {
+                entries.add( new Entry( spendingForCategory[i], i) );
+                categoryWithSpending.add(arrayCategory.get(i));
+            }
         }
 
         dataSet = new PieDataSet(entries, getResources().getString(R.string.category));
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        PieData data = new PieData(arrayCategory, dataSet);
-        pieChart.setData(data);
+        PieData data = new PieData(categoryWithSpending, dataSet);
         pieChart.setDescription(getResources().getString(R.string.spending_by_category));
+        pieChart.setData(data);
     }
 
     // Send image from PieChart for Email

@@ -12,7 +12,7 @@ public class Spending {
     private float amount;
     private String emissionDate, bankName, cardName;
 
-    public Spending(int spendingCod, String description, String category, float amount, String emissionDate,
+    public Spending(int spendingCod, String description, float amount, String emissionDate, String category,
                     String bankName, String cardName) {
         this.spendingCod = spendingCod;
         this.description = description;
