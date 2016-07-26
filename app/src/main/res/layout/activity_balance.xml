@@ -11,12 +11,12 @@
 
     <Spinner
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/spnAccount"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="250dp"
         android:layout_toEndOf="@+id/textView15"
         android:layout_alignLeft="@+id/spnCard"
         android:layout_alignStart="@+id/spnCard"
@@ -34,13 +34,15 @@
 
     <Spinner
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/spnCard"
         android:layout_alignTop="@+id/textView26"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView26"
-        android:background="#525252" />
+        android:background="#525252"
+        android:layout_alignLeft="@+id/edtCredit"
+        android:layout_alignStart="@+id/edtCredit" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,12 +85,10 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/edtCredit"
+        android:enabled="true"
         android:layout_below="@+id/spnCard"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/spnCard"
-        android:layout_alignStart="@+id/spnCard"
-        android:enabled="true" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"

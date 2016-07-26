@@ -19,8 +19,8 @@ import wallyson.com.br.mypocket.presenter.ConfigurationActivityPresenter;
 import wallyson.com.br.mypocket.presenter.ConfigurationInterface;
 
 public class ConfigurationActivity extends AppCompatActivity implements ConfigurationInterface {
-    Spinner spnAccount, spnCard;
-    EditText edtBalance, edtRenewalAccount, edtCredit, edtRenewalCredit;
+    Spinner spnAccount, spnCard, spnRenewalBalance, spnRenewalCredit;
+    EditText edtBalance, edtCredit;
     Button btnAlterAccount, btnAlterCredit;
     ConfigurationActivityPresenter mPresenter;
     ConfigurationAccount confAccount;
@@ -33,10 +33,10 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
 
         spnAccount = (Spinner) findViewById(R.id.spnAccount);
         spnCard = (Spinner) findViewById(R.id.spnCard);
+        spnRenewalBalance = (Spinner) findViewById(R.id.spnRenewalBalance);
+        spnRenewalCredit = (Spinner) findViewById(R.id.spnRenewalCredit);
         edtBalance = (EditText) findViewById(R.id.edtBalance);
-        edtRenewalAccount = (EditText) findViewById(R.id.edtRenewalAccount);
         edtCredit = (EditText) findViewById(R.id.edtCredit);
-        edtRenewalCredit = (EditText) findViewById(R.id.edtRenewalCredit);
         btnAlterAccount = (Button) findViewById(R.id.btnAlterAccount);
         btnAlterCredit = (Button) findViewById(R.id.btnAlterCredit);
         mPresenter = new ConfigurationActivityPresenter(this, this.getApplicationContext());
@@ -44,6 +44,8 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
         //Add elements in Spinner
         addAccountSpinner();
         addCardSpinner();
+        addRenewalBalanceSpinner();
+        addRenewalCreditSpinner();
 
         spnAccount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -51,10 +53,10 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
                 confAccount = mPresenter.getConfAccount(spnAccount.getSelectedItem().toString());
 
                 if (confAccount != null) {
-                    edtRenewalAccount.setText(confAccount.getReceiptDate());
+                    spnRenewalBalance.setSelection(Integer.parseInt(confAccount.getReceiptDate()));
                     edtBalance.setText(confAccount.getBalance().toString());
                 } else {
-                    edtRenewalAccount.setText("01");
+                    spnRenewalBalance.setSelection(0);
                     edtBalance.setText("0.0");
                 }
             }
@@ -71,10 +73,10 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
                 confCard = mPresenter.getConfCard(spnCard.getSelectedItem().toString());
 
                 if ( confCard != null ) {
-                    edtRenewalCredit.setText( confCard.getReceiptDate() );
+                    spnRenewalCredit.setSelection(Integer.parseInt(confCard.getReceiptDate()));
                     edtCredit.setText( confCard.getCredit().toString() );
                 } else {
-                    edtRenewalCredit.setText("01");
+                    spnRenewalCredit.setSelection(0);
                     edtCredit.setText("0.0");
                 }
             }
@@ -117,6 +119,28 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
         spnCard.setAdapter(adapter);
     }
 
+    public void addRenewalBalanceSpinner() {
+        ArrayList<String> days = new ArrayList<>();
+
+        for(int i = 1; i <= 31; i++)
+            days.add( String.valueOf(i) );
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, days);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnRenewalBalance.setAdapter(adapter);
+    }
+
+    public void addRenewalCreditSpinner() {
+        ArrayList<String> days = new ArrayList<>();
+
+        for(int i = 1; i <= 31; i++)
+            days.add( String.valueOf(i) );
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, days);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnRenewalCredit.setAdapter(adapter);
+    }
+
     public String getAccountSpinner() {
         return spnAccount.getSelectedItem().toString();
     }
@@ -125,8 +149,8 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
         return edtBalance.getText().toString();
     }
 
-    public String getRenewalAccount() {
-        return edtRenewalAccount.getText().toString();
+    public String getRenewalBalance() {
+        return spnRenewalBalance.getSelectedItem().toString();
     }
 
     public String getCardSpinner() {
@@ -138,7 +162,7 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
     }
 
     public String getRenewalCredit() {
-        return edtRenewalCredit.getText().toString();
+        return spnRenewalCredit.getSelectedItem().toString();
     }
 
     public void updatedSuccessfully() {

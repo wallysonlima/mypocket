@@ -3,18 +3,23 @@ package wallyson.com.br.mypocket.view;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import wallyson.com.br.mypocket.R;
 import wallyson.com.br.mypocket.presenter.AccountActivityPresenter;
 import wallyson.com.br.mypocket.presenter.AccountInterface;
 
 public class AccountActivity extends AppCompatActivity implements AccountInterface {
-    private EditText bankName, balance, receiptDate;
+    private EditText bankName, balance;
     private Button btnClean, btnSubmit;
     private AccountActivityPresenter mPresenter;
+    private Spinner spnRenewalBalance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +27,13 @@ public class AccountActivity extends AppCompatActivity implements AccountInterfa
         setContentView(R.layout.activity_account);
 
         bankName = (EditText) findViewById(R.id.edtBankName);
-        receiptDate = (EditText) findViewById(R.id.edtReceiptDate);
+        spnRenewalBalance = (Spinner) findViewById(R.id.spnRenewalBalance);
         balance = (EditText) findViewById(R.id.edtBalance);
         btnClean = (Button) findViewById(R.id.btnClean);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
         mPresenter = new AccountActivityPresenter(this, this.getApplicationContext() );
+
+        addRenewalBalanceSpinner();
 
         btnClean.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -48,9 +55,21 @@ public class AccountActivity extends AppCompatActivity implements AccountInterfa
     public void clean() {
         bankName.requestFocus();
         bankName.setText(null);
-        receiptDate.setText(null);
         balance.setText(null);
+        spnRenewalBalance.setSelection(0);
     }
+
+    public void addRenewalBalanceSpinner() {
+        ArrayList<String> days = new ArrayList<>();
+
+        for(int i = 1; i <= 31; i++)
+            days.add( String.valueOf(i) );
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, days);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnRenewalBalance.setAdapter(adapter);
+    }
+
 
     public String getBankName() {
         return bankName.getText().toString();
@@ -61,7 +80,7 @@ public class AccountActivity extends AppCompatActivity implements AccountInterfa
     }
 
     public String getReceiptDate() {
-        return receiptDate.getText().toString();
+        return spnRenewalBalance.getSelectedItem().toString();
     }
 
     public void registrationError() {
@@ -70,10 +89,6 @@ public class AccountActivity extends AppCompatActivity implements AccountInterfa
 
     public void successfullyInserted() {
         Toast.makeText(AccountActivity.this, getResources().getString(R.string.successfully_registration), Toast.LENGTH_SHORT).show();
-    }
-
-    public void invalidNumber() {
-        Toast.makeText(AccountActivity.this, getResources().getString(R.string.invalid_number), Toast.LENGTH_SHORT).show();
     }
 
     public void databaseInsertError() {

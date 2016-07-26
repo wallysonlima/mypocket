@@ -10,25 +10,25 @@ import wallyson.com.br.mypocket.model.Spending;
 /**
  * Created by wally on 11/07/16.
  */
-public class CategoryActivityPresenter {
-    CategoryInterface mView;
+public class SpendingCategoryActivityPresenter {
+    SpendingCategoryInterface mView;
     Context c;
     SpendingDao spendingDao;
 
-    public CategoryActivityPresenter(CategoryInterface view, Context context) {
+    public SpendingCategoryActivityPresenter(SpendingCategoryInterface view, Context context) {
         mView = view;
         c = context;
         spendingDao = new SpendingDao(c);
     }
 
     public ArrayList<Float> spendingForCategory(String monthYear) {
-        String [] category = mView.getCategory();
+        ArrayList<String> category = mView.getCategory();
         ArrayList<Spending> spending = spendingDao.selectSpendingMonthYear(monthYear);
         ArrayList<Float> spendingForCategory = new ArrayList<>();
 
         for ( Spending sp: spending ) {
-            for ( int i = 0; i < category.length; i++ ) {
-                if ( sp.getCategory().equalsIgnoreCase( category[i] ) ) {
+            for ( int i = 0; i < category.size(); i++ ) {
+                if ( sp.getCategory().equalsIgnoreCase( category.get(i) ) ) {
                     spendingForCategory.add(i, spendingForCategory.get(i) + sp.getAmount() );
                 }
             }

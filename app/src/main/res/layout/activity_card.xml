@@ -24,9 +24,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/edtCardName"
         android:layout_alignBottom="@+id/textView10"
-        android:layout_toRightOf="@+id/textView10"
         android:layout_alignRight="@+id/edtCredit"
-        android:layout_alignEnd="@+id/edtCredit" />
+        android:layout_alignEnd="@+id/edtCredit"
+        android:layout_alignLeft="@+id/edtCredit"
+        android:layout_alignStart="@+id/edtCredit" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -36,9 +37,7 @@
         android:id="@+id/edtCredit"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/spnBankName"
-        android:layout_alignStart="@+id/spnBankName" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,15 +51,13 @@
 
     <Spinner
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/spnBankName"
-        android:layout_above="@+id/btnSubmit"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="26dp"
-        android:layout_toRightOf="@+id/textView13"
-        android:layout_toEndOf="@+id/textView13"
-        android:background="#525252" />
+        android:background="#525252"
+        android:layout_below="@+id/textView11"
+        android:layout_toRightOf="@+id/textView11"
+        android:layout_toEndOf="@+id/textView11"
+        android:layout_marginTop="41dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -92,25 +89,19 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/edtReceiptDate"
-        android:layout_below="@+id/edtCredit"
-        android:layout_toRightOf="@+id/textView11"
-        android:layout_toEndOf="@+id/textView11" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/day_renovation_credit"
         android:id="@+id/textView11"
-        android:layout_alignBottom="@+id/edtReceiptDate"
+        android:layout_below="@+id/edtCredit"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/spnRenewalCredit"
+        android:layout_toLeftOf="@+id/edtCardName"
+        android:layout_toStartOf="@+id/edtCardName"
+        android:layout_marginTop="20dp" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -140,4 +131,15 @@
             android:textAlignment="center"
             android:textSize="20sp" />
     </LinearLayout>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:id="@+id/spnRenewalCredit"
+        android:layout_below="@+id/edtCredit"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/textView11"
+        android:background="#525252"
+        android:layout_marginTop="20dp" />
 </RelativeLayout>

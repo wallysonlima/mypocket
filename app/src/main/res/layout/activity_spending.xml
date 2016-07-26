@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="100dp"
         android:layout_toEndOf="@+id/textView19"
         android:layout_alignLeft="@+id/edtBalance"
         android:layout_alignStart="@+id/edtBalance" />
@@ -77,7 +77,7 @@
 
     <Spinner
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/spnCategory"
         android:layout_below="@+id/textView21"
         android:layout_alignParentRight="true"
@@ -99,7 +99,7 @@
 
     <Spinner
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/spnAccount"
         android:layout_below="@+id/spnCategory"
         android:layout_alignRight="@+id/spnCategory"
@@ -121,7 +121,7 @@
 
     <Spinner
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/spnCard"
         android:layout_below="@+id/spnAccount"
         android:layout_alignRight="@+id/spnAccount"
@@ -174,8 +174,8 @@
         android:layout_alignParentEnd="true" />
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/imageView3"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -209,5 +209,18 @@
             android:id="@+id/rbCard"
             android:layout_weight="0.21" />
     </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/spending_registration"
+        android:id="@+id/textView38"
+        android:layout_alignBottom="@+id/imageView3"
+        android:layout_toRightOf="@+id/imageView3"
+        android:layout_toEndOf="@+id/imageView3"
+        android:textAlignment="center"
+        android:textColor="#0e7fbb"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

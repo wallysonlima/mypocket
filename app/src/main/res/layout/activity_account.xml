@@ -14,10 +14,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/edtBankName"
         android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/btnSubmit"
-        android:layout_alignEnd="@+id/btnSubmit"
         android:layout_toRightOf="@+id/textView6"
-        android:layout_toEndOf="@+id/textView6" />
+        android:layout_alignRight="@+id/spnRenewalBalance"
+        android:layout_alignEnd="@+id/spnRenewalBalance" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,11 +34,12 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/edtBalance"
-        android:layout_below="@+id/edtReceiptDate"
-        android:layout_alignRight="@+id/edtReceiptDate"
-        android:layout_alignEnd="@+id/edtReceiptDate"
-        android:layout_alignLeft="@+id/edtReceiptDate"
-        android:layout_alignStart="@+id/edtReceiptDate" />
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/textView5"
+        android:layout_toEndOf="@+id/textView5"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,21 +68,8 @@
         android:text="@string/submit"
         android:id="@+id/btnSubmit"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/edtReceiptDate"
-        android:layout_alignEnd="@+id/edtReceiptDate" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/edtReceiptDate"
-        android:layout_below="@+id/edtBankName"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="40dp"
-        android:layout_toRightOf="@+id/textView5"
-        android:layout_toEndOf="@+id/textView5" />
+        android:layout_alignRight="@+id/linearLayout"
+        android:layout_alignEnd="@+id/linearLayout" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -90,9 +77,10 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/day_renovation_balance"
         android:id="@+id/textView5"
-        android:layout_alignTop="@+id/edtReceiptDate"
+        android:layout_below="@+id/edtBankName"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="56dp" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -102,7 +90,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:weightSum="1"
-        android:layout_above="@+id/edtBankName">
+        android:layout_above="@+id/edtBankName"
+        android:id="@+id/linearLayout">
 
         <ImageView
             android:layout_width="120dp"
@@ -123,5 +112,16 @@
             android:textStyle="bold"
             android:textColor="#0e7fbb" />
     </LinearLayout>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:id="@+id/spnRenewalBalance"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/textView5"
+        android:layout_toEndOf="@+id/textView5"
+        android:background="#525252" />
 
 </RelativeLayout>

@@ -63,7 +63,7 @@ public class ConfigurationActivityPresenter {
     public void registrationConfigurationAccount() {
         ConfigurationAccountDao confAccount = new ConfigurationAccountDao(c);
         String account = mView.getAccountSpinner();
-        String renewalBalance = mView.getRenewalAccount();
+        String renewalBalance = mView.getRenewalBalance();
         String balance = mView.getBalance();
 
         if ( !account.equals("") && !renewalBalance.equals("") && !balance.equals("") ) {

@@ -16,8 +16,8 @@ import wallyson.com.br.mypocket.presenter.CardActivityPresenter;
 import wallyson.com.br.mypocket.presenter.CardInterface;
 
 public class CardActivity extends AppCompatActivity implements CardInterface {
-    private EditText cardName, credit, receiptDate;
-    private Spinner bankName;
+    private EditText cardName, credit;
+    private Spinner bankName, spnRenewalCredit;
     private Button btnClean, btnSubmit;
     private CardActivityPresenter mPresenter;
 
@@ -28,11 +28,14 @@ public class CardActivity extends AppCompatActivity implements CardInterface {
 
         cardName = (EditText) findViewById(R.id.edtCardName);
         credit = (EditText) findViewById(R.id.edtCredit);
-        receiptDate = (EditText) findViewById(R.id.edtReceiptDate);
+        spnRenewalCredit = (Spinner) findViewById(R.id.spnRenewalCredit);
         bankName = (Spinner) findViewById(R.id.spnBankName);
         btnClean = (Button) findViewById(R.id.btnClean);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
         mPresenter = new CardActivityPresenter(this, this.getApplicationContext() );
+
+        addRenewalCreditSpinner();
+        addElementSpinner();
 
         btnClean.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,11 +47,10 @@ public class CardActivity extends AppCompatActivity implements CardInterface {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( mPresenter.cardRegistration() )
+                if (mPresenter.cardRegistration())
                     finish();
             }
         });
-        addElementSpinner();
     }
 
     public void addElementSpinner() {
@@ -59,11 +61,22 @@ public class CardActivity extends AppCompatActivity implements CardInterface {
         bankName.setAdapter(adapter);
     }
 
+    public void addRenewalCreditSpinner() {
+        ArrayList<String> days = new ArrayList<>();
+
+        for(int i = 1; i <= 31; i++)
+            days.add( String.valueOf(i) );
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, days);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnRenewalCredit.setAdapter(adapter);
+    }
+
     public void clean() {
         cardName.requestFocus();
         cardName.setText(null);
         credit.setText(null);
-        receiptDate.setText(null);
+        spnRenewalCredit.setSelection(0);
         bankName.setSelection(0);
     }
 
@@ -76,7 +89,7 @@ public class CardActivity extends AppCompatActivity implements CardInterface {
     }
 
     public String getReceiptDate() {
-        return receiptDate.getText().toString();
+        return spnRenewalCredit.getSelectedItem().toString();
     }
 
     public String getBankName() {

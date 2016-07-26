@@ -11,6 +11,8 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,54 +20,56 @@ import java.util.GregorianCalendar;
 import wallyson.com.br.mypocket.R;
 import wallyson.com.br.mypocket.dao.UserDao;
 import wallyson.com.br.mypocket.model.User;
-import wallyson.com.br.mypocket.presenter.CategoryActivityPresenter;
-import wallyson.com.br.mypocket.presenter.CategoryInterface;
+import wallyson.com.br.mypocket.presenter.SpendingCategoryActivityPresenter;
+import wallyson.com.br.mypocket.presenter.SpendingCategoryInterface;
 
-public class SpendingCategoryActivity extends AppCompatActivity implements CategoryInterface {
-    PieChart pieChart = (PieChart) findViewById(R.id.chart);
-    Button btnSendEmail;
-    Date date;
-    GregorianCalendar dateCal;
-    String monthYear;
-
-    private final String[] arrayCategory = {
-            getResources().getString(R.string.auto_transport),
-            getResources().getString(R.string.bills),
-            getResources().getString(R.string.business_services),
-            getResources().getString(R.string.education),
-            getResources().getString(R.string.entertainment),
-            getResources().getString(R.string.food_dining),
-            getResources().getString(R.string.gifts_donations),
-            getResources().getString(R.string.health_fitness),
-            getResources().getString(R.string.income),
-            getResources().getString(R.string.investments),
-            getResources().getString(R.string.kids),
-            getResources().getString(R.string.other),
-            getResources().getString(R.string.personal_care),
-            getResources().getString(R.string.shopping),
-            getResources().getString(R.string.taxes),
-            getResources().getString(R.string.travel),
-    };
-    CategoryActivityPresenter mPresenter;
+public class SpendingCategoryActivity extends AppCompatActivity implements SpendingCategoryInterface {
+    private PieChart pieChart;
+    private Button btnSendEmail;
+    private Date date;
+    private String monthYear;
+    private SpendingCategoryActivityPresenter mPresenter;
+    private ArrayList<String> arrayCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spending_category);
 
-        mPresenter = new CategoryActivityPresenter(this, this.getApplicationContext() );
+        mPresenter = new SpendingCategoryActivityPresenter(this, this.getApplicationContext() );
         btnSendEmail = (Button) findViewById(R.id.btnSendEmail);
+
         btnSendEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendByEmail();
             }
         });
-        date = new Date(System.currentTimeMillis());
-        dateCal = new GregorianCalendar();
-        dateCal.setTime(date);
-        monthYear = String.valueOf( dateCal.get(Calendar.MONTH) ) + "/" + String.valueOf( dateCal.get(Calendar.YEAR) );
 
+        date = new Date(System.currentTimeMillis());
+        SimpleDateFormat format = new SimpleDateFormat("MM/yyyy");
+        monthYear = String.valueOf( format.format(date) );
+
+        arrayCategory = new ArrayList<>();
+        arrayCategory.add(getResources().getString(R.string.auto_transport));
+        arrayCategory.add(getResources().getString(R.string.bills));
+        arrayCategory.add(getResources().getString(R.string.business_services));
+        arrayCategory.add(getResources().getString(R.string.education));
+        arrayCategory.add(getResources().getString(R.string.entertainment));
+        arrayCategory.add(getResources().getString(R.string.food_dining));
+        arrayCategory.add(getResources().getString(R.string.gifts_donations));
+        arrayCategory.add(getResources().getString(R.string.health_fitness));
+        arrayCategory.add(getResources().getString(R.string.income));
+        arrayCategory.add(getResources().getString(R.string.investments));
+        arrayCategory.add(getResources().getString(R.string.kids));
+        arrayCategory.add(getResources().getString(R.string.other));
+        arrayCategory.add(getResources().getString(R.string.personal_care));
+        arrayCategory.add(getResources().getString(R.string.shopping));
+        arrayCategory.add(getResources().getString(R.string.taxes));
+        arrayCategory.add(getResources().getString(R.string.travel));
+
+
+        pieChart = (PieChart) findViewById(R.id.chart);
         createCategoryPieChart();
     }
 
@@ -105,7 +109,7 @@ public class SpendingCategoryActivity extends AppCompatActivity implements Categ
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
 
-    public String[] getCategory() {
+    public ArrayList<String> getCategory() {
         return arrayCategory;
     }
 }

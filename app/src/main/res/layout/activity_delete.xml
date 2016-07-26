@@ -50,19 +50,18 @@
 
     <Spinner
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/spnDeleteCard"
         android:layout_above="@+id/spnDeleteAccount"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:background="#525252"
-        android:layout_marginTop="20dp"
         android:layout_toRightOf="@+id/textView17"
         android:layout_toEndOf="@+id/textView17" />
 
     <Spinner
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/spnDeleteAccount"
         android:layout_above="@+id/spnDeleteSpending"
         android:layout_alignParentRight="true"
@@ -74,7 +73,7 @@
 
     <Spinner
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/spnDeleteSpending"
         android:layout_above="@+id/btnDeleteAccount"
         android:layout_alignParentRight="true"
@@ -82,7 +81,7 @@
         android:layout_toEndOf="@+id/btnDeleteCard"
         android:background="#525252"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="40dp"
         android:layout_alignLeft="@+id/spnDeleteAccount"
         android:layout_alignStart="@+id/spnDeleteAccount" />
 
@@ -103,8 +102,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/textView16"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:layout_above="@+id/textView16">
 
         <ImageView
             android:layout_width="120dp"

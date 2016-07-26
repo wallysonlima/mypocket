@@ -6,7 +6,7 @@ package wallyson.com.br.mypocket.presenter;
 public interface ConfigurationInterface {
     String getAccountSpinner();
     String getBalance();
-    String getRenewalAccount();
+    String getRenewalBalance();
     String getCardSpinner();
     String getCredit();
     String getRenewalCredit();
