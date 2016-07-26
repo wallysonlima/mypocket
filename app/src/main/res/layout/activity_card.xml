@@ -50,14 +50,16 @@
         android:layout_alignParentStart="true" />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="30dp"
         android:id="@+id/spnBankName"
         android:background="#525252"
         android:layout_below="@+id/textView11"
-        android:layout_toRightOf="@+id/textView11"
-        android:layout_toEndOf="@+id/textView11"
-        android:layout_marginTop="41dp" />
+        android:layout_marginTop="41dp"
+        android:layout_alignLeft="@+id/spnRenewalCredit"
+        android:layout_alignStart="@+id/spnRenewalCredit"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -76,8 +78,8 @@
         android:text="@string/submit"
         android:id="@+id/btnSubmit"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/spnBankName"
-        android:layout_alignEnd="@+id/spnBankName" />
+        android:layout_alignRight="@+id/linearLayout2"
+        android:layout_alignEnd="@+id/linearLayout2" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -110,7 +112,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/edtCardName">
+        android:layout_above="@+id/edtCardName"
+        android:id="@+id/linearLayout2">
 
         <ImageView
             android:layout_width="120dp"
@@ -133,7 +136,7 @@
     </LinearLayout>
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="30dp"
         android:id="@+id/spnRenewalCredit"
         android:layout_below="@+id/edtCredit"

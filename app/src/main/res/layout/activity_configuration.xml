@@ -18,7 +18,7 @@
         android:layout_alignBottom="@+id/spnAccount" />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="30dp"
         android:id="@+id/spnAccount"
         android:background="#525252"
@@ -34,10 +34,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/day_renovation_balance"
         android:id="@+id/textView8"
-        android:layout_below="@+id/textView4"
+        android:layout_alignBottom="@+id/spnRenewalBalance"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="28dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,16 +50,16 @@
         android:layout_marginTop="30dp" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/edtBalance"
         android:layout_above="@+id/btnAlterAccount"
-        android:layout_alignRight="@+id/spnRenewalBalance"
-        android:layout_alignEnd="@+id/spnRenewalBalance"
         android:layout_alignLeft="@+id/spnRenewalBalance"
-        android:layout_alignStart="@+id/spnRenewalBalance" />
+        android:layout_alignStart="@+id/spnRenewalBalance"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -73,10 +72,10 @@
         android:layout_alignParentStart="true" />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="30dp"
         android:id="@+id/spnCard"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:background="#525252"
         android:layout_below="@+id/btnAlterAccount"
         android:layout_toEndOf="@+id/textView34"
@@ -105,39 +104,41 @@
         android:layout_marginTop="29dp" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/edtCredit"
         android:layout_alignBottom="@+id/textView35"
         android:layout_toEndOf="@+id/textView34"
-        android:layout_alignLeft="@+id/btnAlterCredit"
-        android:layout_alignStart="@+id/btnAlterCredit" />
+        android:layout_alignLeft="@+id/spnRenewalCredit"
+        android:layout_alignStart="@+id/spnRenewalCredit" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
         android:id="@+id/btnAlterAccount"
         android:text="@string/configuration_account"
         android:layout_below="@+id/textView30"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignLeft="@+id/edtBalance"
-        android:layout_alignStart="@+id/edtBalance" />
+        android:layout_alignStart="@+id/edtBalance"
+        android:layout_marginTop="10dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
         android:text="@string/configuration_credit_card"
         android:id="@+id/btnAlterCredit"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/textView8"
-        android:layout_toEndOf="@+id/textView8" />
+        android:layout_toEndOf="@+id/textView34"
+        android:layout_alignLeft="@+id/edtCredit"
+        android:layout_alignStart="@+id/edtCredit" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -149,7 +150,7 @@
         android:textAlignment="center"
         android:textStyle="bold"
         android:textColor="#0e7fbb"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 
     <ImageView
         android:layout_width="60dp"
@@ -161,24 +162,23 @@
         android:layout_alignParentStart="true" />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="30dp"
         android:id="@+id/spnRenewalBalance"
-        android:layout_above="@+id/edtBalance"
-        android:layout_alignRight="@+id/spnAccount"
-        android:layout_alignEnd="@+id/spnAccount"
-        android:layout_toRightOf="@+id/textView8"
-        android:layout_toEndOf="@+id/textView8"
-        android:background="#525252" />
+        android:background="#525252"
+        android:layout_below="@+id/spnAccount"
+        android:layout_alignLeft="@+id/spnAccount"
+        android:layout_alignStart="@+id/spnAccount"
+        android:layout_marginTop="10dp" />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="30dp"
         android:id="@+id/spnRenewalCredit"
         android:layout_below="@+id/spnCard"
         android:layout_alignLeft="@+id/spnCard"
         android:layout_alignStart="@+id/spnCard"
-        android:layout_marginTop="31dp"
-        android:background="#525252" />
+        android:background="#525252"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>

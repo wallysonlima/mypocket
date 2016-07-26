@@ -81,7 +81,7 @@
         android:layout_toEndOf="@+id/btnDeleteCard"
         android:background="#525252"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="80dp"
         android:layout_alignLeft="@+id/spnDeleteAccount"
         android:layout_alignStart="@+id/spnDeleteAccount" />
 
@@ -119,7 +119,7 @@
             android:id="@+id/textView18"
             android:layout_gravity="center_horizontal"
             android:textColor="#0e7fbb"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textAlignment="center" />
     </LinearLayout>
