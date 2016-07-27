@@ -21,13 +21,15 @@
 
     <Spinner
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/spnMonth"
         android:layout_alignBottom="@+id/textView31"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/textView31"
-        android:layout_toEndOf="@+id/textView31" />
+        android:layout_toEndOf="@+id/textView31"
+        android:background="#525252"
+        android:layout_alignLeft="@+id/edtTotal"
+        android:layout_alignStart="@+id/edtTotal" />
 
     <TextView
         android:layout_width="wrap_content"

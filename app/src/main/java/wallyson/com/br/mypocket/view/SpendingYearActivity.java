@@ -11,8 +11,10 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -25,33 +27,34 @@ import wallyson.com.br.mypocket.presenter.SpendingYearActivityPresenter;
 import wallyson.com.br.mypocket.presenter.SpendingYearInterface;
 
 public class SpendingYearActivity extends AppCompatActivity implements SpendingYearInterface {
-    BarChart barChart = (BarChart) findViewById(R.id.chart);
-    Button btnSendEmail;
-    Date date;
-    GregorianCalendar dateCal;
-    String month, year;
-    SpendingYearActivityPresenter mPresenter;
-
-    private String[] monthYear = {
-            getResources().getString(R.string.january),
-            getResources().getString(R.string.february),
-            getResources().getString(R.string.march),
-            getResources().getString(R.string.april),
-            getResources().getString(R.string.may),
-            getResources().getString(R.string.june),
-            getResources().getString(R.string.july),
-            getResources().getString(R.string.august),
-            getResources().getString(R.string.september),
-            getResources().getString(R.string.october),
-            getResources().getString(R.string.november),
-            getResources().getString(R.string.december)
-    };
+    private BarChart barChart;
+    private Button btnSendEmail;
+    private Date date;
+    private GregorianCalendar dateCal;
+    private String month, year;
+    private SpendingYearActivityPresenter mPresenter;
+    private ArrayList<String> monthYear = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spending_year);
 
+        barChart = (BarChart) findViewById(R.id.chart);
+        monthYear.add(getResources().getString(R.string.january));
+        monthYear.add(getResources().getString(R.string.february));
+        monthYear.add(getResources().getString(R.string.march));
+        monthYear.add(getResources().getString(R.string.april));
+        monthYear.add(getResources().getString(R.string.may));
+        monthYear.add(getResources().getString(R.string.june));
+        monthYear.add(getResources().getString(R.string.july));
+        monthYear.add(getResources().getString(R.string.august));
+        monthYear.add(getResources().getString(R.string.september));
+        monthYear.add(getResources().getString(R.string.october));
+        monthYear.add(getResources().getString(R.string.november));
+        monthYear.add(getResources().getString(R.string.december));
+
+        btnSendEmail = (Button) findViewById(R.id.btnSendEmail);
         mPresenter = new SpendingYearActivityPresenter(this, this.getApplicationContext());
         date = new Date(System.currentTimeMillis());
         dateCal = new GregorianCalendar();
@@ -70,21 +73,19 @@ public class SpendingYearActivity extends AppCompatActivity implements SpendingY
     }
 
     public void createMonthBarChart() {
-        ArrayList<Float> spendingForCategory = mPresenter.AllSpendingForMonth();
+        Float[] spendingMonthYear = mPresenter.AllSpendingForMonth();
         ArrayList<BarEntry> entries = new ArrayList<>();
         BarDataSet dataSet;
-        int i = 0;
 
-        for ( Float sp: spendingForCategory ) {
-            entries.add( new BarEntry(sp, i) );
-            i++;
+        for ( int i = 0; i < spendingMonthYear.length; i++ ) {
+            entries.add( new BarEntry( spendingMonthYear[i], i) );
         }
 
         dataSet = new BarDataSet(entries, getResources().getString(R.string.month));
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         BarData data = new BarData(monthYear, dataSet);
-        barChart.setData(data);
         barChart.setDescription(getResources().getString(R.string.spending_by_month));
+        barChart.setData(data);
     }
 
     // Send image from PieChart for Email
@@ -104,7 +105,7 @@ public class SpendingYearActivity extends AppCompatActivity implements SpendingY
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
 
-    public String[] getMonthYear() {
+    public ArrayList<String> getMonthYear() {
         return this.monthYear;
     }
 }

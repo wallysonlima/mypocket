@@ -2,7 +2,9 @@ package wallyson.com.br.mypocket.presenter;
 
 import android.content.Context;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import wallyson.com.br.mypocket.dao.SpendingDao;
 import wallyson.com.br.mypocket.model.Spending;
@@ -14,6 +16,7 @@ public class SpendingYearActivityPresenter {
     SpendingYearInterface mView;
     Context c;
     SpendingDao spendingDao;
+    final int MESES_ANO = 12;
 
     public SpendingYearActivityPresenter(SpendingYearInterface view, Context context) {
         mView = view;
@@ -21,19 +24,21 @@ public class SpendingYearActivityPresenter {
         spendingDao = new SpendingDao(c);
     }
 
-    public ArrayList<Float> AllSpendingForMonth() {
-        String [] month = mView.getMonthYear();
+    public Float[] AllSpendingForMonth() {
         ArrayList<Spending> spending = spendingDao.selectSpending();
-        ArrayList<Float> spendingForMonth = new ArrayList<>();
+        Float[] spendingForMonth = new Float[MESES_ANO];
+        Date date = new Date(System.currentTimeMillis());
+        String monthYear = new SimpleDateFormat("MM/yyyy").format(date).toString();
+
+        for( int i = 0; i < MESES_ANO; i++ )
+            spendingForMonth[i] = 0.0f;
 
         for ( Spending sp: spending ) {
-            for ( int i = 0; i < month.length; i++ ) {
-                String monthYear = sp.getEmissionDate().substring(3, 10);
-                int m = Integer.parseInt(monthYear.substring(0, 2));
-                int y = Integer.parseInt( monthYear.substring(3, 7) );
-                if ( m == (i + 1) && y == Integer.parseInt( sp.getEmissionDate().substring(6, 10) ) ) {
-                    spendingForMonth.add(i, spendingForMonth.get(i) + sp.getAmount() );
-                }
+            int month = Integer.parseInt( sp.getEmissionDate().substring(3, 5) );
+            month--;
+
+            if ( sp.getEmissionDate().substring(3, 10).equals( monthYear ) ) {
+                spendingForMonth[month] += sp.getAmount();
             }
         }
 
