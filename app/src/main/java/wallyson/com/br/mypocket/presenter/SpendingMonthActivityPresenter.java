@@ -10,12 +10,12 @@ import wallyson.com.br.mypocket.model.Spending;
 /**
  * Created by wally on 14/07/16.
  */
-public class SpendingAllPresenter {
-    private SpendingAllInterface mView;
+public class SpendingMonthActivityPresenter {
+    private SpendingMonthInterface mView;
     private Context c;
     SpendingDao spendingDao;
 
-    public SpendingAllPresenter(SpendingAllInterface view, Context context) {
+    public SpendingMonthActivityPresenter(SpendingMonthInterface view, Context context) {
         mView = view;
         c = context;
         spendingDao = new SpendingDao(c);

@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
@@ -99,16 +102,26 @@ public class SpendingCategoryActivity extends AppCompatActivity implements Spend
         UserDao userDao = new UserDao(this);
         User user = userDao.selectUser();
         String nameImage = "Spendings" + monthYear + ".jpg";
-        pieChart.saveToGallery(nameImage, 100);
+        pieChart.saveToPath(nameImage, "file:///mnt/sdcard/");
+        //ToGallery(nameImage, 100);
 
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setType("application/image");
+        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
         emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{user.getEmail()});
         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "myPocket " + user.getName() +
-                "Spending for Category on Month: " + monthYear);
+                " Spending for Category on Month: " + monthYear);
         emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "myPocket");
         emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///mnt/sdcard/" + nameImage));
-        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            finish();
+            Log.i("Finished sending email", "");
+        } catch(android.content.ActivityNotFoundException ex) {
+            Toast.makeText(SpendingCategoryActivity.this, "There is no email client installed.", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     public ArrayList<String> getCategory() {

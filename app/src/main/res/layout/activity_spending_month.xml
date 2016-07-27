@@ -102,7 +102,7 @@
                     android:text="@string/category"
                     android:id="@+id/textView14"
                     android:layout_column="2"
-                    android:paddingLeft="5dp" />
+                    android:layout_marginLeft="30dp" />
 
             </TableRow>
         </TableLayout>

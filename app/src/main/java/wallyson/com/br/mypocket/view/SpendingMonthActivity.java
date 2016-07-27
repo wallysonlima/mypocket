@@ -20,62 +20,62 @@ import android.widget.TextView;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import wallyson.com.br.mypocket.R;
 import wallyson.com.br.mypocket.dao.UserDao;
 import wallyson.com.br.mypocket.model.Spending;
 import wallyson.com.br.mypocket.model.User;
-import wallyson.com.br.mypocket.presenter.SpendingAllInterface;
-import wallyson.com.br.mypocket.presenter.SpendingAllPresenter;
+import wallyson.com.br.mypocket.presenter.SpendingMonthInterface;
+import wallyson.com.br.mypocket.presenter.SpendingMonthActivityPresenter;
 
-public class SpendingMonthActivity extends AppCompatActivity implements SpendingAllInterface {
+public class SpendingMonthActivity extends AppCompatActivity implements SpendingMonthInterface {
     Spinner spnMonth;
     EditText edtTotal;
     Button btnSendEmail;
     TableLayout tbSpending;
-    SpendingAllPresenter mPresenter;
+    SpendingMonthActivityPresenter mPresenter;
     ArrayList<Spending> spending;
     String nameFile;
     UserDao userDao;
     User user;
     float total;
-
-    private String[] monthYear = {
-            getResources().getString(R.string.january),
-            getResources().getString(R.string.february),
-            getResources().getString(R.string.march),
-            getResources().getString(R.string.april),
-            getResources().getString(R.string.may),
-            getResources().getString(R.string.june),
-            getResources().getString(R.string.july),
-            getResources().getString(R.string.august),
-            getResources().getString(R.string.september),
-            getResources().getString(R.string.october),
-            getResources().getString(R.string.november),
-            getResources().getString(R.string.december)
-    };
+    private ArrayList<String> monthYear = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spending_month);
 
+        monthYear.add(getResources().getString(R.string.january));
+        monthYear.add(getResources().getString(R.string.february));
+        monthYear.add(getResources().getString(R.string.march));
+        monthYear.add(getResources().getString(R.string.april));
+        monthYear.add(getResources().getString(R.string.may));
+        monthYear.add(getResources().getString(R.string.june));
+        monthYear.add(getResources().getString(R.string.july));
+        monthYear.add(getResources().getString(R.string.august));
+        monthYear.add(getResources().getString(R.string.september));
+        monthYear.add(getResources().getString(R.string.october));
+        monthYear.add(getResources().getString(R.string.november));
+        monthYear.add(getResources().getString(R.string.december));
+
         spnMonth = (Spinner) findViewById(R.id.spnMonth);
         edtTotal = (EditText) findViewById(R.id.edtTotal);
         btnSendEmail = (Button) findViewById(R.id.btnSendEmail);
         tbSpending = (TableLayout) findViewById(R.id.tableSpending);
-        mPresenter = new SpendingAllPresenter(this, this.getApplicationContext());
+        mPresenter = new SpendingMonthActivityPresenter(this, this.getApplicationContext());
         spending = new ArrayList<>();
         addMonthSpinner();
         userDao = new UserDao(this);
         user = userDao.selectUser();
         total = 0.0f;
+
+
 
         spnMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -132,7 +132,8 @@ public class SpendingMonthActivity extends AppCompatActivity implements Spending
             txtDate.setText( sp.getEmissionDate() );
 
             TextView txtCategory = new TextView(this);
-            txtDate.setText( sp.getCategory() );
+            txtCategory.setPadding(40, 0, 0, 0);
+            txtCategory.setText( sp.getCategory() );
 
             row.addView(txtSpending);
             row.addView(txtDate);
@@ -145,10 +146,16 @@ public class SpendingMonthActivity extends AppCompatActivity implements Spending
 
     public String getMonthYear() {
         Date date = new Date(System.currentTimeMillis());
-        GregorianCalendar dateCal;
-        dateCal = new GregorianCalendar();
-        dateCal.setTime(date);
-        return spnMonth.getSelectedItemPosition() + "/" + String.valueOf( dateCal.get(Calendar.YEAR) );
+        SimpleDateFormat format = new SimpleDateFormat("yyyy");
+
+        int month = spnMonth.getSelectedItemPosition();
+        month++;
+
+        if ( month >= 1 && month <= 9 ) {
+            return ( "0" + String.valueOf(month) + "/" + format.format(date) );
+        } else {
+            return ( String.valueOf(month) + "/" + format.format(date) );
+        }
     }
 
     public void setTotalAmount() {
