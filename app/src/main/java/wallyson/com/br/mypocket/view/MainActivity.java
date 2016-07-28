@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
         btnDelete = (ImageButton) findViewById(R.id.btnDelete);
         btnConfiguration = (ImageButton) findViewById(R.id.btnConfiguration);
 
+        mPresenter.renewalBalanceAccount();
+        mPresenter.renewalCredit();
+
         btnSpending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

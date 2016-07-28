@@ -50,23 +50,4 @@ public class UserDao {
         else
             return true;
     }
-
-    /*
-    public boolean updateUser(int codUser, String name, String email) {
-        SQLiteDatabase db = database.getWritableDatabase();
-        ContentValues content = new ContentValues();
-        content.put("name", name);
-        content.put("email", email);
-        int result = db.update(Database.TABLE_USER, content, "codUser = ?", new String[]{Integer.toString(codUser)});
-
-        if ( result > 0 )
-            return true;
-        else
-            return false;
-    }
-
-    public Integer deleteUser(int codUser) {
-        SQLiteDatabase db = database.getReadableDatabase();
-        return db.delete(Database.TABLE_USER, "codUser = ?", new String[] {Integer.toString(codUser)} );
-    }*/
 }

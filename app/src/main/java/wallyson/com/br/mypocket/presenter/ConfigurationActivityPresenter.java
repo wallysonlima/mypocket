@@ -67,7 +67,7 @@ public class ConfigurationActivityPresenter {
         String balance = mView.getBalance();
 
         if ( !account.equals("") && !renewalBalance.equals("") && !balance.equals("") ) {
-            boolean result = confAccount.updateConfigurationAccount(new ConfigurationAccount(account, renewalBalance, Double.parseDouble(balance)));
+            boolean result = confAccount.updateConfigurationAccount(new ConfigurationAccount(account, Double.parseDouble(balance), renewalBalance ));
 
             if (result) {
                 mView.updatedSuccessfully();
@@ -86,7 +86,7 @@ public class ConfigurationActivityPresenter {
         String credit = mView.getCredit();
 
         if( !card.equals("") && !renewalCredit.equals("") && !credit.equals("") ) {
-            boolean result = confCard.updateConfigurationCard(new ConfigurationCard(card, renewalCredit, Double.parseDouble(credit)));
+            boolean result = confCard.updateConfigurationCard(new ConfigurationCard(card, Double.parseDouble(credit), renewalCredit));
 
             if (result) {
                 mView.updatedSuccessfully();

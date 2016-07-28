@@ -1,13 +1,7 @@
 package wallyson.com.br.mypocket.view;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
@@ -17,18 +11,13 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import wallyson.com.br.mypocket.R;
-import wallyson.com.br.mypocket.dao.UserDao;
-import wallyson.com.br.mypocket.model.User;
 import wallyson.com.br.mypocket.presenter.SpendingCategoryActivityPresenter;
 import wallyson.com.br.mypocket.presenter.SpendingCategoryInterface;
 
 public class SpendingCategoryActivity extends AppCompatActivity implements SpendingCategoryInterface {
     private PieChart pieChart;
-    private Button btnSendEmail;
     private Date date;
     private String monthYear;
     private SpendingCategoryActivityPresenter mPresenter;
@@ -40,14 +29,6 @@ public class SpendingCategoryActivity extends AppCompatActivity implements Spend
         setContentView(R.layout.activity_spending_category);
 
         mPresenter = new SpendingCategoryActivityPresenter(this, this.getApplicationContext() );
-        btnSendEmail = (Button) findViewById(R.id.btnSendEmail);
-
-        btnSendEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendByEmail();
-            }
-        });
 
         date = new Date(System.currentTimeMillis());
         SimpleDateFormat format = new SimpleDateFormat("MM/yyyy");
@@ -95,33 +76,6 @@ public class SpendingCategoryActivity extends AppCompatActivity implements Spend
         PieData data = new PieData(categoryWithSpending, dataSet);
         pieChart.setDescription(getResources().getString(R.string.spending_by_category));
         pieChart.setData(data);
-    }
-
-    // Send image from PieChart for Email
-    public void sendByEmail() {
-        UserDao userDao = new UserDao(this);
-        User user = userDao.selectUser();
-        String nameImage = "Spendings" + monthYear + ".jpg";
-        pieChart.saveToPath(nameImage, "file:///mnt/sdcard/");
-        //ToGallery(nameImage, 100);
-
-        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.setType("text/plain");
-        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{user.getEmail()});
-        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "myPocket " + user.getName() +
-                " Spending for Category on Month: " + monthYear);
-        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "myPocket");
-        emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///mnt/sdcard/" + nameImage));
-
-        try {
-            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-            finish();
-            Log.i("Finished sending email", "");
-        } catch(android.content.ActivityNotFoundException ex) {
-            Toast.makeText(SpendingCategoryActivity.this, "There is no email client installed.", Toast.LENGTH_LONG).show();
-        }
-
     }
 
     public ArrayList<String> getCategory() {

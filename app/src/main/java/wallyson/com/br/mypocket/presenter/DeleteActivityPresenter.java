@@ -1,7 +1,6 @@
 package wallyson.com.br.mypocket.presenter;
 
 import android.content.Context;
-import android.view.View;
 
 import java.util.ArrayList;
 

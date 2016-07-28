@@ -5,12 +5,12 @@ package wallyson.com.br.mypocket.model;
  */
 public class ConfigurationCard {
     private String cardName, receiptDate;
-    private Double credit;
+    private double credit;
 
-    public ConfigurationCard(String cardName, String receiptDate, Double credit) {
+    public ConfigurationCard(String cardName, double credit, String receiptDate ) {
         this.cardName = cardName;
-        this.receiptDate = receiptDate;
         this.credit = credit;
+        this.receiptDate = receiptDate;
     }
 
     public String getCardName() {
@@ -25,15 +25,11 @@ public class ConfigurationCard {
         return receiptDate;
     }
 
-    public void setReceiptDate(String receiptDate) {
-        this.receiptDate = receiptDate;
-    }
-
-    public Double getCredit() {
+    public double getCredit() {
         return credit;
     }
 
-    public void setCredit(Double credit) {
+    public void setCredit(double credit) {
         this.credit = credit;
     }
 }

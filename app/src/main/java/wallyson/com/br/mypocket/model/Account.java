@@ -9,13 +9,11 @@ import java.util.ArrayList;
 public class Account {
     private String bankName;
     private double balance;
-    private ArrayList<Card> cards;
     private int codUser;
 
     public Account(String bankName, double balance, int codUser) {
         this.bankName = bankName;
         this.balance = balance;
-        cards = new ArrayList<>();
         this.codUser = codUser;
     }
 
@@ -31,19 +29,11 @@ public class Account {
         return codUser;
     }
 
-    public void setCodUser(int codUser) {
-        this.codUser = codUser;
-    }
-
     public String getBankName() {
         return bankName;
     }
 
     public void setBankName(String bankName) {
         this.bankName = bankName;
-    }
-
-    public ArrayList<Card> getCards() {
-        return cards;
     }
 }

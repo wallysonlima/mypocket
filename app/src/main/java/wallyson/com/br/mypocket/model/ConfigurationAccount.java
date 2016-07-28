@@ -5,12 +5,12 @@ package wallyson.com.br.mypocket.model;
  */
 public class ConfigurationAccount {
     private String bankName, receiptDate;
-    private Double balance;
+    private double balance;
 
-    public ConfigurationAccount(String bankName, String receiptDate, Double balance) {
+    public ConfigurationAccount(String bankName, double balance, String receiptDate) {
         this.bankName = bankName;
-        this.receiptDate = receiptDate;
         this.balance = balance;
+        this.receiptDate = receiptDate;
     }
 
     public String getBankName() {
@@ -21,19 +21,15 @@ public class ConfigurationAccount {
         this.bankName = bankName;
     }
 
-    public Double getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(Float balance) {
         this.balance = balance;
     }
 
     public String getReceiptDate() {
         return receiptDate;
-    }
-
-    public void setReceiptDate(String receiptDate) {
-        this.receiptDate = receiptDate;
     }
 }

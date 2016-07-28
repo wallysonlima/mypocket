@@ -1,25 +1,16 @@
 package wallyson.com.br.mypocket.view;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,11 +27,9 @@ import wallyson.com.br.mypocket.presenter.SpendingMonthActivityPresenter;
 public class SpendingMonthActivity extends AppCompatActivity implements SpendingMonthInterface {
     Spinner spnMonth;
     EditText edtTotal;
-    Button btnSendEmail;
     TableLayout tbSpending;
     SpendingMonthActivityPresenter mPresenter;
     ArrayList<Spending> spending;
-    String nameFile;
     UserDao userDao;
     User user;
     float total;
@@ -66,7 +55,6 @@ public class SpendingMonthActivity extends AppCompatActivity implements Spending
 
         spnMonth = (Spinner) findViewById(R.id.spnMonth);
         edtTotal = (EditText) findViewById(R.id.edtTotal);
-        btnSendEmail = (Button) findViewById(R.id.btnSendEmail);
         tbSpending = (TableLayout) findViewById(R.id.tableSpending);
         mPresenter = new SpendingMonthActivityPresenter(this, this.getApplicationContext());
         spending = new ArrayList<>();
@@ -87,13 +75,6 @@ public class SpendingMonthActivity extends AppCompatActivity implements Spending
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 return;
-            }
-        });
-
-        btnSendEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendFileByEmail();
             }
         });
 
@@ -164,44 +145,6 @@ public class SpendingMonthActivity extends AppCompatActivity implements Spending
         }
 
         edtTotal.setText(String.valueOf(total));
-    }
-
-    private void saveSpendingFile() {
-
-        nameFile = user.getName() + " " + getMonthYear() + ".txt";
-
-        try {
-            String allSpending = user.getName() + " " +
-                    getResources().getString(R.string.all_spending_month) + getMonthYear() + "\n\n\n";
-
-            for( Spending sp: spending ) {
-                allSpending +=
-                        getResources().getString(R.string.spending) + " : " + String.valueOf( sp.getAmount() ) + " " +
-                                getResources().getString(R.string.emission_date) + " : " + sp.getEmissionDate() + " " +
-                                getResources().getString(R.string.category) + " : " + sp.getCategory() + "\n";
-            }
-
-            allSpending += "\n\nTotal : " + String.valueOf(total);
-
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.openFileOutput(nameFile, Context.MODE_PRIVATE));
-            outputStreamWriter.write(allSpending);
-            outputStreamWriter.close();
-        }
-        catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
-        }
-    }
-
-
-    // Send image from PieChart for Email
-    public void sendFileByEmail() {
-        saveSpendingFile();
-
-        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-        emailIntent.setType("message/rfc822").putExtra(Intent.EXTRA_EMAIL, new String[]{user.getEmail()}).putExtra(android.content.Intent.EXTRA_SUBJECT, nameFile).putExtra(android.content.Intent.EXTRA_TEXT, getResources().getString(R.string.all_spending_month));
-        String targetFilePath = Environment.getExternalStorageDirectory().getPath() + File.separator + "tmp" + File.separator + nameFile;
-        Uri attachmentUri = Uri.parse(targetFilePath);
-        emailIntent.putExtra(android.content.Intent.EXTRA_STREAM, Uri.parse("file://" + attachmentUri));
     }
 
 }

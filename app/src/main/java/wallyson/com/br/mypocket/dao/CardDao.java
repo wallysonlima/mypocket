@@ -5,12 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
-import wallyson.com.br.mypocket.model.Account;
+import java.util.ArrayList;
 import wallyson.com.br.mypocket.model.Card;
 import wallyson.com.br.mypocket.model.Database;
 
@@ -31,7 +27,7 @@ public class CardDao {
         Cursor result = db.rawQuery(sql, null);
 
         while ( result.moveToNext() ) {
-            Card ca = new Card( result.getString(0), result.getDouble(1), result.getString(2) );
+            Card ca = new Card( result.getString(0), result.getFloat(1), result.getString(2) );
             card.add(ca);
         }
 
@@ -45,7 +41,7 @@ public class CardDao {
         String sql = "select * from " + Database.TABLE_CARD + " where cardName = '" + cardName + "';";
         Cursor result = db.rawQuery(sql, null);
         result.moveToFirst();
-        Card card = new Card( result.getString(0), result.getDouble(1), result.getString(2) );
+        Card card = new Card( result.getString(0), result.getFloat(1), result.getString(2) );
         result.close();
         db.close();
 

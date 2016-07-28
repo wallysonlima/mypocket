@@ -37,8 +37,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/total_spending"
         android:id="@+id/textView32"
-        android:layout_marginBottom="74dp"
-        android:layout_alignParentBottom="true"
+        android:layout_alignBottom="@+id/edtTotal"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -48,10 +47,9 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/edtTotal"
-        android:layout_alignBottom="@+id/textView32"
-        android:layout_toRightOf="@+id/textView32"
-        android:layout_alignRight="@+id/scrollView1"
-        android:layout_alignEnd="@+id/scrollView1" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -109,15 +107,5 @@
             </TableRow>
         </TableLayout>
     </ScrollView>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/send_email"
-        android:id="@+id/btnSendEmail"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

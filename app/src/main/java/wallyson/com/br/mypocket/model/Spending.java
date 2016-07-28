@@ -4,8 +4,6 @@ package wallyson.com.br.mypocket.model;
  * Created by wally on 28/06/16.
  */
 
-import java.util.Date;
-
 public class Spending {
     private int spendingCod;
     private String description, category;
@@ -43,16 +41,8 @@ public class Spending {
         return spendingCod;
     }
 
-    public void setSpendingCod(int spendingCod) {
-        this.spendingCod = spendingCod;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getCategory() {
@@ -67,15 +57,7 @@ public class Spending {
         return amount;
     }
 
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
     public String getEmissionDate() {
         return emissionDate;
-    }
-
-    public void setEmissionDate(String emissionDate) {
-        this.emissionDate = emissionDate;
     }
 }

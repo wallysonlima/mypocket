@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
 import wallyson.com.br.mypocket.model.ConfigurationCard;
 import wallyson.com.br.mypocket.model.Database;
 
@@ -18,6 +20,22 @@ public class ConfigurationCardDao {
         database = new Database(c);
     }
 
+    public ArrayList<ConfigurationCard> selectConfigurationCard() {
+        ArrayList<ConfigurationCard> configCard = new ArrayList<>();
+        SQLiteDatabase db = database.getReadableDatabase();
+        String sql = "select * from " + Database.TABLE_CONFIGURATION_CARD + ";";
+        Cursor result = db.rawQuery(sql, null);
+
+        while ( result.moveToNext() ) {
+            ConfigurationCard ca = new ConfigurationCard( result.getString(0), result.getFloat(1), result.getString(2) );
+            configCard.add(ca);
+        }
+
+        result.close();
+        db.close();
+        return configCard;
+    }
+
     public ConfigurationCard selectOnceConfigurationCard(String cardName) {
         SQLiteDatabase db = database.getReadableDatabase();
         String sql = "select * from " + Database.TABLE_CONFIGURATION_CARD + " where cardName = '" + cardName + "';";
@@ -25,7 +43,7 @@ public class ConfigurationCardDao {
         ConfigurationCard configCard = null;
 
         if ( result.moveToFirst() ) {
-            configCard = new ConfigurationCard( result.getString(0), result.getString(2), result.getDouble(1) );
+            configCard = new ConfigurationCard( result.getString(0), result.getFloat(1), result.getString(2)  );
         }
 
         result.close();
@@ -68,10 +86,4 @@ public class ConfigurationCardDao {
             return false;
         }
     }
-
-    /*
-    public Integer deleteConfigurationCard(String cardName) {
-        SQLiteDatabase db = database.getReadableDatabase();
-        return db.delete(Database.TABLE_CONFIGURATION_CARD, "cardName = ?", new String[] {cardName} );
-    }*/
 }

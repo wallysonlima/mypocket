@@ -54,7 +54,7 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
 
                 if (confAccount != null) {
                     spnRenewalBalance.setSelection(Integer.parseInt(confAccount.getReceiptDate()));
-                    edtBalance.setText(confAccount.getBalance().toString());
+                    edtBalance.setText( String.valueOf(confAccount.getBalance()));
                 } else {
                     spnRenewalBalance.setSelection(0);
                     edtBalance.setText("0.0");
@@ -74,7 +74,7 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
 
                 if ( confCard != null ) {
                     spnRenewalCredit.setSelection(Integer.parseInt(confCard.getReceiptDate()));
-                    edtCredit.setText( confCard.getCredit().toString() );
+                    edtCredit.setText( String.valueOf(confCard.getCredit()) );
                 } else {
                     spnRenewalCredit.setSelection(0);
                     edtCredit.setText("0.0");

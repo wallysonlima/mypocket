@@ -13,16 +13,6 @@
         android:id="@+id/chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="90px"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/send_email"
-        android:id="@+id/btnSendEmail"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/chart"
-        android:layout_alignEnd="@+id/chart"
-        android:focusable="false" />
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
