@@ -2,6 +2,7 @@ package wallyson.com.br.mypocket.presenter;
 
 import android.content.Context;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import wallyson.com.br.mypocket.dao.AccountDao;
@@ -17,22 +18,25 @@ public class BalanceActivityPresenter {
     Context c;
     CardDao card;
     AccountDao account;
+    DecimalFormat df;
 
     public BalanceActivityPresenter(BalanceInterface view, Context context) {
         mView = view;
         c = context;
         card = new CardDao(c);
         account = new AccountDao(c);
+        df = new DecimalFormat();
+        df.setMaximumFractionDigits(2);
     }
 
     public String getBalanceAccount(String bankName) {
         Account acc = this.account.selectOnceAccount(bankName);
-        return String.valueOf(acc.getBalance());
+        return String.valueOf( df.format(acc.getBalance() ) );
     }
 
     public String getCredit(String cardName) {
         Card ca = this.card.selectOnceCard(cardName);
-        return String.valueOf( ca.getCredit() );
+        return String.valueOf( df.format(ca.getCredit() ) );
     }
 
     public ArrayList<String> getAllCardName() {

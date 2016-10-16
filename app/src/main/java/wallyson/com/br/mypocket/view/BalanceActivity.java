@@ -7,7 +7,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import java.util.ArrayList;
 
 import wallyson.com.br.mypocket.R;

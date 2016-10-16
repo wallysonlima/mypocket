@@ -11,6 +11,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -143,7 +144,9 @@ public class SpendingMonthActivity extends AppCompatActivity implements Spending
             total += sp.getAmount();
         }
 
-        edtTotal.setText(String.valueOf(total));
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(2);
+        edtTotal.setText(String.valueOf( df.format(total) ));
     }
 
 }
