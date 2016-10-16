@@ -99,7 +99,7 @@ public class SpendingMonthActivity extends AppCompatActivity implements Spending
         });
 
 
-        for( Spending sp: spending ) {
+        for( int k = spending.size() -1; k > 0; k-- ) {
             int i = 1;
 
             TableRow row = new TableRow(this);
@@ -107,14 +107,14 @@ public class SpendingMonthActivity extends AppCompatActivity implements Spending
             row.setLayoutParams(lp);
 
             TextView txtSpending = new TextView(this);
-            txtSpending.setText(String.valueOf(sp.getAmount()));
+            txtSpending.setText(String.valueOf( spending.get(k).getAmount()));
 
             TextView txtDate = new TextView(this);
-            txtDate.setText( sp.getEmissionDate() );
+            txtDate.setText( spending.get(k).getEmissionDate() );
 
             TextView txtCategory = new TextView(this);
             txtCategory.setPadding(40, 0, 0, 0);
-            txtCategory.setText( sp.getCategory() );
+            txtCategory.setText( spending.get(k).getCategory() );
 
             row.addView(txtSpending);
             row.addView(txtDate);
@@ -122,7 +122,6 @@ public class SpendingMonthActivity extends AppCompatActivity implements Spending
             tbSpending.addView(row, i);
             i++;
         }
-
     }
 
     public String getMonthYear() {

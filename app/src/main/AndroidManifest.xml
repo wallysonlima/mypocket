@@ -8,7 +8,12 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity" />
+        <activity android:name=".view.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".view.AccountActivity" />
         <activity android:name=".view.CardActivity" />
         <activity android:name=".view.DeleteActivity" />
@@ -19,6 +24,8 @@
         <activity android:name=".view.SpendingMonthActivity" />
         <activity android:name=".view.InitialActivity" />
         <activity android:name=".view.ConfigurationActivity"></activity>
+
+
     </application>
 
 </manifest>
