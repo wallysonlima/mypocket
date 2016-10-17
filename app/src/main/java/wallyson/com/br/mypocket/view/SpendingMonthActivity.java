@@ -64,8 +64,6 @@ public class SpendingMonthActivity extends AppCompatActivity implements Spending
         user = userDao.selectUser();
         total = 0.0f;
 
-
-
         spnMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -99,6 +97,10 @@ public class SpendingMonthActivity extends AppCompatActivity implements Spending
             }
         });
 
+        while (tbSpending.getChildCount() > 1) {
+            int i = tbSpending.getChildCount() - 1;
+            tbSpending.removeViewAt(i--);
+        }
 
         for( int k = spending.size() -1; k > 0; k-- ) {
             int i = 1;
@@ -140,6 +142,8 @@ public class SpendingMonthActivity extends AppCompatActivity implements Spending
     }
 
     public void setTotalAmount() {
+        total = 0.0f;
+
         for ( Spending sp: spending ){
             total += sp.getAmount();
         }
