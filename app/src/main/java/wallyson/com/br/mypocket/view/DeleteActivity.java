@@ -96,11 +96,11 @@ public class DeleteActivity extends AppCompatActivity implements DeleteInterface
     }
 
     public void successfullyDeleted() {
-        Toast.makeText(DeleteActivity.this, "@String/successfullyDelete", Toast.LENGTH_SHORT).show();
+        Toast.makeText(DeleteActivity.this,  getResources().getString(R.string.successfully_delete), Toast.LENGTH_SHORT).show();
     }
 
     public void databaseInsertError() {
-        Toast.makeText(DeleteActivity.this, "@String/DatabaseInsertError", Toast.LENGTH_SHORT).show();
+        Toast.makeText(DeleteActivity.this, getResources().getString(R.string.successfully_delete), Toast.LENGTH_SHORT).show();
     }
 
 }

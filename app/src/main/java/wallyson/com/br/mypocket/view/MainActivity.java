@@ -14,9 +14,9 @@ import wallyson.com.br.mypocket.presenter.MainActivityPresenter;
 import wallyson.com.br.mypocket.presenter.MainInterface;
 
 public class MainActivity extends AppCompatActivity implements MainInterface {
-    ImageButton btnSpending, btnBalance, btnSpendingCategory, btnSpendingMonth,
+    private ImageButton btnSpending, btnBalance, btnSpendingCategory, btnSpendingMonth,
     btnSpendingYear, btnAccount, btnCard, btnDelete, btnConfiguration;
-    MainActivityPresenter mPresenter;
+    private MainActivityPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
         btnDelete = (ImageButton) findViewById(R.id.btnDelete);
         btnConfiguration = (ImageButton) findViewById(R.id.btnConfiguration);
 
+        //Renew balance and Credit for account and Credit Card
         mPresenter.renewalBalanceAccount();
         mPresenter.renewalCredit();
 

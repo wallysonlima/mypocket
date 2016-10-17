@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import wallyson.com.br.mypocket.R;
@@ -19,12 +20,12 @@ import wallyson.com.br.mypocket.presenter.ConfigurationActivityPresenter;
 import wallyson.com.br.mypocket.presenter.ConfigurationInterface;
 
 public class ConfigurationActivity extends AppCompatActivity implements ConfigurationInterface {
-    Spinner spnAccount, spnCard, spnRenewalBalance, spnRenewalCredit;
-    EditText edtBalance, edtCredit;
-    Button btnAlterAccount, btnAlterCredit;
-    ConfigurationActivityPresenter mPresenter;
-    ConfigurationAccount confAccount;
-    ConfigurationCard confCard;
+    private Spinner spnAccount, spnCard, spnRenewalBalance, spnRenewalCredit;
+    private EditText edtBalance, edtCredit;
+    private Button btnAlterAccount, btnAlterCredit;
+    private ConfigurationActivityPresenter mPresenter;
+    private ConfigurationAccount confAccount;
+    private ConfigurationCard confCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
 
                 if (confAccount != null) {
                     spnRenewalBalance.setSelection(Integer.parseInt(confAccount.getReceiptDate()));
-                    edtBalance.setText( String.valueOf(confAccount.getBalance()));
+                    edtBalance.setText(String.valueOf(confAccount.getBalance()));
                 } else {
                     spnRenewalBalance.setSelection(0);
                     edtBalance.setText("0.0");
@@ -74,7 +75,7 @@ public class ConfigurationActivity extends AppCompatActivity implements Configur
 
                 if ( confCard != null ) {
                     spnRenewalCredit.setSelection(Integer.parseInt(confCard.getReceiptDate()));
-                    edtCredit.setText( String.valueOf(confCard.getCredit()) );
+                    edtCredit.setText(String.valueOf(confCard.getCredit()) );
                 } else {
                     spnRenewalCredit.setSelection(0);
                     edtCredit.setText("0.0");

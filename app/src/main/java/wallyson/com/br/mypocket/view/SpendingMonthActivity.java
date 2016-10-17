@@ -12,6 +12,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,14 +27,14 @@ import wallyson.com.br.mypocket.presenter.SpendingMonthInterface;
 import wallyson.com.br.mypocket.presenter.SpendingMonthActivityPresenter;
 
 public class SpendingMonthActivity extends AppCompatActivity implements SpendingMonthInterface {
-    Spinner spnMonth;
-    EditText edtTotal;
-    TableLayout tbSpending;
-    SpendingMonthActivityPresenter mPresenter;
-    ArrayList<Spending> spending;
-    UserDao userDao;
-    User user;
-    float total;
+    private Spinner spnMonth;
+    private EditText edtTotal;
+    private TableLayout tbSpending;
+    private SpendingMonthActivityPresenter mPresenter;
+    private ArrayList<Spending> spending;
+    private UserDao userDao;
+    private User user;
+    private float total;
     private ArrayList<String> monthYear = new ArrayList<>();
 
     @Override

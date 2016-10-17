@@ -7,6 +7,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import wallyson.com.br.mypocket.R;
@@ -14,9 +16,9 @@ import wallyson.com.br.mypocket.presenter.BalanceActivityPresenter;
 import wallyson.com.br.mypocket.presenter.BalanceInterface;
 
 public class BalanceActivity extends AppCompatActivity implements BalanceInterface {
-    Spinner spnAccount, spnCard;
-    EditText edtBalance, edtCredit;
-    BalanceActivityPresenter mPresenter;
+    private Spinner spnAccount, spnCard;
+    private EditText edtBalance, edtCredit;
+    private BalanceActivityPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
