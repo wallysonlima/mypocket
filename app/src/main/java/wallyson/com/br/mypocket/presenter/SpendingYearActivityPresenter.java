@@ -28,7 +28,7 @@ public class SpendingYearActivityPresenter {
         ArrayList<Spending> spending = spendingDao.selectSpending();
         Float[] spendingForMonth = new Float[MESES_ANO];
         Date date = new Date(System.currentTimeMillis());
-        String monthYear = new SimpleDateFormat("MM/yyyy").format(date).toString();
+        String actualYear = new SimpleDateFormat("yyyy").format(date).toString();
 
         for( int i = 0; i < MESES_ANO; i++ )
             spendingForMonth[i] = 0.0f;
@@ -36,8 +36,9 @@ public class SpendingYearActivityPresenter {
         for ( Spending sp: spending ) {
             int month = Integer.parseInt( sp.getEmissionDate().substring(3, 5) );
             month--;
+            String year = sp.getEmissionDate().substring(6, 10);
 
-            if ( sp.getEmissionDate().substring(3, 10).equals( monthYear ) ) {
+            if ( year.equals(actualYear) ) {
                 spendingForMonth[month] += sp.getAmount();
             }
         }
