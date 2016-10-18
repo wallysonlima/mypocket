@@ -2,7 +2,9 @@ package wallyson.com.br.mypocket.presenter;
 
 import android.content.Context;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import wallyson.com.br.mypocket.dao.AccountDao;
 import wallyson.com.br.mypocket.dao.CardDao;
@@ -48,7 +50,9 @@ public class DeleteActivityPresenter {
 
     public ArrayList<String> getAllSpendingName() {
         SpendingDao spending = new SpendingDao(c);
-        ArrayList<Spending> sp = spending.selectSpending();
+        Date date = new Date(System.currentTimeMillis());
+        String monthYear = new SimpleDateFormat("MM/yyyy").format(date).toString();
+        ArrayList<Spending> sp = spending.selectSpendingMonthYear(monthYear);
         ArrayList<String> arraySpending = new ArrayList<>();
 
         for ( Spending s: sp ) {
