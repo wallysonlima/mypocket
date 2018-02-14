@@ -1,4 +1,4 @@
-# myPocket
+# Mypocket
 
 It is a system of personal finance, you can manage your accounts, credit cards and especially their daily expenses.
 He will show spending by category in text form or graphically, you too can see spending all year.This system will
