@@ -10,3 +10,6 @@ be developed for Android using the standard MVP design, use Mpandroid for build 
 ![See spending by Category](https://github.com/WallysonNunes/myPocket/blob/master/screenshots/SpendingCategoryActivity.png)
 ![See all spending by month](https://github.com/WallysonNunes/myPocket/blob/master/screenshots/SpendingMonthActivity.png)
 ![See spending all year](https://github.com/WallysonNunes/myPocket/blob/master/screenshots/SpendingYearActivity.png)
+
+<hr>
+<h5>Developed by Wallyson Lima</h5>
